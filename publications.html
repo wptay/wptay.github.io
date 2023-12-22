@@ -1,0 +1,3671 @@
+﻿<!DOCTYPE html>
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="Tay Wee Peng" />
+	<meta name="keywords" content="Tay Wee Peng" />
+	<meta name="author" content="Tay Wee Peng" />
+	<link href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz|Droid+Sans' rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" type="text/css" media="all" href="inland.css" />
+	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.nivo.slider.js"></script>
+	<script type="text/javascript">
+		$(window).load(function () {
+			$('#slider').nivoSlider();
+		});
+	</script>
+
+	<script type="text/javascript">
+
+		function toggleInfo(articleid, info) {
+
+			var entry = document.getElementById(articleid);
+			var pubs = document.getElementById('pubs_' + articleid);
+			var abs = document.getElementById('abs_' + articleid);
+			var rev = document.getElementById('rev_' + articleid);
+			var bib = document.getElementById('bib_' + articleid);
+			var conf = document.getElementById('conf_' + articleid);
+
+			if (pubs && info == 'pubs') {
+				pubs.className.indexOf('noshow') == -1 ? pubs.className = 'pubs noshow' : pubs.className = 'journals show';
+			} else if (abs && info == 'abstract') {
+				abs.className.indexOf('noshow') == -1 ? abs.className = 'abstract noshow nonum' : abs.className = 'abstract show nonum';
+			} else if (rev && info == 'review') {
+				rev.className.indexOf('noshow') == -1 ? rev.className = 'review noshow nonum' : rev.className = 'review show nonum';
+			} else if (bib && info == 'bibtex') {
+				bib.className.indexOf('noshow') == -1 ? bib.className = 'bibtex noshow nonum' : bib.className = 'bibtex show nonum';
+			} else if (bib && info == 'bibbull') {
+				bib.className.indexOf('noshow') == -1 ? bib.className = 'bibtex noshow nonum' : bib.className = 'bibtex show nonum';
+			} else if (conf && info == 'conf') {
+				conf.className.indexOf('noshow') == -1 ? conf.className = 'conf noshow nonum' : conf.className = 'conf show nonum';
+			} else {
+				return;
+			}
+
+			// check if one or the other is available
+			var absshow; var revshow; var bibshow; 
+			(abs && abs.className.indexOf('noshow') == -1) ? absshow = true : absshow = false;
+			(rev && rev.className.indexOf('noshow') == -1) ? revshow = true : revshow = false;
+			(bib && bib.className.indexOf('noshow') == -1) ? bibshow = true : bibshow = false;
+
+			// highlight original entry
+			if (entry) {
+				if(info == 'bibbull') {
+					if (revshow || absshow || bibshow) {
+						entry.className = 'entry highlight show bull';
+					} else {
+						entry.className = 'show bull';
+					}
+				} else if (!conf) {				
+					if (revshow || absshow || bibshow) {
+						entry.className = 'entry highlight show num';
+					} else {
+						entry.className = 'show num';
+					}
+				}
+			}
+
+			// When there's a combination of abstract/review/bibtex showing, need to add class for correct styling
+			if (absshow) {
+				(revshow || bibshow) ? abs.className = 'abstract nextshow' : abs.className = 'abstract';
+			}
+			if (revshow) {
+				bibshow ? rev.className = 'review nextshow' : rev.className = 'review';
+			}
+
+		}
+
+	</script>
+
+	<style type="text/css">
+		ul {
+			list-style-position: inside;
+		}
+
+		table {
+			border: 1px gray none;
+			width: 100%;
+			empty-cells: show;
+			border-spacing: 0em 0.1em;
+			margin: 1em 0em;
+			counter-reset: rowNumber;
+		}
+
+		table.noshow {
+			display: none;
+		}
+
+		th,
+		td {
+			border: none;
+			padding: 0.5em;
+			vertical-align: top;
+			text-align: justify;
+		}
+
+		tr.num {
+			counter-increment: rowNumber;
+		}
+
+		tr.num td:first-child::before {
+			min-width: 1em;
+			margin-right: 0.5em;
+			content: counter(rowNumber)".";
+		}
+
+		tr.nonum {
+			counter-increment: rowNumber 0;
+		}
+
+		tr.bull {
+			counter-increment: rowNumber 0;
+		}
+
+		tr.bull td:first-child::before {
+			min-width: 1em;
+			margin-right: 0.5em;
+			content: "•";
+		}
+
+		td a {
+			color: navy;
+			text-decoration: none;
+		}
+
+		td a:hover {
+			text-decoration: underline;
+		}
+
+		tr.noshow {
+			display: none;
+		}
+
+		tr.highlight td {
+			background-color: #EFEFEF;
+			border-top: 2px #2E2E2E solid;
+		}
+
+		tr.abstract td,
+		tr.review td,
+		tr.bibtex td {
+			background-color: #EFEFEF;
+			text-align: justify;
+			border-bottom: 2px #2E2E2E solid;
+		}
+
+		tr.nextshow td {
+			border-bottom-style: none;
+		}
+
+		tr.bibtex pre {
+			width: 100%;
+			overflow: auto;
+			white-space: pre-wrap;
+		}
+
+		p.infolinks {
+			margin: 0.3em 0em 0em 0em;
+			padding: 0px;
+		}
+
+		@media print {
+
+			p.infolinks,
+			#qs_settings,
+			#quicksearch,
+			t.bibtex {
+				display: none !important;
+			}
+
+			tr {
+				page-break-inside: avoid;
+			}
+		}
+
+	</style>
+
+<title>Publications</title>
+</head>
+
+<body>
+	<div id="wrapper960" class="clearfix">
+		<div id="toplinks">
+			<ul class="toplinks_links">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="members.html">Members</a></li>
+				<li><a href="research.html">Research</a></li>
+				<li><a href="publications.html">Publications</a></li>
+			</ul>
+		</div>
+
+		<pre id="publications" class="content clearfix shadow">
+			<!-- <a href="publications.html" class="fontgreen">Chronological</a> or <a href="research.html">By topics</a> -->
+
+
+			<h2 id="selected"><a href="javascript:toggleInfo('selected','pubs')" style="color:#5c5a5a">Selected Publications</a></h2>
+			<table id="pubs_selected" class="pubs show" border="1">
+			<tbody>
+			<tr id="ZhaKanSon:C24s" class="entry bull">
+			<td>Q. Kang, K. Zhao, Y. Song, Y. Xie, Y. Zhao, S. Wang, R. She, and W. P. Tay, “Coupling graph neural networks with fractional order continuous dynamics: A robustness study,” in <em>Proc. AAAI Conference on Artificial Intelligence</em>, Vancouver, Canada, Feb. 2024.
+			<a href="" target="_blank">[pdf]</a>
+			<a href="" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('ZhaKanSon:C24s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_ZhaKanSon:C24s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+@INPROCEEDINGS{ZhaKanSon:C24,
+author = {Qiyu Kang and Kai Zhao and Yang Song and Yihang Xie and Yanan Zhao and Sijie Wang and Rui She and Wee Peng Tay},
+title = {Coupling Graph Neural Networks with Fractional Order Continuous Dynamics: {A} Robustness Study},
+booktitle = {Proc. AAAI Conference on Artificial Intelligence},
+volume = {},
+pages = {},
+month = {Feb.},
+year = {2024},
+address = {Vancouver, Canada},
+}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="SheWanKan:C24s" class="entry bull">
+			<td>R. She, S. Wang, Q. Kang, K. Zhao, Y. Song, W. P. Tay, T. Geng, and X. Jian, “PosDiffNet: Positional neural diffusion for point cloud registration in a large field of view with perturbations,” in <em>Proc. AAAI Conference on Artificial Intelligence</em>, Vancouver, Canada, Feb. 2024.
+			<a href="" target="_blank">[pdf]</a>
+			<a href="" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('SheWanKan:C24s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_SheWanKan:C24s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+@INPROCEEDINGS{SheWanKan:C24,
+author = {Rui She and Sijie Wang and Qiyu Kang and Kai Zhao and Yang Song and Wee Peng Tay and Tianyu Geng and Xingchao Jian},
+title = {{PosDiffNet: Positional} Neural Diffusion for Point Cloud Registration in a Large Field of View with Perturbations},
+booktitle = {Proc. AAAI Conference on Artificial Intelligence},
+volume = {},
+pages = {},
+month = {Feb.},
+year = {2024},
+address = {Vancouver, Canada},
+}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="WanSheKan:C24s" class="entry bull">
+			<td>S. Wang, R. She, Q. Kang, X. Jian, K. Zhao, Y. Song, and W. P. Tay, “DistilVPR: Cross-Modal knowledge distillation for visual place recognition,” in <em>Proc. AAAI Conference on Artificial Intelligence</em>, Vancouver, Canada, Feb. 2024.
+			<a href="" target="_blank">[pdf]</a>
+			<a href="" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('WanSheKan:C24s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_WanSheKan:C24s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+@INPROCEEDINGS{WanSheKan:C24,
+author = {Sijie Wang and Rui She and Qiyu Kang and Xingchao Jian and Kai Zhao and Yang Song and Wee Peng Tay},
+title = {{DistilVPR}: {Cross-Modal} Knowledge Distillation for Visual Place Recognition},
+booktitle = {Proc. AAAI Conference on Artificial Intelligence},
+volume = {},
+pages = {},
+month = {Feb.},
+year = {2024},
+address = {Vancouver, Canada},
+}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="ZhaKanSon:C23bs" class="entry bull">
+			<td>K. Zhao, Q. Kang, Y. Song, R. She, S. Wang, and W. P. Tay, “Adversarial robustness in graph neural networks: A Hamiltonian energy conservation approach,” 
+			<em>Advances in Neural Information Processing Systems (NeurIPS)</em>, New Orleans, USA, Dec. 2023, <strong>spotlight</strong>.
+			<a href="https://openreview.net/forum?id=xtADRDRsM2" target="_blank">[pdf]</a>
+			<a href="https://openreview.net/forum?id=xtADRDRsM2" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('ZhaKanSon:C23bs','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_ZhaKanSon:C23bs" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@INPROCEEDINGS{ZhaKanSon:C23b,
+			author = {Kai Zhao and Qiyu Kang and Yang Song and Rui She and Sijie Wang and Wee Peng Tay},
+			title = {Adversarial Robustness in Graph Neural Networks: A {Hamiltonian} Energy Conservation Approach},
+			booktitle = {Advances in Neural Information Processing Systems},
+			volume = {},
+			pages = {},
+			month = {Dec.},
+			year = {2023},
+			address = {New Orleans, USA},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="ZhaKanSon:C23s" class="entry bull">
+			<td>K. Zhao, Q. Kang, Y. Song, R. She, S. Wang, and W. P. Tay, “Graph neural convection-diffusion with heterophily,” 
+			<em>Proc. International Joint Conference on Artificial Intelligence (IJCAI)</em>, Macao, China, Aug. 2023.
+			<a href="https://www.ijcai.org/proceedings/2023/0518.pdf" target="_blank">[pdf]</a>
+			<a href="https://www.ijcai.org/proceedings/2023/518" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('ZhaKanSon:C23s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_ZhaKanSon:C23s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@INPROCEEDINGS{ZhaKanSon:C23,
+			author = {Kai Zhao and Qiyu Kang and Yang Song and Rui She and Sijie Wang and Wee Peng Tay},
+			title = {Graph Neural Convection-Diffusion with Heterophily},
+			booktitle = {Proc. International Joint Conference on Artificial Intelligence},
+			volume = {},
+			pages = {},
+			month = {Aug.},
+			year = {2023},
+			address = {Macao, China},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="KanZhaSon:C23s" class="entry bull">
+			<td>Q. Kang, K. Zhao, Y. Song, S. Wang, and W. P. Tay, “Node embedding from neural Hamiltonian orbits in graph neural networks,”
+			<em>Proc. International Conference on Machine Learning (ICML)</em>, Haiwaii, USA, Jul. 2023.
+			<a href="https://proceedings.mlr.press/v202/kang23d/kang23d.pdf" target="_blank">[pdf]</a>
+			<a href="https://proceedings.mlr.press/v202/kang23d.html" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('KanZhaSon:C23s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_KanZhaSon:C23s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@INPROCEEDINGS{KanZhaSon:C23,
+					author = {Qiyu Kang and Kai Zhao and Yang Song and Sijie Wang and Wee Peng Tay},
+					title = {Node Embedding from Neural {Hamiltonian} Orbits in Graph Neural Networks},
+					booktitle = {Proc. International Conference on Machine Learning},
+					volume = {202},
+					pages = {15786--15808},
+					month = {Jul.},
+					year = {2023},
+					series = 	 {Proceedings of Machine Learning Research},
+					publisher = {PMLR},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="JiLeeMen:C23s" class="entry bull">
+			<td>F. Ji, S. H. Lee, H. Meng, K. Zhao, J. Yang, and W. P. Tay, “Leveraging label non-uniformity for node classification in graph neural networks,” 
+			<em>Proc. International Conference on Machine Learning (ICML)</em>, Haiwaii, USA, Jul. 2023.
+			<a href="https://proceedings.mlr.press/v202/ji23a/ji23a.pdf" target="_blank">[pdf]</a>
+			<a href="https://proceedings.mlr.press/v202/ji23a.html" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('JiLeeMen:C23s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_JiLeeMen:C23s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@InProceedings{JiLeeMen:C23,
+				title = {Leveraging Label Non-Uniformity for Node Classification in Graph Neural Networks},
+				author = {Feng Ji and See Hian Lee and Hanyang Meng and Kai Zhao and Jielong Yang and Wee Peng Tay},
+				booktitle = {Proc. International Conference on Machine Learning},
+				pages = {14869--14885},
+				year = {2023},
+				volume = {202},
+				series = {Proceedings of Machine Learning Research},
+				month = {Jul.},
+				publisher = {PMLR},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="JiTayOrt:J23s" class="entry bull">
+			<td>F. Ji, W. P. Tay, and A. Ortega, “Graph signal processing over a probability space of shift operators,”
+			<em>IEEE Transactions on Signal Processing</em>, vol. 71, pp. 1159 – 1174, 2023.
+			<a href="https://ieeexplore.ieee.org/document/10089525" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2108.09192" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('JiTayOrt:J23s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_JiTayOrt:J23s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{JiTayOrt:J23,
+			author = {Feng Ji and Wee Peng Tay and Antonio Ortega},
+			title = {Graph Signal Processing Over a Probability Space of Shift Operators},
+			journal = {{IEEE} Trans. Signal Process.},
+			volume = {71}, 
+			pages = {1159 -- 1174},
+			month = {},
+			year = {2023},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="WanKanSheWan:C23s" class="entry bull">
+			<td>S. Wang, Q. Kang, R. She, W. Wang, K. Zhao, Y. Song, and W. P. Tay, “HypLiLoc: Towards effective LiDAR pose regression with hyperbolic fusion,”
+			<em>Proc. IEEE/CVF Computer Vision and Pattern Recognition Conference (CVPR)</em>, Vancouver, Canada, Jun. 2023.
+			<a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Wang_HypLiLoc_Towards_Effective_LiDAR_Pose_Regression_With_Hyperbolic_Fusion_CVPR_2023_paper.pdf" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2304.00932" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('WanKanSheWan:C23s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_WanKanSheWan:C23s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@INPROCEEDINGS{WanKanSheWan:C23,
+			author = {Sijie Wang and Qiyu Kang and Rui She and Wei Wang and Kai Zhao and Yang Song and Wee Peng Tay},
+			title = {{HypLiLoc}: Towards Effective {LiDAR} Pose Regression with Hyperbolic Fusion},
+			booktitle = {Proc. IEEE/CVF Computer Vision and Pattern Recognition Conference},
+			volume = {},
+			pages = {},
+			month = {Jun.},
+			year = {2023},
+			address = {Vancouver, Canada},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="WanKanShe:C23s" class="entry bull">
+			<td>S. Wang, Q. Kang, R. She, W. P. Tay, A. Hartmannsgruber, and D. N. Navarro, “RobustLoc: Robust camera pose regression in challenging driving environments,”
+			<em>Proc. AAAI Conference on Artificial Intelligence (AAAI)</em>, Washington, DC, Feb. 2023.
+			<a href="https://ojs.aaai.org/index.php/AAAI/article/view/25765" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2211.11238" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('WanKanShe:C23s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_WanKanShe:C23s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@INPROCEEDINGS{WanKanShe:C23,
+			author = {Sijie Wang and Qiyu Kang and Rui She and Wee Peng Tay and Andreas Hartmannsgruber and Diego Navarro Navarro},
+			title = {{RobustLoc}: {Robust} Camera Pose Regression in Challenging Driving Environments},
+			booktitle = {Proc. AAAI Conference on Artificial Intelligence},
+			volume = {},
+			pages = {},
+			month = {Feb.},
+			year = {2023},
+			address = {Washington, DC},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="SonKanWan:C22s" class="entry bull">
+			<td>Y. Song, Q. Kang, S. Wang, K. Zhao, and W. P. Tay, “On the robustness of graph neural diffusion to topology perturbations,”
+			<em>Advances in Neural Information Processing Systems (NeurIPS)</em>, New Orleans, USA, Nov. 2022.
+			<a href="https://proceedings.neurips.cc/paper_files/paper/2022/hash/29a0ea49a103a233b17c0705cdeccb66-Abstract-Conference.html" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2209.07754" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('SonKanWan:C22s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_SonKanWan:C22s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@INPROCEEDINGS{SonKanWan:C22,
+			author = {Yang Song and Qiyu Kang and Sijie Wang and Kai Zhao and Wee Peng Tay},
+			title = {On the Robustness of Graph Neural Diffusion to Topology Perturbations},
+			booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+			month = {Nov.},
+			year = {2022},
+			address = {New Orleans, USA},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="JiaTay:J22s" class="entry bull">
+			<td>X. Jian and W. P. Tay, “Wide-sense stationarity in generalized graph signal processing,”
+			<em>IEEE Transactions on Signal Processing</em>, no. 70, pp. 3414 – 3428, 2022.
+			<a href="https://ieeexplore.ieee.org/document/9802780" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2112.01127" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('JiaTay:J22s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_JiaTay:J22s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{JiaTay:J22,
+			author = {Xingchao Jian and Wee Peng Tay},
+			title = {Wide-Sense Stationarity in Generalized Graph Signal Processing},
+			journal = {IEEE Trans. Signal Process.},
+			number = {70},
+			pages = {3414 -- 3428},
+			year = {2022},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="LeeJiTay:C22s" class="entry bull">
+			<td>S. H. Lee, F. Ji, and W. P. Tay, “SGAT: Simplicial graph attention network,”
+			<em>Proc. International Joint Conference on Artificial Intelligence (IJCAI)</em>, Vienna, Austria, Jul. 2022.
+			<a href="https://www.ijcai.org/proceedings/2022/443" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2207.11761" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('LeeJiTay:C22s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_LeeJiTay:C22s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@INPROCEEDINGS{LeeJiTay:C22,
+			author = {See Hian Lee and Feng Ji and Wee Peng Tay},
+			title = {{SGAT}: Simplicial Graph Attention Network},
+			booktitle = {Proc. International Joint Conference on Artificial Intelligence (IJCAI)},
+			month = {Jul.},
+			year = {2022},
+			address = {Vienna, Austria},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<!-- <tr id="KanTay:J22s" class="entry bull">
+			<td>Q. Kang and W. P. Tay,
+			"Task recommendation in crowdsourcing based on learning preferences and reliabilities,"
+			<em>IEEE Transactions on Services Computing</em>, vol. 15, no. 4, pp. 1785–1798, 2022.
+			<a href="https://ieeexplore.ieee.org/document/9181423" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1807.10444" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('KanTay:J22s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_KanTay:J22s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{KanTay:J22,
+			author = {Qiyu Kang and Wee Peng Tay},
+			title = {Task Recommendation in Crowdsourcing Based on Learning Preferences and Reliabilities},
+			journal = {IEEE Trans. Services Computing},
+			year={2022},
+			volume={15},
+			number={4},
+			pages={1785-1798},
+			}
+			</pre>
+			</td>
+			</tr> -->
+
+			<tr id="JiPraTay:J22s" class="entry bull">
+			<td>F. Ji, Pratibha, and W. P. Tay,
+			“Unlimited dynamic range signal recovery for folded graph signals,”
+			<em>Signal Processing</em>, vol. 198, p. 108574, 2022.
+			<a href="https://www.sciencedirect.com/science/article/abs/pii/S0165168422001177"
+			target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1903.03741" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('JiPraTay:J22s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_JiPraTay:J22s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{JiPraTay:J22,
+			author = {Feng Ji and Pratibha and Wee Peng Tay},
+			title = {Unlimited dynamic range signal recovery for folded graph signals},
+			journal = {Signal Processing},
+			volume = {198},
+			pages = {108574},
+			year = {2022},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="KanSonDinTay:C21s" class="entry bull">
+			<td>Q. Kang, Y. Song, Q. Ding, and W. P. Tay, “Stable neural ODE with Lyapunov-stable equilibrium points for defending against adversarial attacks,”
+			<em>Advances in Neural Information Processing Systems (NeurIPS)</em>, virtual, Dec. 2021.
+			<a href="https://papers.nips.cc/paper/2021/hash/7d5430cf85f78c4b7aa09813b14bce0d-Abstract.html" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2110.12976" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('KanSonDinTay:C21s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_KanSonDinTay:C21s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@INPROCEEDINGS{KanSonDinTay:C21,
+			author = {Qiyu Kang and Yang Song and Qinxu Ding and Wee Peng Tay},
+			title = {Stable Neural {ODE} with {Lyapunov}-Stable Equilibrium Points for Defending Against Adversarial Attacks},
+			booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+			month = {Dec.},
+			year = {2021},
+			address = {virtual},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="SonKanTay:C21s" class="entry bull">
+			<td>Y. Song, Q. Kang, and W. P. Tay, “Error-correcting output codes with ensemble diversity for robust
+			learning in neural networks,”
+			<em>Proc. AAAI Conference on Artificial Intelligence</em>, virtual, Feb. 2021.
+			<a href="https://ojs.aaai.org/index.php/AAAI/article/view/17169" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1912.00181" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('SonKanTay:C21s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_SonKanTay:C21s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@INPROCEEDINGS{SonKanTay:C21,
+			author = {Yang Song and Qiyu Kang and Wee Peng Tay},
+			title = {Error-Correcting Output Codes with Ensemble Diversity for Robust Learning in Neural Networks},
+			booktitle = {Proc. AAAI Conference on Artificial Intelligence},
+			month = {Feb.},
+			year = {2021},
+			address = {virtual},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="WanTayWei:J21s" class="entry bull">
+			<td>C. Wang, W. P. Tay, Y. Wei, and Y. Wang,
+			“Privacy-preserving distributed projection LMS for linear multitask networks,”
+			<em>IEEE Transactions on Signal Processing</em>, vol. 69, pp. 6530 – 6545, 2021.
+			<a href="https://ieeexplore.ieee.org/document/9613756" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2010.05527" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('WanTayWei:J21s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_WanTayWei:J21s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{WanTayWei:J21,
+			author = {Chengcheng Wang and Wee Peng Tay and Ye Wei and Yuan Wang},
+			title = {Privacy-Preserving Distributed Projection LMS for Linear Multitask Networks},
+			journal = {IEEE Trans. Signal Process.},
+			volume = {69}, 
+			pages = {6530 -- 6545},
+			year = {2021},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="LauTay:J21s" class="entry bull">
+			<td>T. S. Lau and W. P. Tay,
+			"Asymptotically optimal sampling policy for quickest change detection with observation-switching cost,"
+			<em>IEEE Transactions on Signal Processing</em>, vol. 69, pp. 1332 – 1346, 2021.
+			<a href="https://ieeexplore.ieee.org/document/9347742" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1912.11693" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('LauTay:J21s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_LauTay:J21s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{LauTay:J21,
+			author = {Tze Siong Lau and Wee Peng Tay},
+			title = {Asymptotically Optimal Sampling Policy for Quickest Change Detection with Observation-Switching Cost},
+			journal = {{IEEE} Trans. Signal Process.},
+			volume = {69}, 
+			pages = {1332 -- 1346},
+			year = {2021},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="WanSonTay:J21s" class="entry bull">
+			<td>C. X. Wang, Y. Song, and W. P. Tay,
+			"Arbitrarily strong utility-privacy tradeoff in multi-agent systems,"
+			<em>IEEE Transactions on Information Forensics and Security</em>, vol. 16, pp. 671 – 684, 2021.
+			<a href="https://ieeexplore.ieee.org/document/9167255" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2001.05618" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('WanSonTay:J21s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_WanSonTay:J21s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{WanSonTay:J21,
+			author = {Chong Xiao Wang and Yang Song and Wee Peng Tay},
+			title = {Arbitrarily Strong Utility-Privacy Tradeoff in Multi-Agent Systems},
+			journal = {{IEEE} Trans. Inf. Forensics Security},
+			volume = {16}, 
+			number = {},
+			pages = {671 -- 684},
+			month = {},
+			year = {2021},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="SonWanTay:J20s" class="entry bull">
+			<td>Y. Song, C. X. Wang, and W. P. Tay,
+			"Compressive privacy for a linear dynamical system,"
+			<em>IEEE Transactions on Information Forensics and Security</em>, vol. 15, pp. 895 – 910, 2020.
+			<a href="https://ieeexplore.ieee.org/document/8768395" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1812.03436" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('SonWanTay:J20s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_SonWanTay:J20s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{SonWanTay:J20,
+			author = {Yang Song and Chong Xiao Wang and Wee Peng Tay},
+			title = {Compressive Privacy for a Linear Dynamical System},
+			journal = {{IEEE} Trans. Inf. Forensics Security},
+			volume = {15}, 
+			number = {},
+			pages = {895 -- 910},
+			month = {},
+			year = {2020},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="SunTay:J20bs" class="entry bull">
+			<td> M. Sun and W. P. Tay,
+			“On the relationship between inference and data privacy in decentralized IoT networks,”
+			<em>IEEE Transactions on Information Forensics and Security</em>, vol. 15, pp. 852 – 866, 2020.
+			<a href="https://ieeexplore.ieee.org/document/8766142" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1811.10322" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('SunTay:J20bs','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_SunTay:J20bs" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{SunTay:J20b,
+			author = {Meng Sun and Wee Peng Tay},
+			title = {On the Relationship Between Inference and Data Privacy in Decentralized IoT Networks},
+			journal = {{IEEE} Trans. Inf. Forensics Security},
+			volume = {15}, 
+			number = {},
+			pages = {852 -- 866},
+			month = {},
+			year = {2020},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="SunTay:J20as" class="entry bull">
+			<td> M. Sun and W. P. Tay,
+			“Decentralized detection with robust information privacy protection,”
+			<em>IEEE Transactions on Information Forensics and Security</em>, vol. 15, pp. 85 – 99, 2020.
+			<a href="https://ieeexplore.ieee.org/document/8713934" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1808.10082" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('SunTay:J20as','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_SunTay:J20as" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{SunTay:J20a,
+			author = {Meng Sun and Wee Peng Tay},
+			title = {Decentralized Detection with Robust Information Privacy Protection},
+			journal = {{IEEE} Trans. Inf. Forensics Security},
+			volume = {15}, 
+			number = {},
+			pages = {85-99},
+			month = {},
+			year = {2020},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="JiTay:J19s" class="entry bull">
+			<td>F. Ji and W. P. Tay,
+			"A Hilbert space theory of generalized graph signal processing,"
+			<em>IEEE Transactions on Signal Processing</em>, vol. 67, no. 24, pp. 6188 – 6203, Dec. 2019.
+			<a href="https://ieeexplore.ieee.org/document/8907446" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1904.11655" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('JiTay:J19s','bibbull')">Bib</a>]
+			<a href="MyPapers/Conferences/GGSP.pdf" target="_blank">[<strong>Keynote (distinguished presentation)  GlobalSIP 2019</strong>]</a>
+			</td>
+			</tr>
+			<tr id="bib_JiTay:J19s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{JiTay:J19,
+			author = {Feng Ji and Wee Peng Tay},
+			title = {A {Hilbert} Space Theory of Generalized Graph Signal Processing},
+			journal = {{IEEE} Trans. Signal Process.},
+			volume = {67}, 
+			number = {24},
+			pages	= {6188 -- 6203},
+			month	= {Dec.},
+			year = {2019},
+			}
+			</pre>
+			</td>
+			</tr>
+
+
+			<!-- <tr id="KanTay:J18s" class="entry bull">
+			<td>Q. Kang and W. P. Tay,
+			"Sequential multi-class labeling in crowdsourcing,"
+			<em> IEEE Transactions on Knowledge and Data Engineering</em>, vol. 31, no. 11, pp. 2190 – 2199, Nov.
+			2019.
+			<a href="https://ieeexplore.ieee.org/document/8481496" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1711.02128" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('KanTay:J18s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_KanTay:J18s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{KanTay:J18,
+			author = {Qiyu Kang and Wee Peng Tay},
+			title = {Sequential Multi-Class Labeling in Crowdsourcing},
+			journal = {{IEEE} Trans. Knowl. Data Eng.},
+			volume = {31}, 
+			number = {11},
+			pages = {2190 -- 2199},
+			month = {Nov.},
+			year = {2019},
+			}
+			</pre>
+			</td>
+			</tr> -->
+
+			<!-- <tr id="LauTay:J19s" class="entry bull">
+			<td>T. S. Lau and W. P. Tay,
+			"Quickest change detection in the presence of a nuisance change,"
+			<em>IEEE Transactions on Signal Processing</em>, vol. 67, no. 20, pp. 5281 – 5296, Oct. 2019.
+			<a href="https://ieeexplore.ieee.org/document/8822761" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1902.03460" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('LauTay:J19s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_LauTay:J19s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{LauTay:J19,
+			author = {Tze Siong Lau and Wee Peng Tay},
+			title = {Quickest Change Detection in the Presence of a Nuisance Change},
+			journal = {{IEEE} Trans. Signal Process.},
+			volume = {67}, 
+			number = {20},
+			pages	= {5281 -- 5296},
+			month	= {Oct.},
+			year = {2019},
+			}
+			</pre>
+			</td>
+			</tr> -->
+
+			<!-- <tr id="RabZhoYan:J19s" class="entry bull">
+			<td>R. Rabiee, X. Zhong, Y. Yan, and W. P. Tay,
+			"LaIF: A lane-level self-positioning scheme for vehicles in GNSS-denied environments,"
+			<em> IEEE Transactions on Intelligent Transportation Systems</em>, vol. 20, no. 8, pp. 2944 – 2961, Aug.
+			2019.
+			<a href="https://ieeexplore.ieee.org/document/8489926" target="_blank">[pdf]</a>
+			<a href="http://hdl.handle.net/10220/49525" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('RabZhoYan:J19s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_RabZhoYan:J19s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{RabZhoYan:J19,
+			author = {Ramtin Rabiee and Xionghu Zhong and Yongsheng Yan and Wee Peng Tay},
+			title = {{LaIF}: {A} Lane-Level Self-Positioning Scheme for Vehicles in {GNSS}-Denied Environments},
+			journal = {{IEEE} Trans. Intell. Transp. Syst.},
+			volume = {20}, 
+			number = {8},
+			pages = {2944 -- 2961},
+			month = {Aug.},
+			year = {2019},
+			}
+			</pre>
+			</td>
+			</tr> -->
+
+			<!-- <tr id="JiTanTay:J19s" class="entry bull">
+			<td>F. Ji, W. Tang, and W. P. Tay,
+			"On the properties of Gromov matrices and their applications in network inference,"
+			<em>IEEE Transactions on Signal Processing</em>, vol. 67, no. 10, pp. 2624 – 2638, May 2019.
+			<a href="https://ieeexplore.ieee.org/document/8676094" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1810.05333" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('JiTanTay:J19s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_JiTanTay:J19s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{JiTanTay:J19,
+			author = {Feng Ji and Wenchang Tang and Wee Peng Tay},
+			title = {On the Properties of {Gromov} Matrices and Their Applications in Network Inference},
+			journal = {{IEEE} Trans. Signal Process.},
+			volume = {67}, 
+			number = {10},
+			pages	= {2624 -- 2638},
+			month	= {May},
+			year = {2019},
+			}
+			</pre>
+			</td>
+			</tr> -->
+
+			<!-- <tr id="LauTayVee:J18s" class="entry bull">
+			<td>T. S. Lau, W. P. Tay, and V. V. Veeravalli,
+			"A binning approach to quickest change detection with unknown post-change distribution,"
+			<em>IEEE Transactions on Signal Processing</em>, vol. 67, no. 3, pp. 609 – 621, Feb. 2019.
+			<a href="https://ieeexplore.ieee.org/document/8537967" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1801.04756" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('LauTayVee:J18s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_LauTayVee:J18s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{LauTayVee:J18,
+			author = {Tze Siong Lau and Wee Peng Tay and Venugopal V. Veeravalli},
+			title = {A Binning Approach to Quickest Change Detection with Unknown Post-Change Distribution},
+			journal = {{IEEE} Trans. Signal Process.},
+			volume = {67}, 
+			number = {3},
+			pages	= {609 -- 621},
+			month	= {Feb.},
+			year = {2019},
+			}
+			</pre>
+			</td>
+			</tr> -->
+
+			<tr id="SunTayHe:J18s" class="entry bull">
+			<td>M. Sun, W. P. Tay, and X. He,
+			"Toward information privacy for the Internet of Things: A non-parametric learning approach,"
+			<em>IEEE Transactions on Signal Processing</em>, vol. 66, no. 7, pp. 1734 - 1747, Apr. 2018.
+			<a href="https://ieeexplore.ieee.org/document/8259344" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1611.04254" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('SunTayHe:J18s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_SunTayHe:J18s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{SunTayHe:J18,
+			author = {Meng Sun and Wee Peng Tay and Xin He},
+			title = {Toward Information Privacy for the {Internet of Things}: A Non-parametric Learning Approach},
+			journal = {{IEEE} Trans. Signal Process.},
+			volume = {66}, 
+			number = {7},
+			pages	= {1734 -- 1747},
+			month	= {Apr.},
+			year = {2018},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="LuoTayLen:J17s" class="entry bull">
+			<td> W. Luo, W. P. Tay, and M. Leng,
+			"On the universality of Jordan centers for estimating infection sources in tree networks,"
+			<em>IEEE Transactions on Information Theory</em>, vol. 63, no. 7, pp. 4634 – 4657, Jul. 2017. Submitted
+			Nov. 2014,
+			accepted Feb. 2017.
+			<a href="https://ieeexplore.ieee.org/document/7913632" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/43475" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('LuoTayLen:J17s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_LuoTayLen:J17s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{LuoTayLen:J17,
+			author = {Wuqiong Luo and Wee Peng Tay and Mei Leng},
+			title = {On the Universality of {Jordan} Centers for Estimating Infection Sources in Tree Networks},
+			journal = {{IEEE} Trans. Inf. Theory},
+			volume = {63}, 
+			number = {7},
+			pages = { 4634 – 4657},
+			month =	{Jul.},
+			year = {2017},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="LuoTayLen:J16s" class="entry bull">
+			<td> W. Luo, W. P. Tay, and M. Leng,
+			"Infection spreading and source identification: A hide and seek game,"
+			<em>IEEE Transactions on Signal Processing</em>, vol. 64, no. 16, pp. 4338-4243, Aug. 2016.
+			<a href="https://ieeexplore.ieee.org/document/7458896" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/43480" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('LuoTayLen:J16s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_LuoTayLen:J16s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{LuoTayLen:J16,
+			author = {Wuqiong Luo and Wee Peng Tay and Mei Leng},
+			title = {Infection spreading and source identification: A hide and seek game},
+			journal = {{IEEE} Trans. Signal Process.},
+			volume = {64}, 
+			number = {16},
+			pages	= {4228 -- 4243},
+			month	= {Aug.},
+			year =	{2016},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="HoTayQue:J15s" class="entry bull">
+			<td> J. Ho, W. P. Tay, T. Q. S. Quek, and E. K. P. Chong,
+			"Robust decentralized detection and social learning in tandem networks,"
+			<em>IEEE Transactions on Signal Processing</em>, vol. 63, no. 19, pp. 5019–5032, Oct. 2015, <strong>IEEE
+			Signal Processing Society Young Author Best Paper Award</strong>
+			<a href="https://ieeexplore.ieee.org/document/7130665" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/43461" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('HoTayQue:J15s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_HoTayQue:J15s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{HoTayQue:J15,
+			author = {Jack Ho and Wee Peng Tay and Tony Q. S. Quek and Edwin K. P. Chong},
+			title = {Robust decentralized detection and social learning in tandem networks},
+			journal	= {{IEEE} Trans. Signal Process.},
+			volume = {63}, 
+			number = {19},
+			pages = {5019 -- 5032},
+			month = {Oct.},
+			year = {2015},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="Tay:J15s" class="entry bull">
+			<td> W. P. Tay,
+			"Whose opinion to follow in multihypothesis social learning? A large deviations perspective,"
+			<em>IEEE Journal of Selected Topics in Signal Processing</em>, vol. 9, no. 2, pp. 344–359, Mar. 2015.
+			<a href="https://ieeexplore.ieee.org/document/6940264" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/43460" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('Tay:J15s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_Tay:J15s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{Tay:J15,
+			author = {Wee Peng Tay},
+			title = {Whose Opinion to follow in Multihypothesis Social Learning? {A} Large Deviations Perspective},
+			journal = {{IEEE} J. Sel. Topics Signal Process.},
+			year = {2015}, 
+			month = {Mar.}, 
+			volume = {9}, 
+			number = {2}, 
+			pages = {344 -- 359},			
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="LuoTayLen:J14s" class="entry bull">
+			<td> W. Luo, W. P. Tay, and M. Leng,
+			“How to identify an infection source with limited observations,”
+			<em>IEEE Journal of Selected Topics in Signal Processing</em>, vol. 8, no. 4, pp. 586–597, Aug. 2014.
+			<a href="https://ieeexplore.ieee.org/document/6782740" target="_blank">[pdf]</a>
+			<a href="http://arxiv.org/abs/1309.4161" target="_blank">[repo]</a>
+			<a href="MyPapers/Codes/SI_Incomplete_Code.zip">[codes]</a>
+			[<a href="javascript:toggleInfo('LuoTayLen:J14s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_LuoTayLen:J14s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{LuoTayLen:J14,
+			author = {Wuqiong Luo and Wee Peng Tay and Mei Leng},
+			title = {How to Identify an Infection Source with Limited Observations},
+			journal = {{IEEE} J. Sel. Topics Signal Process.},
+			volume = {8},
+			number = {4},
+			pages = {586 -- 597},
+			month = {Aug.},
+			year = {2014},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="LuoTayLen:J13s" class="entry bull">
+			<td> W. Luo, W. P. Tay, and M. Leng,
+			“Identifying infection sources and regions in large networks,”
+			<em>IEEE Transactions on Signal Processing</em>, vol. 61, no. 11, pp. 2850–2865, Jun. 2013.
+			<a href="https://ieeexplore.ieee.org/document/6494324" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/47851" target="_blank">[repo]</a>
+			<a href="MyPapers/Codes/MSEP code.zip">[codes]</a>
+			[<a href="javascript:toggleInfo('LuoTayLen:J13s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_LuoTayLen:J13s" class="bibtex noshow">
+			<td>
+			<pre>
+			@ARTICLE{LuoTayLen:J13,
+			author = {Wuqiong Luo and Wee Peng Tay and Mei Leng},
+			title = {Identifying infection sources and regions in large networks},
+			journal = {{IEEE} Trans. Signal Process.}, 
+			volume = {61}, 
+			number = {11},
+			pages = {2850 -- 2865},
+			month = {Jun.},
+			year = {2013},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="Tay:J12s" class="entry bull">
+			<td>W. P. Tay,
+			“The value of feedback in decentralized detection,”
+			<em>IEEE Transactions on Information Theory</em>, vol. 58 , no. 12, pp. 7226–7239, Dec. 2012.
+			<a href="https://ieeexplore.ieee.org/document/6257493" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/11444" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('Tay:J12s','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_Tay:J12s" class="bibtex noshow">
+			<td>
+			<pre>
+			@ARTICLE{Tay:J12,
+			author = {Wee Peng Tay},
+			title = {The value of feedback in decentralized detection},
+			journal = {{IEEE} Trans. Inf. Theory},
+			volume = {58},
+			number = {12},
+			pages = {7226 -- 7239},
+			month = {Dec.},
+			year = {2012},	
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="TayTsiWin:J08cs" class="entry bull">
+			<td>W. P. Tay, J. N. Tsitsiklis, and M. Z. Win,
+			“On the subexponential decay of detection error probabilities in long tandems,”
+			<em>IEEE Transactions on Information Theory</em>, vol. 54, no. 10, pp. 4767–4771, Oct. 2008.
+			<a href="https://ieeexplore.ieee.org/document/4626079" target="_blank">[pdf]</a>
+			<a href="MyPapers/Journals/TayTsiWin - On the subexponential decay of detection error probabilities in long tandems.pdf"
+			target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('TayTsiWin:J08cs','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_TayTsiWin:J08cs" class="bibtex noshow">
+			<td>
+			<pre>
+			@ARTICLE{TayTsiWin:J08c,
+			author = {Wee Peng Tay and John N. Tsitsiklis and Moe Z. Win},
+			title = {On the Subexponential Decay of Detection Error Probabilities in Long Tandems},
+			journal = {{IEEE} Trans. Inf. Theory},
+			volume = {54},
+			number = {10},
+			pages = {4767 -- 4771},
+			month = {Oct.},
+			year = {2008},			
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="TayTsiWin:J08bs" class="entry bull">
+			<td>W. P. Tay, J. N. Tsitsiklis, and M. Z. Win,
+			“Data fusion trees for detection: Does architecture matter?”
+			<em>IEEE Transactions on Information Theory</em>, vol. 54, no. 9, pp. 4155–4168, Sep. 2008.
+			<a href="https://ieeexplore.ieee.org/document/4608995" target="_blank">[pdf]</a>
+			<a href="MyPapers/Journals/TayTsiWin - Data fusion trees for detection does architecture matter.pdf"
+			target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('TayTsiWin:J08bs','bibbull')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_TayTsiWin:J08bs" class="bibtex noshow">
+			<td>
+			<pre>
+			@ARTICLE{TayTsiWin:J08b,
+			author = {Wee Peng Tay and John N. Tsitsiklis and Moe Z. Win},
+			title = {Data Fusion Trees for Detection: Does Architecture Matter?},
+			journal = {{IEEE} Trans. Inf. Theory},
+			volume = {54},
+			number = {9},
+			pages = {4155 -- 4168},
+			month = {Sep.},
+			year = {2008},			
+			}
+			</pre>
+			</td>
+			</tr>
+
+			</tbody>
+			</table>
+			
+			<h2 id="code_repo">Code Repository</h2>
+			<p>We are committed to making our research reproducible. Please visit the <a href="https://github.com/wptay/SIGNAL" target="_blank">SIGNAL Github</a> to access our paper or project codes.</p>
+
+
+			<h2 id="book_chapters"><a href="javascript:toggleInfo('book','pubs')" style="color:#5c5a5a">Book Chapters / Monographs</a></h2>
+			<table id="pubs_book" class="pubs show" border="1">
+			<tbody>
+
+			<tr id="JianJiTay:B23" class="entry num">
+			<td> X. Jian, F. Ji, and W. P. Tay, "Generalizing Graph Signal Processing: High Dimensional Spaces, Models and Structures," in <i>Foundations and Trends® in Signal Processing</i>,
+			vol. 17, no. 3, pp. 209–290, 2023. 
+			<a href="http://dx.doi.org/10.1561/2000000119" target="_blank">[Online]</a>
+			[<a href="javascript:toggleInfo('JianJiTay:B23','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_JianJiTay:B23" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@article{JianJiTay:B23,
+			author = {Xingchao Jian and Feng Ji and Wee Peng Tay},
+			title = {Generalizing Graph Signal Processing: High Dimensional Spaces, Models and Structures},
+			year = {2023},
+			volume = {17},
+			journal = {Foundations and Trends® in Signal Processing},
+			number = {3},
+			pages = {209-290},
+			url = {http://dx.doi.org/10.1561/2000000119},
+			doi = {10.1561/2000000119},
+			issn = {1932-8346},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="JiTanYan:BC20" class="entry num">
+			<td> F. Ji, W. Tang, J. Yang, and W. P. Tay, "Online information spreading and source identification," in
+			<i>Online Social Networks: Perspectives, Applications and Developments</i>,
+			C. W. Tan, Ed.
+			Hauppauge, NY: Nova Science Publishers, Inc., 2020, ch. 4.
+			[<a href="javascript:toggleInfo('JiTanYan:BC20','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_JiTanYan:BC20" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@INCOLLECTION{JiTanYan:BC20,
+			author = {Feng Ji and Wenchang Tang and Jielong Yang and Wee Peng Tay},
+			title = {Online Information Spreading and Source Identification},
+			booktitle = {Online Social Networks: Perspectives, Applications and Developments},
+			series = {},
+			volume = {},
+			chapter = {4},
+			pages = {},
+			year = {2020},
+			editor = {Chee Wei Tan},
+			publisher = {Nova Science Publishers, Inc.},
+			address = {Hauppauge, NY},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="RabBajTay:BC19" class="entry num">
+			<td>R. Rabiee, I. Bajaj, and W. P. Tay, "Vehicle localization in GNSS-denied environments," in
+			<i>Cooperative Localization and Navigation: Theory, Research, and Practice</i>,
+			C. Gao, G. Zhao, and H. Fourati, Eds.
+			Boca Raton, FL: CRC Press, 2019, pp. 199 – 222.
+			[<a href="javascript:toggleInfo('RabBajTay:BC19','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_RabBajTay:BC19" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@INCOLLECTION{RabBajTay:BC19,
+			author = {Ramtin Rabiee and Ian Bajaj and Wee Peng Tay},
+			title = {Vehicle Localization in {GNSS}-Denied Environments},
+			booktitle = {Cooperative Localization and Navigation: Theory, Research, and Practice},
+			series = {},
+			volume = {},
+			chapter = {11},
+			pages = {199 -- 222},
+			year = {2019},
+			editor = {Chao Gao and Guorong Zhao and Hassen Fourati},
+			publisher = {CRC Press},
+			address = {Boca Raton, FL},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="LenTay:BC15" class="entry num">
+			<td>M. Leng and W. P. Tay, "Fundamental limits of self-localization for cooperative robotic platforms using
+			signals of opportunity," in
+			<i>Cooperative Robots and Sensor Networks</i>, ser. Studies in Computational Intelligence,
+			A. Koubâa and J. R. M. de Dios, Eds.
+			Cham: Springer, 2015, vol. 604, pp. 159 – 181.
+			[<a href="javascript:toggleInfo('LenTay:BC15','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_LenTay:BC15" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@INCOLLECTION{LenTay:BC15,
+			author = {Mei Leng and Wee Peng Tay},
+			title = {Fundamental limits of self-localization for cooperative robotic platforms using signals of opportunity},
+			booktitle = {Cooperative Robots and Sensor Networks},
+			series = {Studies in Computational Intelligence},
+			volume = {604},
+			chapter = {},
+			pages = {159 -- 181},
+			year = {2015},
+			editor = {Anis Koubâa and J. Ramiro Martínez-de Dios},
+			publisher = {Springer},
+			address = {Cham},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="TayTsi:BC07" class="entry num">
+			<td>W. P. Tay and J. N. Tsitsiklis, "Error exponents for decentralized detection in tree networks," in
+			<i>Future Directions in Systems Research for Networked Sensing</i>,
+			V. Saligrama, Ed. Boston, MA: Springer, 2008, pp. 73 – 92.
+			[<a href="javascript:toggleInfo('TayTsi:BC07','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_TayTsi:BC07" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@INCOLLECTION{TayTsi:BC07,
+			author = {Wee Peng Tay and John N. Tsitsiklis},
+			title = {Error Exponents for Decentralized Detection in Tree Networks},
+			booktitle = {Networked Sensing Information and Control},
+			series = {}, 
+			volume = {},
+			chapter = {},
+			pages = {73 -- 92},
+			year = {2008},
+			editor = {V. Saligrama},
+			publisher = {Springer},
+			address = {Boston, MA},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			</tbody>
+			</table>
+
+
+			<h2 id="journals_full"><a href="javascript:toggleInfo('journals','pubs')" style="color:#5c5a5a">Journals (Full List)</a></h2>
+			<table id="pubs_journals" class="pubs noshow" border="1">
+			<tbody>
+
+			<tr id="LiuYuaZha:J24b" class="entry num">
+			<td>X. Liu, Y. Yuan, T. Zhang, G. Cui, and W. P. Tay, 
+			“Integrated transmit waveform and RIS phase shift design for LPI detection and communication,” 
+			<em>IEEE Transactions on Wireless Communications</em>, in press.
+			<a href="https://ieeexplore.ieee.org/document/10304613" target="_blank">[pdf]</a>
+			[<a href="javascript:toggleInfo('LiuYuaZha:J24b','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_LiuYuaZha:J24b" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{LiuYuaZha:J24b,
+				author = {Liu, Xinyu and Yuan, Ye and Zhang, Tianxian and Cui, Guolong and Tay, Wee Peng},
+				title = {Integrated Transmit Waveform and {RIS} Phase Shift Design for {LPI} Detection and Communication},
+				journal = {{IEEE} Transactions on Wireless Communications},
+				volume = {}, 
+				pages = {},
+				month = {},
+				year = {2023},
+				note = {in press},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="SheKanWan:J23b" class="entry num">
+			<td>R. She, Q. Kang, S. Wang, Y.-R. Yang, K. Zhao, Y. Song, and W. P. Tay, 
+			“RobustMat: Neural diffusion for street landmark patch matching under challenging environments,” 
+			<em>IEEE Transactions on Image Processing</em>, vol. 32, pp. 5550 – 5563, 2023.
+			<a href="https://ieeexplore.ieee.org/document/10268340" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2311.03904" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('SheKanWan:J23b','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_SheKanWan:J23b" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{SheKanWan:J23b,
+			author = {She, Rui and Kang, Qiyu and Wang, Sijie and Yang, Yuan-Rui and Zhao, Kai and Song, Yang and Tay, Wee Peng},
+			journal = {IEEE Transactions on Image Processing}, 
+			title = {{RobustMat}: Neural Diffusion for Street Landmark Patch Matching under Challenging Environments}, 
+			year = {2023},
+			volume = {32},
+			number = {},
+			pages = {5550 -- 5563},
+			doi = {10.1109/TIP.2023.3318963},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="SheKanWan:J23" class="entry num">
+			<td>R. She, Q. Kang, S. Wang, W. P. Tay, Y. L. Guan, D. N. Navarro, and A. Hartmannsgruber, 
+			“Image patch-matching with graph-based learning in street scenes,” 
+			<em>IEEE Transactions on Image Processing</em>, vol. 32, pp. 3465 – 3480, 2023.
+			<a href="https://ieeexplore.ieee.org/document/10144565" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2311.04617" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('SheKanWan:J23','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_SheKanWan:J23" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{SheKanWan:J23,
+			author={She, Rui and Kang, Qiyu and Wang, Sijie and Tay, Wee Peng and Guan, Yong Liang and Navarro, Diego Navarro and Hartmannsgruber, Andreas},
+			journal={IEEE Transactions on Image Processing}, 
+			title={Image Patch-Matching With Graph-Based Learning in Street Scenes}, 
+			year={2023},
+			volume={32},
+			number={},
+			pages={3465-3480},
+			doi={10.1109/TIP.2023.3281171},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="JiTayOrt:J23" class="entry num">
+			<td>F. Ji, W. P. Tay, and A. Ortega, “Graph signal processing over a probability space of shift operators,”
+			<em>IEEE Transactions on Signal Processing</em>, vol. 71, pp. 1159 – 1174, 2023.
+			<a href="https://ieeexplore.ieee.org/document/10089525" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2108.09192" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('JiTayOrt:J23','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_JiTayOrt:J23" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{JiTayOrt:J23,
+			author = {Feng Ji and Wee Peng Tay and Antonio Ortega},
+			title = {Graph Signal Processing Over a Probability Space of Shift Operators},
+			journal = {{IEEE} Trans. Signal Process.},
+			volume = {71}, 
+			pages = {1159 -- 1174},
+			month = {},
+			year = {2023},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="ZhaWanTay:J23" class="entry num">
+			<td>W. Zhang, Z. Wang, and W. P. Tay, 
+			“Approximate maximum-likelihood RIS-aided positioning,” 
+			<em>IEEE Transactions on Wireless Communications</em>, vol. 22, no. 12, pp. 8859 – 8875, Dec. 2023.
+			<a href="https://ieeexplore.ieee.org/document/10105207" target="_blank">[pdf]</a>
+			<a href="https://hdl.handle.net/10356/166496" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('ZhaWanTay:J23','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_ZhaWanTay:J23" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{ZhaWanTay:J23,
+			author = {Wei Zhang and Zhenni Wang and Wee Peng Tay},
+			title = {Approximate Maximum-Likelihood {RIS}-Aided Positioning},
+			journal = {{IEEE} Transactions on Wireless Communications},
+			volume = {22},
+			number = {12}, 
+			pages = {8859 -- 8875},
+			month = {Dec.},
+			year = {2023},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="CheZhouTay:J23" class="entry num">
+			<td>H. Cheng, J. T. Zhou, W. P. Tay, and B. Wen,
+			“Graph neural networks with triple attention for few-shot learning,”
+			<em>IEEE Transactions on Multimedia</em>, 2023, vol. 25, pp. 8225 – 8239, 2023.
+			<a href="https://ieeexplore.ieee.org/document/10004644" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2007.06878" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('CheZhouTay:J23','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_CheZhouTay:J23" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{CheZhouTay:J23,
+			author = {Hao Cheng and Joey Tianyi Zhou and Wee Peng Tay and Bihan Wen},
+			title = {Graph Neural Networks With Triple Attention For Few-Shot Learning},
+			journal = {{IEEE} Transactions on Multimedia},
+			volume = {25}, 
+			number = {},
+			pages = {8225 -- 8239},
+			month = {},
+			year = {2023},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="LiuYuaZha:J23" class="entry num">
+			<td>X. Liu, Y. Yuan, T. Zhang, G. Cui, and W. P. Tay, 
+			“LPI radar signal design resistant to identification by ESM systems,” 
+			<em>IEEE Transactions on Aerospace and Electronic Systems</em>, vol. 59, no. 6, pp. 9233 – 9246, Dec. 2023.
+			<a href="https://ieeexplore.ieee.org/document/10255236" target="_blank">[pdf]</a>
+			[<a href="javascript:toggleInfo('LiuYuaZha:J23','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_LiuYuaZha:J23" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{LiuYuaZha:J23,
+				author = {Liu, Xinyu and Yuan, Ye and Zhang, Tianxian and Cui, Guolong and Tay, Wee Peng},
+				title = {{LPI} Radar Signal Design Resistant to Identification by {ESM} Systems},
+				journal = {IEEE Transactions on Aerospace and Electronic Systems},
+				volume = {59},
+				number = {6}, 
+				pages = {9233 -- 9246},
+				month = {Dec.},
+				year = {2023},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="LinDenYan:J21" class="entry num">
+			<td>P. Lin, C. Deng, Y. Yang, C. H. T. Lee, and W. P. Tay,
+			“Resilience-oriented control for cyber-physical hybrid energy storage systems using a semi-consensus
+			scheme: Design and practice,”
+			<em>IEEE Transactions on Industrial Electronics</em>, vol. 70, no. 3, pp. 2508 – 2519, Mar. 2023.
+			<a href="https://ieeexplore.ieee.org/document/9511307" target="_blank">[pdf]</a>
+			<a href="https://hdl.handle.net/10356/152707" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('LinDenYan:J21','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_LinDenYan:J21" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{LinDenYan:J21,
+			author = {Pengfeng Lin and Chao Deng and Yongheng Yang and Christopher H. T. Lee and Wee Peng Tay},
+			title = {Resilience-Oriented Control for Cyber-Physical Hybrid Energy Storage Systems Using A Semi-Consensus Scheme: Design and Practice},
+			journal = {{IEEE} Trans. Ind. Electron.},
+			volume = {70}, 
+			number = {3},
+			pages = {2508 -- 2519},
+			month = {Mar.},
+			year = {2023},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="JiaTay:J22" class="entry num">
+			<td>X. Jian and W. P. Tay, “Wide-sense stationarity in generalized graph signal processing,”
+			<em>IEEE Transactions on Signal Processing</em>, no. 70, pp. 3414 – 3428, 2022.
+			<a href="https://ieeexplore.ieee.org/document/9802780" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2112.01127" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('JiaTay:J22','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_JiaTay:J22" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{JiaTay:J22,
+			author = {Xingchao Jian and Wee Peng Tay},
+			title = {Wide-Sense Stationarity in Generalized Graph Signal Processing},
+			journal = {{IEEE} Trans. Signal Process.},
+			number = {70},
+			pages = {3414 -- 3428},
+			year = {2022},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="YanBajRab:J22" class="entry num">
+			<td>Y. Yan, I. Bajaj, R. Rabiee, and W. P. Tay, 
+			“A tightly coupled integration approach for cooperative positioning enhancement in DSRC vehicular networks,”
+			<em> IEEE Transactions on Intelligent Transportation Systems</em>, vol. 23, no. 12, pp. 23 278 – 23 294, Dec. 2022.
+			<a href="https://ieeexplore.ieee.org/document/9905745" target="_blank">[pdf]</a>
+			<a href="https://hdl.handle.net/10356/165609" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('YanBajRab:J22','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_YanBajRab:J22" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{YanBajRab:J22,
+			author = {Yongsheng Yan and Ian Bajaj and Ramtin Rabiee and Wee Peng Tay},
+			title = {A Tightly Coupled Integration Approach for Cooperative Positioning Enhancement in {DSRC} Vehicular Networks},
+			journal = {{IEEE} Trans. Intell. Transp. Syst.},
+			volume = {23}, 
+			number = {12},
+			pages = {23278 -- 23294},
+			month = {Dec.},
+			year = {2022},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="YanTay:J21" class="entry num">
+			<td>J. Yang and W. P. Tay,
+			"An unsupervised Bayesian neural network for truth discovery in social networks,"
+			<em> IEEE Transactions on Knowledge and Data Engineering</em>, vol. 34, no. 11, pp. 5182 – 5195, Nov. 2022.
+			<a href="https://ieeexplore.ieee.org/document/9336313" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1906.10470" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('YanTay:J21','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_YanTay:J21" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{YanTay:J21,
+			author = {Jielong Yang and Wee Peng Tay},
+			title = {An Unsupervised {Bayesian} Neural Network for Truth Discovery in Social Networks},
+			journal = {{IEEE} Trans. Knowl. Data Eng.},
+			volume = {34}, 
+			number = {11},
+			pages = {5182 -- 5195},
+			month = {Nov.},
+			year = {2022},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="BhuVuElm:J22" class="entry num">
+			<td>A. B. Bhutto, X. S. Vu, E. Elmroth, W. P. Tay, and M. Bhuyan, 
+			“Reinforced transformer learning for VSI-DDoS detection in edge clouds,” 
+			<em>IEEE Access</em>, vol. 10, pp. 94 677–94 690, 2022.
+			<a href="https://ieeexplore.ieee.org/document/9878326" target="_blank">[pdf]</a>
+			[<a href="javascript:toggleInfo('BhuVuElm:J22','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_BhuVuElm:J22" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{BhuVuElm:J22,
+			author = {Bhutto, Adil Bin and Vu, Xuan Son and Elmroth, Erik and Tay, Wee Peng and Bhuyan, Monowar},
+			journal = {{IEEE} Access}, 
+			title = {Reinforced Transformer Learning for {VSI-DDoS} Detection in Edge Clouds}, 
+			year = {2022},
+			volume = {10},
+			number = {},
+			pages = {94677-94690},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="KanTay:J22" class="entry num">
+			<td>Q. Kang and W. P. Tay,
+			"Task recommendation in crowdsourcing based on learning preferences and reliabilities,"
+			<em>IEEE Transactions on Services Computing</em>, vol. 15, no. 4, pp. 1785–1798, 2022.
+			<a href="https://ieeexplore.ieee.org/document/9181423" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1807.10444" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('KanTay:J22','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_KanTay:J22" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{KanTay:J22,
+			author = {Qiyu Kang and Wee Peng Tay},
+			title = {Task Recommendation in Crowdsourcing Based on Learning Preferences and Reliabilities},
+			journal = {{IEEE} Trans. Services Computing},
+			year={2022},
+			volume={15},
+			number={4},
+			pages={1785-1798},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="JiPraTay:J22" class="entry num">
+			<td>F. Ji, Pratibha, and W. P. Tay,
+			“Unlimited dynamic range signal recovery for folded graph signals,”
+			<em>Signal Processing</em>, vol. 198, p. 108574, 2022.
+			<a href="https://www.sciencedirect.com/science/article/abs/pii/S0165168422001177"
+			target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1903.03741" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('JiPraTay:J22','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_JiPraTay:J22" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{JiPraTay:J22,
+			author = {Feng Ji and Pratibha and Wee Peng Tay},
+			title = {Unlimited dynamic range signal recovery for folded graph signals},
+			journal = {Signal Processing},
+			volume = {198},
+			pages = {108574},
+			year = {2022},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="JiKahTay:J22" class="entry num">
+			<td>F. Ji, G. Kahn, and W. P. Tay,
+			“Signal processing on simplicial complexes with vertex signals,”
+			<em>IEEE Access</em>, vol. 10, pp. 41 889 – 41 901, 2022.
+			<a href="https://ieeexplore.ieee.org/document/9756448" target="_blank">[pdf]</a>
+			[<a href="javascript:toggleInfo('JiKahTay:J22','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_JiKahTay:J22" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{JiKahTay:J22,
+			author={Feng Ji and Giacomo Kahn and Wee Peng Tay},
+			title={Signal Processing on Simplicial Complexes with Vertex Signals}, 
+			journal={{IEEE} Access}, 
+			year={2022},
+			volume={10},
+			pages={41889 -- 41901},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="WanTayWei:J21" class="entry num">
+			<td>C. Wang, W. P. Tay, Y. Wei, and Y. Wang,
+			“Privacy-preserving distributed projection LMS for linear multitask networks,”
+			<em>IEEE Transactions on Signal Processing</em>, vol. 69, pp. 6530 – 6545, 2021.
+			<a href="https://ieeexplore.ieee.org/document/9613756" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2010.05527" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('WanTayWei:J21','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_WanTayWei:J21" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{WanTayWei:J21,
+			author = {Chengcheng Wang and Wee Peng Tay and Ye Wei and Yuan Wang},
+			title = {Privacy-Preserving Distributed Projection LMS for Linear Multitask Networks},
+			journal = {{IEEE} Trans. Signal Process.},
+			volume = {69}, 
+			pages = {6530 -- 6545},
+			year = {2021},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="ZhaTay:J21" class="entry num">
+			<td>W. Zhang and W. P. Tay, “Cost-efficient RIS-aided channel estimation via rank-one matrix factorization,”
+			<em>IEEE Wireless Communications Letters</em>, vol. 10, no. 11, pp. 2562 – 2566, Nov. 2021.
+			<a href="https://ieeexplore.ieee.org/document/9521988" target="_blank">[pdf]</a>
+			[<a href="javascript:toggleInfo('ZhaTay:J21','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_ZhaTay:J21" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{ZhaTay:J21,
+			author = {Wei Zhang and Wee Peng Tay},
+			title = {Cost-Efficient {RIS}-Aided Channel Estimation via Rank-One Matrix Factorization},
+			journal = {{IEEE} Wireless Commun. Lett.},
+			volume = {10}, 
+			number = {11},
+			pages = {2562 -- 2566},
+			month = {Nov.},
+			year = {2021},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="LauTay:J21" class="entry num">
+			<td>T. S. Lau and W. P. Tay,
+			"Asymptotically optimal sampling policy for quickest change detection with observation-switching cost,"
+			<em>IEEE Transactions on Signal Processing</em>, vol. 69, pp. 1332 – 1346, 2021.
+			<a href="https://ieeexplore.ieee.org/document/9347742" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1912.11693" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('LauTay:J21','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_LauTay:J21" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{LauTay:J21,
+			author = {Tze Siong Lau and Wee Peng Tay},
+			title = {Asymptotically Optimal Sampling Policy for Quickest Change Detection with Observation-Switching Cost},
+			journal = {{IEEE} Trans. Signal Process.},
+			volume = {69}, 
+			pages = {1332 -- 1346},
+			year = {2021},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="WanSonTay:J21" class="entry num">
+			<td>C. X. Wang, Y. Song, and W. P. Tay,
+			"Arbitrarily strong utility-privacy tradeoff in multi-agent systems,"
+			<em>IEEE Transactions on Information Forensics and Security</em>, vol. 16, pp. 671 – 684, 2021.
+			<a href="https://ieeexplore.ieee.org/document/9167255" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2001.05618" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('WanSonTay:J21','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_WanSonTay:J21" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{WanSonTay:J21,
+			author = {Chong Xiao Wang and Yang Song and Wee Peng Tay},
+			title = {Arbitrarily Strong Utility-Privacy Tradeoff in Multi-Agent Systems},
+			journal = {{IEEE} Trans. Inf. Forensics Security},
+			volume = {16}, 
+			number = {},
+			pages = {671 -- 684},
+			month = {},
+			year = {2021},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="SonWanTay:J20" class="entry num">
+			<td>Y. Song, C. X. Wang, and W. P. Tay,
+			"Compressive privacy for a linear dynamical system,"
+			<em>IEEE Transactions on Information Forensics and Security</em>, vol. 15, pp. 895 – 910, 2020.
+			<a href="https://ieeexplore.ieee.org/document/8768395" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1812.03436" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('SonWanTay:J20','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_SonWanTay:J20" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{SonWanTay:J20,
+			author = {Yang Song and Chong Xiao Wang and Wee Peng Tay},
+			title = {Compressive Privacy for a Linear Dynamical System},
+			journal = {{IEEE} Trans. Inf. Forensics Security},
+			volume = {15}, 
+			number = {},
+			pages = {895 -- 910},
+			month = {},
+			year = {2020},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="SunTay:J20b" class="entry num">
+			<td> M. Sun and W. P. Tay,
+			“On the relationship between inference and data privacy in decentralized IoT networks,”
+			<em>IEEE Transactions on Information Forensics and Security</em>, vol. 15, pp. 852 – 866, 2020.
+			<a href="https://ieeexplore.ieee.org/document/8766142" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1811.10322" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('SunTay:J20b','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_SunTay:J20b" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{SunTay:J20b,
+			author = {Meng Sun and Wee Peng Tay},
+			title = {On the Relationship Between Inference and Data Privacy in Decentralized IoT Networks},
+			journal = {{IEEE} Trans. Inf. Forensics Security},
+			volume = {15}, 
+			number = {},
+			pages = {852 -- 866},
+			month = {},
+			year = {2020},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="SunTay:J20a" class="entry num">
+			<td> M. Sun and W. P. Tay,
+			“Decentralized detection with robust information privacy protection,”
+			<em>IEEE Transactions on Information Forensics and Security</em>, vol. 15, pp. 85 – 99, 2020.
+			<a href="https://ieeexplore.ieee.org/document/8713934" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1808.10082" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('SunTay:J20a','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_SunTay:J20a" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{SunTay:J20a,
+			author = {Meng Sun and Wee Peng Tay},
+			title = {Decentralized Detection with Robust Information Privacy Protection},
+			journal = {{IEEE} Trans. Inf. Forensics Security},
+			volume = {15}, 
+			number = {},
+			pages = {85-99},
+			month = {},
+			year = {2020},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="LiuTayLiu:J20" class="entry num">
+			<td>X. Liu, W. P. Tay, Z.-W. Liu, and G. Xiao,
+			"Quasi-synchronization of heterogeneous networks with a generalized Markovian topology and event-triggered
+			communication,"
+			<em>IEEE Transactions on Cybernetics</em>, vol. 50, no. 10, pp. 4200 – 4213, Oct. 2020.
+			<a href="https://ieeexplore.ieee.org/document/8625707" target="_blank">[pdf]</a>
+			[<a href="javascript:toggleInfo('LiuTayLiu:J20','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_LiuTayLiu:J20" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{LiuTayLiu:J20,
+			author = {Xinghua Liu and Wee Peng Tay and Zhi-Wei Liu and Gaoxi Xiao},
+			title = {Quasi-synchronization of heterogeneous networks with a generalized {Markovian} topology and event-triggered communication},
+			journal = {{IEEE} Trans. Cybern.},
+			volume = {50}, 
+			number = {10},
+			pages	= {4200 -- 4213},
+			month	= {Oct.},
+			year = {2020},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="JiTanTayCho:J20" class="entry num">
+			<td>F. Ji, W. Tang, W. P. Tay, and E. K. P. Chong,
+			"Network topology inference using information cascades with limited statistical knowledge,"
+			<em>Information and Inference: A Journal of the IMA</em>, vol. 9, no. 2, pp. 327 – 360, Jun. 2020.
+			<a href="https://academic.oup.com/imaiai/article-abstract/9/2/327/5424057" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1706.09192" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('JiTanTayCho:J20','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_JiTanTayCho:J20" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{JiTanTayCho:J20,
+			author = {Feng Ji and Wenchang Tang and Wee Peng Tay and Edwin K. P. Chong},
+			title = {Network Topology Inference Using Information Cascades with Limited Statistical Knowledge},
+			journal = {Information and Inference: A Journal of the {IMA}},
+			volume = {9}, 
+			number = {2},
+			pages	= {327 -– 360},
+			month	= {Jun.},
+			year = {2020},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="JiTay:J19" class="entry num">
+			<td>F. Ji and W. P. Tay,
+			"A Hilbert space theory of generalized graph signal processing,"
+			<em>IEEE Transactions on Signal Processing</em>, vol. 67, no. 24, pp. 6188 – 6203, Dec. 2019.
+			<a href="https://ieeexplore.ieee.org/document/8907446" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1904.11655" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('JiTay:J19','bibtex')">Bib</a>]
+			<a href="MyPapers/Conferences/GGSP.pdf" target="_blank">[<strong>Keynote (distinguished presentation) GlobalSIP 2019</strong>]</a>
+			</td>
+			</tr>
+			<tr id="bib_JiTay:J19" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{JiTay:J19,
+			author = {Feng Ji and Wee Peng Tay},
+			title = {A {Hilbert} Space Theory of Generalized Graph Signal Processing},
+			journal = {{IEEE} Trans. Signal Process.},
+			volume = {67}, 
+			number = {24},
+			pages	= {6188 -- 6203},
+			month	= {Dec.},
+			year = {2019},
+			}
+			</pre>
+			</td>
+			</tr>
+
+
+			<tr id="HeTayHua:J19" class="entry num">
+			<td>X. He, W. P. Tay, H. Lei, M. Sun, and Y. Gong,
+			"Privacy-aware sensor network via multilayer nonlinear processing,"
+			<em>IEEE Internet of Things Journal</em>, vol. 6, no. 6, pp. 10834 – 10845, Dec. 2019.
+			<a href="https://ieeexplore.ieee.org/document/8840869" target="_blank">[pdf]</a>
+			[<a href="javascript:toggleInfo('HeTayHua:J19','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_HeTayHua:J19" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{HeTayHua:J19,
+			author = {Xin He and Wee Peng Tay and Huang Lei and Meng Sun and Yi Gong},
+			title = {Privacy-Aware Sensor Network Via Multilayer Nonlinear Processing},
+			journal = {{IEEE} Internet Things J.}, 
+			volume = {6},
+			number = {6},
+			pages = {10834 -- 10845},
+			month = {Dec.},
+			year = {2019},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="WenWymPen:J19" class="entry num">
+			<td> F. Wen, H. Wymeersch, B. Peng, W. P. Tay, H. C. So and D. Yang,
+			“A survey on 5G massive MIMO localization,”
+			<em>Digital Signal Processing</em>, vol. 94, pp. 21 – 28, Nov. 2019.
+			<a href="https://www.sciencedirect.com/science/article/pii/S1051200419300569" target="_blank">[pdf]</a>
+			[<a href="javascript:toggleInfo('WenWymPen:J19','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_WenWymPen:J19" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{WenWymPen:J19,
+			author = {Fuxi Wen and Henk Wymeersch and Bile Peng and Wee Peng Tay and Hing Cheung So and Diange Yang},
+			title = {A Survey on {5G} Massive {MIMO} Localization},
+			journal = {Digital Signal Processing},
+			volume = {94}, 
+			number = {},
+			pages	= {21 -- 28},
+			month	= {Nov.},
+			year = {2019},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="KanTay:J18" class="entry num">
+			<td>Q. Kang and W. P. Tay,
+			"Sequential multi-class labeling in crowdsourcing,"
+			<em> IEEE Transactions on Knowledge and Data Engineering</em>, vol. 31, no. 11, pp. 2190 – 2199, Nov.
+			2019.
+			<a href="https://ieeexplore.ieee.org/document/8481496" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1711.02128" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('KanTay:J18','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_KanTay:J18" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{KanTay:J18,
+			author = {Qiyu Kang and Wee Peng Tay},
+			title = {Sequential Multi-Class Labeling in Crowdsourcing},
+			journal = {{IEEE} Trans. Knowl. Data Eng.},
+			volume = {31}, 
+			number = {11},
+			pages = {2190 -- 2199},
+			month = {Nov.},
+			year = {2019},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="LauTay:J19" class="entry num">
+			<td>T. S. Lau and W. P. Tay,
+			"Quickest change detection in the presence of a nuisance change,"
+			<em>IEEE Transactions on Signal Processing</em>, vol. 67, no. 20, pp. 5281 – 5296, Oct. 2019.
+			<a href="https://ieeexplore.ieee.org/document/8822761" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1902.03460" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('LauTay:J19','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_LauTay:J19" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{LauTay:J19,
+			author = {Tze Siong Lau and Wee Peng Tay},
+			title = {Quickest Change Detection in the Presence of a Nuisance Change},
+			journal = {{IEEE} Trans. Signal Process.},
+			volume = {67}, 
+			number = {20},
+			pages	= {5281 -- 5296},
+			month	= {Oct.},
+			year = {2019},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="MaTayXia:J18" class="entry num">
+			<td>L. Ma, W. P. Tay, and G. Xiao,
+			"Iterative expectation maximization for reliable social sensing with dependent individuals,"
+			<em>Information Sciences</em>, vol. 501, pp. 621 – 634, Oct. 2019.
+			<a href="http://hdl.handle.net/10220/49524" target="_blank">[pdf]</a>
+			[<a href="javascript:toggleInfo('MaTayXia:J18','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_MaTayXia:J18" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{MaTayXia:J18,
+			author = {Lijia Ma and Wee Peng Tay and Gaoxi Xiao},
+			title = {Iterative Expectation Maximization for Reliable Social Sensing with Information Flows},
+			journal = {Information Sciences},
+			volume = {501}, 
+			number = {},
+			pages = {621 -- 634},
+			month = {Oct.},
+			year = {2019},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="YanWanTay:J19" class="entry num">
+			<td> J. Yang, J. Wang, and W. P. Tay,
+			“Using social network information in community-based Bayesian truth discovery,”
+			<em>IEEE Transactions on Signal and Information Processing over Networks</em>, vol. 5, no. 3, pp. 525 –
+			537, Sep.
+			2019.
+			<a href="https://ieeexplore.ieee.org/document/8706664" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1806.02954" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('YanWanTay:J19','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_YanWanTay:J19" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{YanWanTay:J19,
+			author = {Jielong Yang and Junshan Wang and Wee Peng Tay},
+			title = {Using Social Network Information in Community-based {Bayesian} Truth Discovery},
+			journal = {{IEEE} Trans. Signal Inf. Process. Netw.},
+			volume = {5}, 
+			number = {3},
+			pages	= {525 -- 537},
+			month	= {Sep.},
+			year = {2019},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="RabZhoYan:J19" class="entry num">
+			<td>R. Rabiee, X. Zhong, Y. Yan, and W. P. Tay,
+			"LaIF: A lane-level self-positioning scheme for vehicles in GNSS-denied environments,"
+			<em> IEEE Transactions on Intelligent Transportation Systems</em>, vol. 20, no. 8, pp. 2944 – 2961, Aug.
+			2019.
+			<a href="https://ieeexplore.ieee.org/document/8489926" target="_blank">[pdf]</a>
+			<a href="http://hdl.handle.net/10220/49525" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('RabZhoYan:J19','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_RabZhoYan:J19" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{RabZhoYan:J19,
+			author = {Ramtin Rabiee and Xionghu Zhong and Yongsheng Yan and Wee Peng Tay},
+			title = {{LaIF}: {A} Lane-Level Self-Positioning Scheme for Vehicles in {GNSS}-Denied Environments},
+			journal = {{IEEE} Trans. Intell. Transp. Syst.},
+			volume = {20}, 
+			number = {8},
+			pages = {2944 -- 2961},
+			month = {Aug.},
+			year = {2019},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="JiTanTay:J19" class="entry num">
+			<td>F. Ji, W. Tang, and W. P. Tay,
+			"On the properties of Gromov matrices and their applications in network inference,"
+			<em>IEEE Transactions on Signal Processing</em>, vol. 67, no. 10, pp. 2624 – 2638, May 2019.
+			<a href="https://ieeexplore.ieee.org/document/8676094" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1810.05333" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('JiTanTay:J19','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_JiTanTay:J19" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{JiTanTay:J19,
+			author = {Feng Ji and Wenchang Tang and Wee Peng Tay},
+			title = {On the Properties of {Gromov} Matrices and Their Applications in Network Inference},
+			journal = {{IEEE} Trans. Signal Process.},
+			volume = {67}, 
+			number = {10},
+			pages	= {2624 -- 2638},
+			month	= {May},
+			year = {2019},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="YanTayGua:J19" class="entry num">
+			<td>G. Yang, W. P. Tay, Y. L. Guan, and Y.-C. Liang,
+			"Optimal power allocation for diffusion-type sensor networks with wireless information and power
+			transfer,"
+			<em>IEEE Access</em>, vol. 7, pp. 32408–32422, Mar. 2019.
+			<a href="https://ieeexplore.ieee.org/document/8664158" target="_blank">[pdf]</a>
+			[<a href="javascript:toggleInfo('YanTayGua:J19','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_YanTayGua:J19" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{YanTayGua:J19, 
+			author = {Gang Yang and Wee Peng Tay and Yong Liang Guan and Ying-Chang Liang}, 
+			title = {Optimal Power Allocation for Diffusion-Type Sensor Networks With Wireless Information and Power Transfer}, 
+			journal = {IEEE Access}, 
+			volume = {7}, 
+			number = {}, 
+			pages = {32408 -- 32422},
+			month = {Mar.},
+			year = {2019}, 
+			}
+			</pre>
+			</td>
+			</tr>
+
+
+			<tr id="LauTayVee:J18" class="entry num">
+			<td>T. S. Lau, W. P. Tay, and V. V. Veeravalli,
+			"A binning approach to quickest change detection with unknown post-change distribution,"
+			<em>IEEE Transactions on Signal Processing</em>, vol. 67, no. 3, pp. 609 – 621, Feb. 2019.
+			<a href="https://ieeexplore.ieee.org/document/8537967" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1801.04756" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('LauTayVee:J18','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_LauTayVee:J18" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{LauTayVee:J18,
+			author = {Tze Siong Lau and Wee Peng Tay and Venugopal V. Veeravalli},
+			title = {A Binning Approach to Quickest Change Detection with Unknown Post-Change Distribution},
+			journal = {{IEEE} Trans. Signal Process.},
+			volume = {67}, 
+			number = {3},
+			pages	= {609 -- 621},
+			month	= {Feb.},
+			year = {2019},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="TanJiTay:J18" class="entry num">
+			<td>W. Tang, F. Ji, and W. P. Tay,
+			“Estimating infection sources in networks using partial timestamps,”
+			<em>IEEE Transactions on Information Forensics and Security</em>, vol. 13, no. 2, pp. 3035 – 3049, Dec.
+			2018.
+			<a href="https://ieeexplore.ieee.org/document/8360543" target="_blank">[pdf]</a>
+			<a href="http://hdl.handle.net/10220/47788" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('TanJiTay:J18','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_TanJiTay:J18" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{TanJiTay:J18,
+			author = {Wenchang Tang and Feng Ji and Wee Peng Tay},
+			title = {Estimating Infection Sources in Networks Using Partial Timestamps},
+			journal = {{IEEE} Trans. Inf. Forensics Security},
+			volume = {13}, 
+			number = {2},
+			pages = {3035 -- 3049},
+			month = {Dec.},
+			year = {2018},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="YanZhoTay:J18" class="entry num">
+			<td>J. Yang, X. Zhong, and W. P. Tay,
+			"A dynamic Bayesian nonparametric model for blind calibration of sensor networks,"
+			<em>IEEE Internet of Things Journal</em>, vol. 5, no. 5, pp. 3942 – 3953, Oct. 2018.
+			<a href="https://ieeexplore.ieee.org/document/8386815" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/47842" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('YanZhoTay:J18','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_YanZhoTay:J18" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{YanZhoTay:J18,
+			author = {Jielong Yang and Xionghu Zhong and Wee Peng Tay},
+			title = {A Dynamic {Bayesian} Nonparametric Model for Blind Calibration of Sensor Networks},
+			journal = {{IEEE} Internet Things J.},
+			volume = {5}, 
+			number = {5},
+			pages = {3942 -- 3953},
+			month = {Oct.},
+			year = {2018},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="BhoTay:J18" class="entry num">
+			<td>M. Z. A. Bhotto and W. P. Tay,
+			“Non-Bayesian social learning with observation reuse and soft switching,”
+			<em>ACM Transactions on Sensor Networks</em>, vol. 14, no. 2, pp. 14:1–14:21, Jun. 2018.
+			<a href="https://dl.acm.org/doi/10.1145/3199513" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/48151" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('BhoTay:J18','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_BhoTay:J18" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{BhoTay:J18,
+			author = {Md. Zulfiquar Ali Bhotto and Wee Peng Tay},
+			title = {Non-{B}ayesian Social Learning with Observation Reuse and Soft Switching},
+			journal = {{ACM} Trans. Sensor Networks},
+			volume = {14}, 
+			number = {2},
+			pages	= {14:1--14:21},
+			month	= {Jun.},
+			year = {2018},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="SunTayHe:J18" class="entry num">
+			<td>M. Sun, W. P. Tay, and X. He,
+			"Toward information privacy for the Internet of Things: A non-parametric learning approach,"
+			<em>IEEE Transactions on Signal Processing</em>, vol. 66, no. 7, pp. 1734 - 1747, Apr. 2018.
+			<a href="https://ieeexplore.ieee.org/document/8259344" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1611.04254" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('SunTayHe:J18','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_SunTayHe:J18" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{SunTayHe:J18,
+			author = {Meng Sun and Wee Peng Tay and Xin He},
+			title = {Toward Information Privacy for the {Internet of Things}: A Non-parametric Learning Approach},
+			journal = {{IEEE} Trans. Signal Process.},
+			volume = {66}, 
+			number = {7},
+			pages	= {1734 -- 1747},
+			month	= {Apr.},
+			year = {2018},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="QuiDeDHor:J18" class="entry num">
+			<td>F. Quitin, P. De Doncker, F. Horlin, and W. P. Tay,
+			"Virtual multiantenna array for estimating the direction of a transmitter: System, bounds and experimental
+			results,"
+			<em>IEEE Transactions on Vehicular Technology</em>, vol. 67, no. 2, pp. 1510 - 1520, Feb. 2018.
+			<a href="https://ieeexplore.ieee.org/document/8067441" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/47841" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('QuiDeDHor:J18','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_QuiDeDHor:J18" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{QuiDeDHor:J18,
+			author = {Francois Quitin and Philippe {De Doncker} and Francois Horlin and Wee Peng Tay},
+			title = {Virtual multiantenna array for estimating the direction of a transmitter: system, bounds and experimental results},
+			journal = {{IEEE} Trans. Veh. Technol.},
+			volume = {67}, 
+			number = {2},
+			pages =	{1510 -- 1520},
+			month =	{Feb.},
+			year =	{2018},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="YuXiaLi:J17" class="entry num">
+			<td>Y. Yu, G. Xiao, G. Li, W. P. Tay, and H. F. Teoh,
+			"Opinion diversity and community formation in adaptive networks,"
+			<em>Chaos: An Interdisciplinary Journal of Nonlinear Science</em>, vol. 27, no. 20, p. 103115, Oct. 2017.
+			<a href="https://aip.scitation.org/doi/full/10.1063/1.4989668" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/46861" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('YuXiaLi:J17','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_YuXiaLi:J17" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{YuXiaLi:J17,
+			author = {Yi Yu and Gaoxi Xiao and Guoqi Li and Wee Peng Tay and Hao Fatt Teoh},
+			title = {Opinion diversity and community formation in adaptive networks},
+			journal = {Chaos: An Interdisciplinary Journal of Nonlinear Science},
+			volume = {27}, 
+			number = {20},
+			pages = {103115},
+			month =	{Oct.},
+			year = {2017},
+			}
+			</pre>
+			</td>
+			</tr>
+
+
+			<tr id="LuoTayLen:J17" class="entry num">
+			<td> W. Luo, W. P. Tay, and M. Leng,
+			"On the universality of Jordan centers for estimating infection sources in tree networks,"
+			<em>IEEE Transactions on Information Theory</em>, vol. 63, no. 7, pp. 4634 – 4657, Jul. 2017. Submitted
+			Nov. 2014,
+			accepted Feb. 2017.
+			<a href="https://ieeexplore.ieee.org/document/7913632" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/43475" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('LuoTayLen:J17','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_LuoTayLen:J17" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{LuoTayLen:J17,
+			author = {Wuqiong Luo and Wee Peng Tay and Mei Leng},
+			title = {On the Universality of {Jordan} Centers for Estimating Infection Sources in Tree Networks},
+			journal = {{IEEE} Trans. Inf. Theory},
+			volume = {63}, 
+			number = {7},
+			pages = { 4634 – 4657},
+			month =	{Jul.},
+			year = {2017},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="JiTayVar:J17" class="entry num">
+			<td> F. Ji, W. P. Tay, and L. Varshney,
+			"An algorithmic framework for estimating rumor sources with different start times,"
+			<em>IEEE Transactions on Signal Processing</em>, vol. 65, no. 10, pp. 2517 - 2530, May 2017.
+			<a href="https://ieeexplore.ieee.org/document/7833026" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/43464" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('JiTayVar:J17','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_JiTayVar:J17" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{JiTayVar:J17,
+			author = {Feng Ji and Wee Peng Tay and Lav Varshney},
+			title = {An Algorithmic Framework for Estimating Rumor Sources with Different Start Times},
+			journal = {{IEEE} Trans. Signal Process.},
+			volume = {65}, 
+			number = {10},
+			pages = {2517 -- 2530},
+			month = {May},
+			year = {2017},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="TanTayQue:J17" class="entry num">
+			<td> J. Tang, W. P. Tay, T. Q. S. Quek, and B. Liang,
+			"System cost minimization in cloud RAN with limited fronthaul capacity,"
+			<em>IEEE Transactions on Wireless Communications</em>, vol. 16, no. 5, pp. 3371 -- 3384, May 2017.
+			<a href="https://ieeexplore.ieee.org/document/7880686" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/47837" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('TanTayQue:J17','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_TanTayQue:J17" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{TanTayQue:J17,
+			author = {Jianhua Tang and Wee Peng Tay and Tony Q. S. Quek and Ben Liang},
+			title = {System Cost Minimization in Cloud {RAN} with Limited Fronthaul Capacity},
+			journal = {{IEEE} Trans. Wireless Commun.},
+			volume = {16},
+			number = {5},
+			pages = {3371 -- 3384},
+			month = {May},
+			year = {2017},
+			year = {2017},						
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="WanTayHu:J17" class="entry num">
+			<td>Y. Wang, W. P. Tay, and W. Hu,
+			"A multitask diffusion strategy with optimized inter-cluster cooperation,"
+			<em>IEEE Journal of Selected Topics in Signal Processing</em>, vol. 11, no. 3, pp. 504 – 517, Mar. 2017.
+			<a href="https://ieeexplore.ieee.org/document/7874159" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/43469" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('WanTayHu:J17','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_WanTayHu:J17" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{WanTayHu:J17,
+			author =  {Yuan Wang and Wee Peng Tay and Wuhua Hu},
+			title = {A Multitask Diffusion Strategy with Optimized Inter-Cluster Cooperation},
+			journal = {{IEEE} J. Sel. Topics Signal Process.},
+			volume = {11}, 
+			number = {3},
+			pages = {504 - 517},
+			month = {Mar.},
+			year = {2017},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="LenTayQui:J16" class="entry num">
+			<td> M. Leng, W. P. Tay, F. Quitin, C. Cheng, S. G. Razul, and C. M. S. See,
+			“Anchor-aided joint localization and synchronization using SOOP: Theory and experiments,”
+			<em>IEEE Transactions on Wireless Communications</em>, vol. 15, no. 11, pp. 7670 – 7685, Nov. 2016.
+			<a href="https://ieeexplore.ieee.org/document/7560666" target="_blank">[pdf]</a>
+			<a href="http://hdl.handle.net/10220/47791" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('LenTayQui:J16','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_LenTayQui:J16" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{LenTayQui:J16,
+			author = {Mei Leng and Wee Peng Tay and Francois Quitin and Chi Cheng and Sirajudeen Gulam Razul and Chong Meng Samson See},
+			title = {Anchor-aided joint Localization and Synchronization Using {SOOP}: Theory and Experiments},
+			journal = {{IEEE} Trans. Wireless Commun.},
+			volume = {15}, 
+			number = {11},
+			pages = {7670 –- 7685},
+			month = {Nov.},
+			year = {2016},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="ZhaTayLi:J16" class="entry num">
+			<td> Y. Zhang, W. P. Tay, K. H. Li, M. Esseghir, and D. Gaiti,
+			“Learning temporal-spatial spectrum reuse,”
+			<em>IEEE Transactions on Communications</em>, vol. 64, no. 7, pp. 3092-3103, Jul. 2016.
+			<a href="https://ieeexplore.ieee.org/document/7470268" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/43462" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('ZhaTayLi:J16','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_ZhaTayLi:J16" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{ZhaTayLi:J16,
+			author = {Yi Zhang and Wee Peng Tay and Kowk Hung Li and Moez Esseghir and Dominique Gaiti},
+			title = {Learning Temporal-Spatial Spectrum Reuse},
+			journal = {{IEEE} Trans. Commun.},
+			volume	= {64}, 
+			number = {7},
+			pages =	{3092 -- 3103},
+			month =	{Jul.},
+			year =	{2016},
+			}
+			</pre>
+			</td>
+			</tr>
+
+
+			<tr id="LuoTayLen:J16" class="entry num">
+			<td> W. Luo, W. P. Tay, and M. Leng,
+			"Infection spreading and source identification: A hide and seek game,"
+			<em>IEEE Transactions on Signal Processing</em>, vol. 64, no. 16, pp. 4338-4243, Aug. 2016.
+			<a href="https://ieeexplore.ieee.org/document/7458896" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/43480" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('LuoTayLen:J16','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_LuoTayLen:J16" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{LuoTayLen:J16,
+			author = {Wuqiong Luo and Wee Peng Tay and Mei Leng},
+			title = {Infection spreading and source identification: A hide and seek game},
+			journal = {{IEEE} Trans. Signal Process.},
+			volume = {64}, 
+			number = {16},
+			pages	= {4228 -- 4243},
+			month	= {Aug.},
+			year =	{2016},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="HoTayQue:J15" class="entry num">
+			<td> J. Ho, W. P. Tay, T. Q. S. Quek, and E. K. P. Chong,
+			"Robust decentralized detection and social learning in tandem networks,"
+			<em>IEEE Transactions on Signal Processing</em>, vol. 63, no. 19, pp. 5019–5032, Oct. 2015, <strong>IEEE
+			Signal
+			Processing Society Young Author Best Paper Award</strong>
+			<a href="https://ieeexplore.ieee.org/document/7130665" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/43461" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('HoTayQue:J15','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_HoTayQue:J15" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{HoTayQue:J15,
+			author = {Jack Ho and Wee Peng Tay and Tony Q. S. Quek and Edwin K. P. Chong},
+			title = {Robust decentralized detection and social learning in tandem networks},
+			journal	= {{IEEE} Trans. Signal Process.},
+			volume = {63}, 
+			number = {19},
+			pages = {5019 -- 5032},
+			month = {Oct.},
+			year = {2015},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="TanTayQue:J15" class="entry num">
+			<td> J. Tang, W. P. Tay, and T. Q. S. Quek,
+			"Cross-layer resource allocation with elastic service scaling in cloud radio access network,"
+			<em>IEEE Transactions on Wireless Communications</em>, vol. 14, no. 9, pp. 5068 – 5081, Sep. 2015.
+			<a href="https://ieeexplore.ieee.org/document/7105959" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/47838" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('TanTayQue:J15','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_TanTayQue:J15" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{TanTayQue:J15,
+			author = {Jianhua Tang and Wee Peng Tay and Tony Q. S. Quek},
+			title = {Cross-layer resource allocation with elastic service scaling in cloud radio access network},
+			journal = {{IEEE} Trans. Wireless Commun.},
+			volume = {14},
+			number = {9},
+			pages = {5068 -- 5081},
+			month = {Sep.},
+			year = {2015},			
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="HuTay:J15" class="entry num">
+			<td> W. Hu and W. P. Tay,
+			"Multi-hop diffusion LMS for energy-constrained distributed estimation,"
+			<em>IEEE Transactions on Signal Processing</em>, vol. 63, no. 15, pp. 4022 – 4036, Aug. 2015.
+			<a href="https://ieeexplore.ieee.org/document/7088649" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/39535" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('HuTay:J15','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_HuTay:J15" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{XuQuiLen:J15,
+			author = {Wuhua Hu and Wee Peng Tay},
+			title = {Multi-hop diffusion {LMS} for energy-constrained distributed estimation},
+			journal = {{IEEE} Trans. Signal Process.},
+			volume = {63},
+			number = {15},
+			pages = {4022 –- 4036},
+			month = {Aug.},
+			year = {2015},
+			}
+			</pre>
+			</td>
+			</tr>
+
+
+			<tr id="XuQuiLen:J15" class="entry num">
+			<td> W. Xu, F. Quitin, M. Leng, W. P. Tay, and S. G. Razul,
+			"Distributed localization of a RF target in NLOS environments,"
+			<em>IEEE Journal on Selected Areas in Communications</em>, vol. 33, no. 7, pp. 1 – 14, Jul. 2015.
+			<a href="https://ieeexplore.ieee.org/document/7102679" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/47847" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('XuQuiLen:J15','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_XuQuiLen:J15" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{XuQuiLen:J15,
+			author = {Wenjie Xu and Francois Quitin and Mei Leng and Wee Peng Tay and Sirajudeen G. Razul},
+			title = {Distributed Localization of a {RF} target in {NLOS} Environments},
+			journal = {{IEEE} J. Sel. Areas Commun.},
+			volume = {33},
+			number = {7},
+			pages = {1 -- 14},
+			month = {Jul.},
+			year = {2015},
+			note = {in press},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="Tay:J15" class="entry num">
+			<td> W. P. Tay,
+			"Whose opinion to follow in multihypothesis social learning? A large deviations perspective,"
+			<em>IEEE Journal of Selected Topics in Signal Processing</em>, vol. 9, no. 2, pp. 344–359, Mar. 2015.
+			<a href="https://ieeexplore.ieee.org/document/6940264" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/43460" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('Tay:J15','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_Tay:J15" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{Tay:J15,
+			author = {Wee Peng Tay},
+			title = {Whose Opinion to follow in Multihypothesis Social Learning? {A} Large Deviations Perspective},
+			journal = {{IEEE} J. Sel. Topics Signal Process.},
+			year = {2015}, 
+			month = {Mar.}, 
+			volume = {9}, 
+			number = {2}, 
+			pages = {344 -- 359},			
+			}
+			</pre>
+			</td>
+			</tr>
+
+
+			<tr id="LenTayQue:J15" class="entry num">
+			<td> M. Leng, W. P. Tay, T. Q. S. Quek, and H. Shin,
+			"Distributed local linear parameter estimation using Gaussian SPAWN,"
+			<em>IEEE Transactions on Signal Processing</em>, vol. 63, no. 1, pp. 244–257, Jan. 2015.
+			<a href="https://ieeexplore.ieee.org/document/6963404" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/47836" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('LenTayQue:J15','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_LenTayQue:J15" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{LenTayQue:J15,
+			author = {Mei Leng and Wee Peng Tay and T. Q. S. Quek and H. Shin},
+			title = {Distributed local linear parameter estimation using {Gaussian SPAWN}},
+			journal = {{IEEE} Trans. Signal Process.},
+			volume = {63},
+			number = {1},
+			pages = {244 -- 257},
+			month = {Jan.},
+			year = {2015},
+			}
+			</pre>
+			</td>
+			</tr>
+
+
+			<tr id="ZhaTayLi:J14" class="entry num">
+			<td>Y. Zhang, W. P. Tay, K. H. Li, and D. Gaiti,
+			“Distributed boundary estimation for spectrum sensing in cognitive radio networks,”
+			<em>IEEE Journal on Selected Areas in Communications</em>, vol. 32, no. 11, pp. 1961–1973, Nov. 2014.
+			<a href="https://ieeexplore.ieee.org/document/6745903" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/25255" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('ZhaTayLi:J14','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_ZhaTayLi:J14" class="bibtex noshow">
+			<td>
+			<pre>
+			@ARTICLE{ZhaTayLi:J14,
+			author = {Yi Zhang and Wee Peng Tay and Kwok Hung Li and Dominique Gaiti},
+			title = {Distributed Boundary Estimation for Spectrum Sensing in Cognitive Radio Networks},
+			journal = {{IEEE} J. Sel. Areas Commun.},
+			volume = {32},
+			number = {11},
+			pages = {1961 -– 1973},
+			month = {Nov.},
+			year = {2014},	
+			}
+			</pre>
+			</td>
+			</tr>
+
+
+			<tr id="LuoTayLen:J14" class="entry num">
+			<td> W. Luo, W. P. Tay, and M. Leng,
+			“How to identify an infection source with limited observations,”
+			<em>IEEE Journal of Selected Topics in Signal Processing</em>, vol. 8, no. 4, pp. 586–597, Aug. 2014.
+			<a href="https://ieeexplore.ieee.org/document/6782740" target="_blank">[pdf]</a>
+			<a href="http://arxiv.org/abs/1309.4161" target="_blank">[repo]</a>
+			<a href="MyPapers/Codes/SI_Incomplete_Code.zip">[codes]</a>
+			[<a href="javascript:toggleInfo('LuoTayLen:J14','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_LuoTayLen:J14" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{LuoTayLen:J14,
+			author = {Wuqiong Luo and Wee Peng Tay and Mei Leng},
+			title = {How to Identify an Infection Source with Limited Observations},
+			journal = {{IEEE} J. Sel. Topics Signal Process.},
+			volume = {8},
+			number = {4},
+			pages = {586 -- 597},
+			month = {Aug.},
+			year = {2014},
+			}
+			</pre>
+			</td>
+			</tr>
+
+
+			<tr id="TanTayWen:J14" class="entry num">
+			<td> J.Tang, W. P. Tay, and Y. Wen,
+			“Dynamic request redirection and elastic service scaling in cloud-centric media networks,”
+			<em>IEEE Transactions on Multimedia</em>, vol. 16, no. 5, pp. 1434–1445, Aug. 2014.
+			<a href="https://ieeexplore.ieee.org/document/6748976" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/47845" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('TanTayWen:J14','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_TanTayWen:J14" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{TanTayWen:J14,
+			author = {Jianhua Tang and Wee Peng Tay and Yonggang Wen},
+			title = {Dynamic Request Redirection and Elastic Service Scaling in Cloud-Centric Media Networks},
+			journal = {{IEEE} Trans. Multimedia},
+			volume = {16},
+			number = {5},
+			pages = {1434 -- 1445},
+			month = {Aug.},
+			year = {2014},				
+			}
+			</pre>
+			</td>
+			</tr>
+
+
+			<tr id="LenTaySee:J14" class="entry num">
+			<td> M. Leng, W. P. Tay, C. M. S. See, S. G. Razul, and M. Z. Win,
+			“Modified CRLB for cooperative geolocation of two devices using signals of opportunity,”
+			<em>IEEE Transactions on Wireless Communications</em>, vol. 13, no. 7, pp. 3636 – 3649, Jul. 2014.
+			<a href="https://ieeexplore.ieee.org/document/6779669" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/47839" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('LenTaySee:J14','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_LenTaySee:J14" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{LenTaySee:J14,
+			author = {Mei Leng and Wee Peng Tay and C. M. S. See and S. Gulam Razul and Moe Z. Win},
+			title = {Modified CRLB for Cooperative Geolocation of Two Devices using Signals of Opportunity},
+			journal = {{IEEE} Trans. Wireless Commun.},
+			volume = {13},
+			number = {7},
+			pages = {3636 -- 3649},
+			month = {Jul.},
+			year = {2014},		
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="HuTay:J14" class="entry num">
+			<td> W. Hu, and W. P. Tay,
+			“An integer linear programming approach for a class of bilinear integer programs,”
+			<em>Operations Research Letters</em>, vol. 42, no. 3, pp. 226–230, May 2014.
+			<a href="https://www.sciencedirect.com/science/article/abs/pii/S0167637714000376"
+			target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/19643" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('HuTay:J14','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_HuTay:J14" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{HuTay:J14,
+			author = {Wuhua Hu and Wee Peng Tay},
+			title = {An integer linear programming approach for a class of bilinear integer programs},
+			journal = {Oper. Res. Lett.},
+			volume = {42},
+			number = {3},
+			pages = {226 –- 230},
+			month = {May},
+			year = {2014},
+			}
+			</pre>
+			</td>
+			</tr>
+
+
+			<tr id="LuoTayLen:J13" class="entry num">
+			<td> W. Luo, W. P. Tay, and M. Leng,
+			“Identifying infection sources and regions in large networks,”
+			<em>IEEE Transactions on Signal Processing</em>, vol. 61, no. 11, pp. 2850–2865, Jun. 2013.
+			<a href="https://ieeexplore.ieee.org/document/6494324" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/47851" target="_blank">[repo]</a>
+			<a href="MyPapers/Codes/MSEP code.zip">[codes]</a>
+			[<a href="javascript:toggleInfo('LuoTayLen:J13','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_LuoTayLen:J13" class="bibtex noshow">
+			<td>
+			<pre>
+			@ARTICLE{LuoTayLen:J13,
+			author = {Wuqiong Luo and Wee Peng Tay and Mei Leng},
+			title = {Identifying infection sources and regions in large networks},
+			journal = {{IEEE} Trans. Signal Process.}, 
+			volume = {61}, 
+			number = {11},
+			pages = {2850 -- 2865},
+			month = {Jun.},
+			year = {2013},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="SohTayQue:J13" class="entry num">
+			<td> D. W. Soh, W. P. Tay, and T. Q. S. Quek,
+			“Randomized information dissemination in dynamic environments,”
+			<em>IEEE/ACM Transactions on Networking</em>, vol. 21, no. 3, pp. 681–691, Jun. 2013.
+			<a href="https://ieeexplore.ieee.org/document/6266718" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/48059" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('SohTayQue:J13','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_SohTayQue:J13" class="bibtex noshow">
+			<td>
+			<pre>
+			@ARTICLE{SohTayQue:J13,
+			author = {De Wen Soh and Wee Peng Tay and T. Q. S. Quek},
+			title = {Randomized Information Dissemination in Dynamic Environments},
+			journal = {{IEEE/ACM} Trans. Netw.},
+			volume = {21},
+			number = {3},
+			pages = {681 -- 691},
+			month = {Jun.},
+			year = {2013},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="NguJeoQue:J13" class="entry num">
+			<td> T. Nguyen, Y. Jeong, T. Q. S. Quek, W. P. Tay, and H. Shin,
+			"Interference alignment in a Poisson field of MIMO femtocells,"
+			<em>IEEE Transactions on Wireless Communications</em>, vol. 12, no. 6, pp. 2633–2645, Jun. 2013.
+			<a href="https://ieeexplore.ieee.org/document/6497004" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/47848" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('NguJeoQue:J13','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_NguJeoQue:J13" class="bibtex noshow">
+			<td>
+			<pre>
+			@ARTICLE{NguJeoQue:J13,
+			author = {T. M. Nguyen and Y. Jeong and T. Q. S. Quek and Wee Peng Tay and H. Shin},
+			title = {Interference alignment in a {Poisson} field of {MIMO} femtocells},
+			journal = {{IEEE} Trans. Wireless Commun.},
+			volume = {12},
+			number = {6},
+			pages = {2633 -- 2645},
+			month = {Jun.},
+			year = {2013},	
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="NijTayGun:J13" class="entry num">
+			<td> Y. Nijsure, W. P. Tay, E. Gunawan, F. Wen, Z. Yang, Y. L. Guan, and A. P. Chua,
+			"An impulse radio ultra wideband system for contactless noninvasive respiratory monitoring,"
+			<em>IEEE Transactions on Biomedical Engineering</em>, vol. 60, no. 6, pp. 1509-1517, Jun. 2013.
+			<a href="https://ieeexplore.ieee.org/document/6407908" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/17498" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('NijTayGun:J13','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_NijTayGun:J13" class="bibtex noshow">
+			<td>
+			<pre>
+			@ARTICLE{NijTayGun:J13,
+			author = {Yogesh Nijsure and Wee Peng Tay and Erry Gunawan and Fuxi Wen and Yang Zhang and Yong Liang Guan and Ai Ping Chua},
+			title = {An impulse radio ultra wideband system for contactless noninvasive respiratory monitoring},
+			journal = {{IEEE} Trans. Biomed. Eng.},
+			year = {2013},
+			volume = {60},
+			number = {6},
+			month = {Jun.},
+			pages = {1509 -- 1517},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="Tay:J12" class="entry num">
+			<td>W. P. Tay,
+			“The value of feedback in decentralized detection,”
+			<em>IEEE Transactions on Information Theory</em>, vol. 58 , no. 12, pp. 7226–7239, Dec. 2012.
+			<a href="https://ieeexplore.ieee.org/document/6257493" target="_blank">[pdf]</a>
+			<a href="https://dr.ntu.edu.sg/handle/10220/11444" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('Tay:J12','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_Tay:J12" class="bibtex noshow">
+			<td>
+			<pre>
+			@ARTICLE{Tay:J12,
+			author = {Wee Peng Tay},
+			title = {The value of feedback in decentralized detection},
+			journal = {{IEEE} Trans. Inf. Theory},
+			volume = {58},
+			number = {12},
+			pages = {7226 -- 7239},
+			month = {Dec.},
+			year = {2012},	
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="HuTayWen:J12" class="entry num">
+			<td>G. Q. Hu, W. P. Tay, and Y. Wen,
+			“Cloud robotics: architecture, challenges and applications,”
+			<em>IEEE Network, Special Issue on Machine and Robotic Networking</em>, vol. 26, no. 3, pp. 21–28, May
+			2012.
+			<a href="https://ieeexplore.ieee.org/document/6201212" target="_blank">[pdf]</a>
+			<a href="MyPapers/Journals/HuTayWen - Cloud robotics architectures challenges and applications.pdf"
+			target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('HuTayWen:J12','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_HuTayWen:J12" class="bibtex noshow">
+			<td>
+			<pre>
+			@ARTICLE{HuTayWen:J12,
+			author = {Guoqiang Hu and Wee Peng Tay and Yonggang Wen},
+			title = {Cloud robotics: architecture, challenges and applications},
+			journal = {{IEEE} Network, Special Issue on Machine and Robotic Networking},
+			volume = {26},
+			number = {3},
+			pages = {21 -- 28},
+			month = {May},
+			year = {2012},		
+			}
+			</pre>
+			</td>
+			</tr>
+
+
+			<tr id="TayTsiWin:J09a" class="entry num">
+			<td>W. P. Tay, J. N. Tsitsiklis, and M. Z. Win,
+			“Bayesian detection in bounded height tree networks,”
+			<em>IEEE Transactions on Signal Processing</em>, vol. 57, no.10, pp. 4042–4051, Oct. 2009.
+			<a href="https://ieeexplore.ieee.org/document/4957097" target="_blank">[pdf]</a>
+			<a href="MyPapers/Journals/TayTsiWin - Bayesian detection in bounded height tree networks.pdf"
+			target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('TayTsiWin:J09a','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_TayTsiWin:J09a" class="bibtex noshow">
+			<td>
+			<pre>
+			@ARTICLE{TayTsiWin:J09a,
+			author = {Wee Peng Tay and John N. Tsitsiklis and Moe Z. Win},
+			title = {Bayesian Detection in Bounded Height Tree Networks},
+			journal = {{IEEE} Trans. Signal Process.},
+			volume = {57},
+			number = {10},
+			pages = {4042 -- 4051},
+			month = {Oct.},
+			year = {2009},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="TayTsiWin:J08c" class="entry num">
+			<td>W. P. Tay, J. N. Tsitsiklis, and M. Z. Win,
+			“On the subexponential decay of detection error probabilities in long tandems,”
+			<em>IEEE Transactions on Information Theory</em>, vol. 54, no. 10, pp. 4767–4771, Oct. 2008.
+			<a href="https://ieeexplore.ieee.org/document/4626079" target="_blank">[pdf]</a>
+			<a href="MyPapers/Journals/TayTsiWin - On the subexponential decay of detection error probabilities in long tandems.pdf"
+			target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('TayTsiWin:J08c','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_TayTsiWin:J08c" class="bibtex noshow">
+			<td>
+			<pre>
+			@ARTICLE{TayTsiWin:J08c,
+			author = {Wee Peng Tay and John N. Tsitsiklis and Moe Z. Win},
+			title = {On the Subexponential Decay of Detection Error Probabilities in Long Tandems},
+			journal = {{IEEE} Trans. Inf. Theory},
+			volume = {54},
+			number = {10},
+			pages = {4767 -- 4771},
+			month = {Oct.},
+			year = {2008},			
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="TayTsiWin:J08b" class="entry num">
+			<td>W. P. Tay, J. N. Tsitsiklis, and M. Z. Win,
+			“Data fusion trees for detection: Does architecture matter?”
+			<em>IEEE Transactions on Information Theory</em>, vol. 54, no. 9, pp. 4155–4168, Sep. 2008.
+			<a href="https://ieeexplore.ieee.org/document/4608995" target="_blank">[pdf]</a>
+			<a href="MyPapers/Journals/TayTsiWin - Data fusion trees for detection does architecture matter.pdf"
+			target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('TayTsiWin:J08b','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_TayTsiWin:J08b" class="bibtex noshow">
+			<td>
+			<pre>
+			@ARTICLE{TayTsiWin:J08b,
+			author = {Wee Peng Tay and John N. Tsitsiklis and Moe Z. Win},
+			title = {Data Fusion Trees for Detection: Does Architecture Matter?},
+			journal = {{IEEE} Trans. Inf. Theory},
+			volume = {54},
+			number = {9},
+			pages = {4155 -- 4168},
+			month = {Sep.},
+			year = {2008},			
+			}
+			</pre>
+			</td>
+			</tr>
+
+
+			<tr id="TayTsiWin:J08a" class="entry num">
+			<td>W. P. Tay, J. N. Tsitsiklis, and M. Z. Win,
+			“On the impact of sensor failures and unreliable communications in dense sensor networks,”
+			<em>IEEE Transactions on Signal Processing</em>, vol. 56, no. 6, pp. 2535–2546, Jun. 2008.
+			<a href="https://ieeexplore.ieee.org/document/4476452" target="_blank">[pdf]</a>
+			<a href="MyPapers/Journals/TayTsiWin - On the impact of node failures and unreliable communications in dense sensor networks.pdf"
+			target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('TayTsiWin:J08a','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_TayTsiWin:J08a" class="bibtex noshow">
+			<td>
+			<pre>
+			@ARTICLE{TayTsiWin:J08a,
+			author = {Wee Peng Tay and John N. Tsitsiklis and Moe Z. Win},
+			title = {On the Impact of Node Failures and Unreliable Communications in Dense Sensor Networks},
+			journal = {{IEEE} Trans. Signal Process.},
+			volume = {56},
+			number = {6},
+			pages = {2535 -- 2546},
+			month = {Jun.},
+			year = {2008},		
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="TayTsiWin:J07a" class="entry num">
+			<td>W. P. Tay, J.N. Tsitsiklis, and M.Z. Win,
+			“Asymptotic performance of a censoring sensor network,”
+			<em>IEEE Transactions on Information Theory</em>, vol. 53, no. 11, pp. 4191–4209, Nov 2007.
+			<a href="https://ieeexplore.ieee.org/document/4373434" target="_blank">[pdf]</a>
+			<a href="MyPapers/Journals/TayTsiWin - Asymptotic performance of a censoring sensor network.pdf"
+			target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('TayTsiWin:J07a','bibtex')">Bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_TayTsiWin:J07a" class="bibtex noshow">
+			<td>
+			<pre>
+			@ARTICLE{TayTsiWin:J07a,
+			title = {Asymptotic Performance of a Censoring Sensor Network},
+			author = {Tay, W. P. and Tsitsiklis, J. N. and Win, M. Z.},
+			journal = {{IEEE} Trans. Inf. Theory},
+			volume = {53},
+			number = {11},
+			pages = {4191 -- 4209},
+			month = {Nov.},
+			year = {2007},	
+			}
+			</pre>
+			</td>
+			</tr>
+
+			</tbody>
+			</table>
+
+			<table border="1"></table>
+
+			<h2 id="conferences"><a href="javascript:toggleInfo('conferences','pubs')" style="color:#5c5a5a">Conferences</a></h2>
+			<table id="pubs_conferences" class="pubs show" border="1">
+				<tbody>
+					<tr id="conf_Conf2024" class="conf show nonum">
+						<td>
+							<h4><a href="javascript:toggleInfo('Conf2024','conf')">2024</a></h4>
+							<ul>
+								<li>Q. Kang, K. Zhao, Y. Song, Y. Xie, Y. Zhao, S. Wang, R. She, and W. P. Tay, “Coupling graph neural networks with fractional order continuous dynamics: A robustness study,” in <em>Proc. AAAI Conference on Artificial Intelligence</em>, Vancouver, Canada, Feb. 2024</li>
+								<li>R. She, S. Wang, Q. Kang, K. Zhao, Y. Song, W. P. Tay, T. Geng, and X. Jian, “PosDiffNet: Positional neural diffusion for point cloud registration in a large field of view with perturbations,” in <em>Proc. AAAI Conference on Artificial Intelligence</em>, Vancouver, Canada, Feb. 2024</li>
+								<li>S. Wang, R. She, Q. Kang, X. Jian, K. Zhao, Y. Song, and W. P. Tay, “DistilVPR: Cross-Modal knowledge distillation for visual place recognition,” in <em>Proc. AAAI Conference on Artificial Intelligence</em>, Vancouver, Canada, Feb. 2024</li>
+							</ul>
+						</td>
+					</tr>
+
+					<tr id="conf_Conf2023" class="conf show nonum">
+						<td>
+							<h4><a href="javascript:toggleInfo('Conf2023','conf')">2023</a></h4>
+							<ul>
+								<li>K. Zhao, Q. Kang, Y. Song, R. She, S. Wang, and W. P. Tay, “Adversarial robustness in graph neural networks: A Hamiltonian energy conservation approach,” <em>Advances in Neural Information Processing Systems (NeurIPS)</em>, New Orleans, USA, Dec. 2023, <strong>spotlight</strong></li>
+								<li>Q. Kang, Y. Zhao, K. Zhao, X. Li, Q. Ding, W. P. Tay, and S. Wang, “Advancing graph neural networks through joint time-space dynamics,” in NeurIPS 2023 Workshop: The Symbiosis of Deep Learning and Differential Equations III, New Orleans, USA, Dec. 2023</li>
+								<li>Q. Kang, K. Zhao, Y. Song, Y. Xie, Y. Zhao, S. Wang, R. She, and W. P. Tay, “Coupling graph neural networks with non-integer order dynamics: A robustness study,” in NeurIPS 2023 Workshop: New Frontiers in Graph Learning, New Orleans, USA, Dec. 2023</li>
+								<li>Q. Kang, K. Zhao, Q. Ding, F. Ji, X. Li, W. Liang, Y. Song, and W. P. Tay, “Unleashing the potential of fractional calculus in graph neural networks,” in NeurIPS 2023 Workshop: Machine Learning and the Physical Sciences, New Orleans, USA, Dec. 2023</li>
+								<li>R. She, Q. Kang, S. Wang, K. Zhao, Y. Song, Y. Xu, T. Geng, W. P. Tay, D. Navarro, and A. Hartmannsgruber, “Robust graph neural diffusion for image matching,” in Proc. IEEE International Conference on Image Processing, Kuala Lumpur, Malaysia, Oct. 2023, <strong>invited paper</strong></li>
+								<li>K. Zhao, Q. Kang, Y. Song, R. She, S. Wang, and W. P. Tay, “Graph neural convection-diffusion with
+								heterophily,” in <em>Proc. International Joint Conference on Artificial Intelligence (IJCAI)</em>, Macao, China, Aug. 2023</li>
+								<li>Q. Kang, K. Zhao, Y. Song, S. Wang, and W. P. Tay, “Node embedding from neural Hamiltonian orbits
+								in graph neural networks,” in <em>Proc. International Conference on Machine Learning (ICML)</em>, Haiwaii, USA, Jul. 2023</li>
+								<li>F. Ji, S. H. Lee, H. Meng, K. Zhao, J. Yang, and W. P. Tay, “Leveraging label non-uniformity for node
+								classification in graph neural networks,” in <em>Proc. International Conference on Machine Learning (ICML)</em>, Haiwaii, USA, Jul. 2023</li>
+								<li>S. Wang, Q. Kang, R. She, W. Wang, K. Zhao, Y. Song, and W. P. Tay, “HypLiLoc: Towards effective LiDAR pose regression with hyperbolic fusion,” in <em>Proc. IEEE/CVF Computer Vision and Pattern Recognition Conference (CVPR)</em>, Vancouver, Canada, Jun. 2023</li>
+								<li>X. Jian and W. P. Tay, “Kernel ridge regression for generalized graph signal processing,” in Proc. IEEE Int. Conf. Acoustics, Speech, and Signal Processing, Rhodes Island, Greece, Jun. 2023</li>
+								<li>T. Geng, F. Ji, and W. P. Tay, “Modulo EEG signal recovery using transformers,” in Proc. IEEE Int. Conf. Acoustics, Speech, and Signal Processing, Rhodes Island, Greece, Jun. 2023</li>
+								<li>V. Mohan, W. P. Tay, and A. Basu, “Architectural exploration of neuromorphic compression based neural sensing for next-gen wireless implantable-BMI,” in Proc. IEEE International Symposium on Circuits & Systems, California, USA, May 2023</li>
+								<li>S. Wang, Q. Kang, R. She, W. P. Tay, A. Hartmannsgruber, and D. N. Navarro, “RobustLoc: Robust camera pose regression in challenging driving environments,” in <em>Proc. AAAI Conference on Artificial Intelligence (AAAI)</em>, Washington, DC, Feb. 2023.
+							<a href="https://arxiv.org/abs/2211.11238" target="_blank">[repo]</a></li>
+							</ul>
+						</td>
+					</tr>
+
+					<tr id="conf_Conf2022" class="conf noshow nonum">
+						<td>
+							<h4><a href="javascript:toggleInfo('Conf2022','conf')">2022</a></h4>
+							<ul>
+								<li>X. Ran, W. P. Tay, and C. H. T. Lee, “A robust deep Q-network based attack detection approach in power systems,” in Proc. International Conference on Smart Power & Internet Energy Systems, Beijing, China, Oct. 2022, <strong>Excellent Paper Award</strong></li>
+								<li>Y. Song, Q. Kang, S. Wang, K. Zhao, and W. P. Tay, “On the robustness of graph neural diffusion to topology perturbations,” <em>Advances in Neural Information Processing Systems (NeurIPS)</em>, New Orleans, USA, Nov. 2022.
+							<a href="https://arxiv.org/abs/2209.07754" target="_blank">[repo]</a></li>
+								<li>Q. Kang, R. She, S. Wang, W. P. Tay, N. D. Navarro, R. Khurana, and A. Hartmannsgruber, “Location learning for AVs: LiDAR and image landmarks fusion localization with graph neural networks,” in Proc. IEEE International Conference on Intelligent Transportation Systems, Macau, China, Oct. 2022</li>
+								<li>H. Cheng, J. T. Zhou, W. P. Tay, and B. Wen, “Attentive graph neural networks for few-shot learning,” in Proc. Int. Conf. on Multimedia Information Processing and Retrieval, virtual, Aug. 2022</li>
+								<li>S. H. Lee, F. Ji, and W. P. Tay, “SGAT: Simplicial graph attention network,” in <em>Proc. International Joint Conference on Artificial Intelligence (IJCAI)</em>, Vienna, Austria, Jul. 2022. <a href="https://www.ijcai.org/proceedings/2022/443" target="_blank">[pdf]</a></li>
+								<li>X. Jian and W. P. Tay, “Wide-sense stationarity and spectral estimation for generalized graph	signal,” in Proc. IEEE Int. Conf. Acoustics, Speech, and Signal Processing, Singapore, May 2022</li>
+								<li>Y. Xu, C. X. Wang, Y. Song, and W. P. Tay, “Preserving trajectory privacy in driving data release,” in Proc. IEEE Int. Conf. Acoustics, Speech, and Signal Processing, Singapore, May 2022</li>
+							</ul>
+						</td>
+					</tr>
+
+					<tr id="conf_Conf2021" class="conf noshow nonum">
+						<td>
+							<h4><a href="javascript:toggleInfo('Conf2021','conf')">2021</a></h4>
+							<ul>
+								<li>Q. Kang, Y. Song, Q. Ding, and W. P. Tay, “Stable neural ODE with Lyapunov-stable equilibrium points for defending against adversarial attacks,” in <em>Advances in Neural Information Processing Systems (NeurIPS)</em>, virtual, Dec. 2021. <a
+										href="https://papers.nips.cc/paper/2021/hash/7d5430cf85f78c4b7aa09813b14bce0d-Abstract.html"
+										target="_blank">[pdf]</a></li>
+								<li>F. Ji and W. P. Tay, “Signal processing with a distribution of graph operators,” in Proc. IEEE
+									Workshop on Statistical Signal Processing, Rio de Janeiro, Brazil, Jul. 2021</li>
+								<li>S. H. Lee, F. Ji, and W. P. Tay, “Learning on heterogeneous graphs using high-order relations,” in Proc. IEEE Int. Conf. Acoustics, Speech, and Signal Processing, Toronto, Canada, Jun. 2021. <a href="https://arxiv.org/abs/2103.15532" target="_blank">[pdf]</a></li>
+								<li>C. Jin, I. Bajaj, K. Zhao, W. P. Tay, and K. V. Ling, “5G positioning using code-phase timing recovery,” in Proc. IEEE Wireless Commun. and Networking Conf., Nanjing, China, Mar. 2021</li>
+								<li>Y. Song, I. Bajaj, R. Rabiee, and W. P. Tay, “Anchor-free multi-level self-localization in ad-hoc networks,” in Proc. IEEE Wireless Commun. and Networking Conf., Nanjing, China, Mar. 2021</li>
+								<li>Y. Song, Q. Kang, and W. P. Tay, “Error-correcting output codes with ensemble diversity for robust learning in neural networks,” in <em>Proc. AAAI Conference on Artificial Intelligence (AAAI)</em>, Feb. 2021. <a href="https://ojs.aaai.org/index.php/AAAI/article/view/17169" target="_blank">[pdf]</a></li>
+							</ul>
+						</td>
+					</tr>
+
+					<tr id="conf_Conf2020" class="conf noshow nonum">
+						<td>
+							<h4><a href="javascript:toggleInfo('Conf2020','conf')">2020</a></h4>
+							<ul>
+								<li>C. X. Wang and W. P. Tay, “Data-driven privacy with domain regularization,” in Proc. IEEE Global
+									Telecomm. Conf., Taipei, Taiwan, Dec. 2020</li>
+								<li>C. Wang, W. P. Tay, Y. Wei, and Y. Wang, “Resilient multitask distributed adaptation over networks
+									with noisy exchanges,” in Proc. IEEE Sensor Array and Multichannel Signal Processing Workshop,
+									Hangzhou, China, Jun. 2020</li>
+								<li>C. X. Wang, W. P. Tay, and Y. Song, “Maximum privacy under perfect utility in sensor networks,” in
+									Proc. IEEE Sensor Array and Multichannel Signal Processing Workshop, Hangzhou, China, Jun. 2020</li>
+								<li> T. S. Lau and W. P. Tay, “Privacy-aware quickest change detection,” in Proc. IEEE Int. Conf.
+									Acoustics, Speech, and Signal Processing, Barcelona, Spain, May 2020</li>
+								<li> F. Ji, J. Yang, Q. Zhang, and W. P. Tay, “GFCN : A new graph convolutional network based on
+									parallel flows,” in Proc. IEEE Int. Conf. Acoustics, Speech, and Signal Processing, Barcelona, Spain,
+									May 2020. <a href="https://arxiv.org/abs/1902.09173" target="_blank">[repo]</a></li>
+							</ul>
+						</td>
+					</tr>
+
+					<tr id="conf_Conf2019" class="conf noshow nonum">
+						<td>
+							<h4><a href="javascript:toggleInfo('Conf2019','conf')">2019</a></h4>
+							<ul>
+								<li>F. Ji, Pratibha, and W. P. Tay, “On folded graph signals,” in Proc. IEEE Global Conf. on Signal and
+									Information Processing, Ottawa, Canada, Nov. 2019</li>
+								<li>Q. Kang and W. P. Tay, “Orthogonal projection in linear bandits,” in Proc. IEEE Global Conf. on
+									Signal and Information Processing, Ottawa, Canada, Nov. 2019</li>
+								<li>C. Wang, W. P. Tay, Y. Wang, and Y. Wei, “A privacy-preserving diffusion strategy over multitask
+									networks,” in Proc. IEEE Int. Conf. Acoustics, Speech, and Signal Processing, Brighton, UK, May 2019
+								</li>
+								<li>T. S. Lau and W. P. Tay, “Asymptotically optimal quickest change detection under a nuisance change,”
+									in Proc. IEEE Int. Conf. Acoustics, Speech, and Signal Processing, Brighton, UK, May 2019</li>
+								<li>Y. Song, M. Guan, W. P. Tay, C. L. Law, and C. Wen, “UWB/LiDAR fusion for cooperative range-only
+									SLAM,” in Int. Conf. on Robotics and Automation, Montreal, Canada, May 2019</li>
+							</ul>
+						</td>
+					</tr>
+
+					<tr id="conf_Conf2018" class="conf noshow nonum">
+						<td>
+							<h4><a href="javascript:toggleInfo('Conf2018','conf')">2018</a></h4>
+							<ul>
+								<li> F. Ji and W. P. Tay, “Generalized graph signal processing,” in Proc. IEEE Global Conf. on Signal
+									and Information Processing, Anaheim, USA, Nov. 2018</li>
+								<li> C. X. Wang, Y. Song, and W. P. Tay, “Preserving parameter privacy in sensor networks,” in Proc.
+									IEEE Global Conf. on Signal and Information Processing, Anaheim, USA, Nov. 2018</li>
+								<li>W. Qiu, A. Khong, and W. P. Tay, “Hidden Markov model for masquerade detection based on sequence
+									alignment,” in Proc. IEEE Cyber Science and Technology Congress, Athens, Greece, Aug. 2018</li>
+								<li> Y. Wang, W. Hu, and W. P. Tay, “An event-based diffusion LMS strategy,” in Proc. IEEE Sensor Array
+									and Multichannel Signal Processing Workshop, Sheffield, UK, Jul. 2018</li>
+								<li>Pratibha, J. Wang, S. Aggarwal, F. Ji, and W. P. Tay, “Learning correlation graph and anomalous
+									employee behavior for insider threat detection,” in Proc. Int. Conf. on Information Fusion, Cambridge,
+									UK, Jul. 2018 <a href="MyPapers/Conferences/insider_threat_detection.pdf" target="_blank">[paper]</a>
+								</li>
+								<li> F. Ji, W. Tang, and W. P. Tay, “Properties and applications of Gromov matrices in network
+									inference,” in Proc. IEEE Workshop on Statistical Signal Processing, Freiburg, Germany, Jun. 2018</li>
+								<li> T. S. Lau and W. P. Tay, “Quickest change detection under a nuisance change,” in Proc. IEEE Int.
+									Conf. Acoustics, Speech, and Signal Processing, Calgary, Canada, Apr. 2018</li>
+								<li>Y. Song, C. X. Wang, and W. P. Tay, “Privacy-aware Kalman filtering,” in Proc. IEEE Int. Conf.
+									Acoustics, Speech, and Signal Processing, Calgary, Canada, Apr. 2018</li>
+							</ul>
+						</td>
+					</tr>
+
+					<tr id="conf_Conf2017" class="conf noshow nonum">
+						<td>
+							<h4><a href="javascript:toggleInfo('Conf2017','conf')">2017</a></h4>
+							<ul>
+								<li> W. Tang, F. Ji, and W. P. Tay, “Multiple sources identification in networks with partial
+									timestamps,” in Proc. IEEE Global Conf. on Signal and Information Processing, Montreal, Canada, Nov.
+									2017</li>
+								<li>T. S. Lau and W. P. Tay, “Optimal sampling policy for quickest change detection,” in Proc. IEEE
+									Global Conf. on Signal and Information Processing, Montreal, Canada, Nov. 2017</li>
+								<li>Y. Song, W. P. Tay, and C. L. Law, “Robust decentralized localization in impulsive noise,” in Int.
+									Conf. on Indoor Positioning and Indoor Navigation, Sapporo, Japan, Sep. 2017</li>
+								<li>Y. Song, C. X. Wang, W. P. Tay, and C. L. Law, “Grid-based belief propagation,” in Int. Conf. on
+									Indoor Positioning and Indoor Navigation, Sapporo, Japan, Sep. 2017</li>
+								<li>Q. Kang and W. P. Tay, “Sequential multi-class labeling in crowdsourcing: A Ulam-Renyi game
+									approach,” in IEEE/WIC/ACM Int. Conf. on Web Intelligence, Leipzig, Germany, Aug. 2017</li>
+								<li>M. Sun and W. P. Tay, “Inference and data privacy in IoT networks,” in Proc. IEEE Workshop on Signal Processing Advances in Wireless Commun., Hokkaido, Japan, Jul. 2017, <strong>invited paper</strong>
+								</li>
+								<li> F. Ji, W. Tang, W. P. Tay, and E. K. P. Chong, “Inferring network topology from information
+									cascades,” in Proc. IEEE Int. Symp. on Inform. Theory, Aachen, Germany, Jun. 2017</li>
+								<li>M. Z. A. Bhotto and W. P. Tay, “Non-Bayesian social learning with observation reuse and soft
+									switching,” in Proc. IEEE Int. Conf. on Commun., Paris, France, May 2017</li>
+								<li>X. He and W. P. Tay, “Multilayer sensor network for information privacy,” in Proc. IEEE Int. Conf.
+									Acoustics, Speech, and Signal Processing, New Orleans, USA, Mar. 2017</li>
+								<li>T. S. Lau, W. P. Tay, and V. V. Veeravalli, “Quickest change detection with unknown post-change
+									distribution,” in Proc. IEEE Int. Conf. Acoustics, Speech, and Signal Processing, New Orleans, USA,
+									Mar. 2017</li>
+								<li>W. Tang and W. P. Tay, “A particle filter for sequential infection source estimation,” in Proc. IEEE
+									Int. Conf. Acoustics, Speech, and Signal Processing, New Orleans, USA, Mar. 2017</li>
+								<li> J. Yang, W. P. Tay, and X. Zhong, “A dynamic Bayesian nonparametric model for blind calibration of
+									sensor networks,” in Proc. IEEE Int. Conf. Acoustics, Speech, and Signal Processing, New Orleans, USA,
+									Mar. 2017</li>
+							</ul>
+						</td>
+					</tr>
+
+					<tr id="conf_Conf2016" class="conf noshow nonum">
+						<td>
+							<h4><a href="javascript:toggleInfo('Conf2016','conf')">2016</a></h4>
+							<ul>
+								<li> F. Ji, W. P. Tay, and L. R. Varshney, “Estimating the number of infection sources in a tree,” in
+									Proc. IEEE Global Conf. on Signal and Information Processing, Washington, DC, USA, Dec. 2016</li>
+								<li>P. Oguz-Ekim, K. Ali, Z. Madadi, F. Quitin, and W. P. Tay, “Proof of concept study using DSRC, IMU
+									and map fusion for vehicle localization in GNSS-denied environments,” in Proc. IEEE Intelligent Transportation Systems Conf., Rio de Janeiro, Brazil, Nov. 2016</li>
+								<li>X. Zhong, Y. Yan, and W. P. Tay, “Posterior Cramer-Rao lower bound for mobile emitter tracking based on a TDOA-FDOA multi-measurement model,” in Proc. of IEEE Int. Conf. on Ubiquitous Wireless Broadband, Nanjing, China, Oct. 2016, <strong>invited paper</strong></li>
+								<li>Z. Madadi, F. Quitin, and W. P. Tay, “Receiver tracking using signals of opportunity from
+									asynchronous RF beacons in GNSS-denied environments,” in Proc. IEEE Veh. Technol. Conf., Montreal, Canada, Sep. 2016</li>
+								<li> F. Quitin, X. Zhong, V. Govindaraj, and W. P. Tay, “Virtual multi-antenna array for estimating the
+									angle-of-arrival of a RF transmitter,” in Proc. IEEE Veh. Technol. Conf., Montreal, Canada, Sep. 2016
+								</li>
+								<li>X. He, W. P. Tay, and M. Sun, “Privacy-aware decentralized detection using linear precoding,” in
+									Proc.
+									IEEE Sensor Array and Multichannel Signal Processing Workshop, Rio de Janeiro, Brazil, Jul. 2016</li>
+								<li>X. Zhong, W. P. Tay, M. Leng, S. G. Razul, and C. M. S. See, “TDOA-FDOA multiple target detection
+									and tracking in the presence of measurement errors and biases,” in Proc. IEEE Workshop on Signal Proc. Advances in Wireless Commun., Edinburgh, UK, Jul. 2016, <strong>invited paper</strong></li>
+								<li>J. Tang, T. Q. S. Quek, and W. P. Tay, “Joint resource segmentation and transmission rate adaptation in cloud RAN with caching as a service,” in Proc. IEEE Workshop on Signal Proc. Advances in Wireless Commun., Edinburgh, UK, Jul. 2016, <strong>invited paper</strong></li>
+								<li>F. Ji and W. P. Tay, “Identifying rumor sources with different start times,” in Proc. IEEE Workshop on Statistical Signal Processing, Palma de Mallorca, Spain, Jun. 2016</li>
+								<li>Y. Wang, W. P. Tay, and W. Wu, “Multitask diffusion LMS with optimized inter-cluster cooperation,” in Proc. IEEE Workshop on Statistical Signal Processing, Palma de Mallorca, Spain, Jun. 2016</li>
+								<li>X. Liu, G. Xiao, W. P. Tay, G. Ma, and H. Xi, “Synchronization of pinning networks with Markovian switching topologies and event-triggered communication,” in World Congress on Intelligent Control and Automation, Guilin, China, Jun. 2016</li>
+								<li> M. Sun and W. P. Tay, “Privacy-preserving nonparametric decentralized detection,” in Proc. IEEE Int. Conf. Acoustics, Speech, and Signal Processing, Shanghai, China, Mar. 2016</li>
+								<li> Y. Zhang, W. P. Tay, K. H. Li, M. Esseghir, and D. Gaiti,“Opportunisticspectrumaccesswithtemporal-
+									spatial reuse in cognitive radio networks,” in Proc. IEEE Int. Conf. Acoustics, Speech, and Signal
+									Processing, Shanghai, China, Mar. 2016</li>
+							</ul>
+						</td>
+					</tr>
+
+
+
+					<tr id="conf_Conf2015" class="conf noshow nonum">
+						<td>
+							<h4><a href="javascript:toggleInfo('Conf2015','conf')">2015</a></h4>
+							<ul>
+								<li>G. Yang, W. P. Tay, and Y. L. Guan, “Optimal wireless power transfer and harvested power allocation
+									for
+									diffusion LMS in wireless sensor networks,” in Proc. IEEE Global Conf. on Signal and Information
+									Processing,
+									Orlando, USA, Dec. 2015</li>
+								<li> J. Tang, W. P. Tay, T. Q. S. Quek, and B. Liang, “Towards system cost minimization in cloud radio
+									access
+									network,” in Proc. Asilomar Conf. on Signals, Systems and Computers, Asilomar, USA, Nov. 2015</li>
+								<li> M. Leng, F. Quitin, C. Cheng, W. P. Tay, S. G. Razul, and C. M. S. See, “Joint navigation and
+									synchronization using SOOP in GPS-denied environments: Algorithm and empirical study,” in Proc. Sensor
+									Signal Processing for Defence Conf., Edinburgh, UK, Sep. 2015</li>
+								<li> W. Luo, W. P. Tay, and M. Leng, “Rumor spreading maximization and source identification in a social
+									network,” in Proc. IEEE/ACM Int. Conf. on Advances in Social Networks Analysis and Mining, Paris,
+									France,
+									Aug. 2015</li>
+								<li>W. Luo, W. P. Tay, M. Leng, and M. K. Guevara, “On the universality of the Jordan center for
+									estimating
+									the rumor source in a social network,” in Proc. IEEE Int. Conf. on Digital Signal Processing,
+									Singapore,
+									Jul. 2015</li>
+								<li>G. Garcia, W. Hu, W. P. Tay, and H. Wymeersch, “Joint scheduling and localization in UWB networks,”
+									in
+									Proc. IEEE Int. Conf. on Commun., London, UK, Jun. 2015, <strong>invited paper</strong></li>
+								<li>Z. Madadi, F. Quitin, and W. P. Tay, “RF transmitter geolocation based on signal periodicity:
+									concept and
+									implementation,” in Proc. IEEE Int. Conf. on Commun., London, UK, Jun. 2015</li>
+								<li>C. Cheng, W. Hu, and W. P. Tay, “Localization of a moving non-cooperative RF target in NLOS
+									environment
+									using RSS and AOA measurements,” in Proc. IEEE Int. Conf. Acoustics, Speech, and Signal Processing,
+									Brisbane, Australia, Apr. 2015</li>
+								<li>W. Hu, W. P. Tay, A. Harilal, and G. Xiao, “Network infection source identification under the SIRI
+									model,”
+									in Proc. IEEE Int. Conf. Acoustics, Speech, and Signal Processing, Brisbane, Australia, Apr. 2015</li>
+								<li>Z. Madadi, F. Quitin, and W. P. Tay, “Periodic RF transmitter geolocation using a mobile receiver,”
+									in
+									Proc. IEEE Int. Conf. Acoustics, Speech, and Signal Processing, Brisbane, Australia, Apr. 2015</li>
+							</ul>
+						</td>
+					</tr>
+
+
+					<tr id="conf_Conf2014" class="conf noshow nonum">
+						<td>
+							<h4><a href="javascript:toggleInfo('Conf2014','conf')">2014</a></h4>
+							<ul>
+								<li>Y. Zhang, W. P. Tay, K. H. Li, M. Esseghir, and D. Gaiti, “Distributed opportunistic spectrum access
+									with
+									spatial reuse in cognitive radio networks,” in Proc. IEEE Global Conf. on Signal and Information
+									Processing,
+									Atlanta, US, Dec. 2014</li>
+								<li> J. Tang, W. P. Tay, and T. Q. Quek, “Cross-layer resource allocation in cloud radio access
+									network,” in
+									Proc. IEEE Global Conf. on Signal and Information Processing, Atlanta, US, Dec. 2014, <strong>invited
+										paper</strong></li>
+								<li> W. Hu and W. P. Tay, “Generalized diffusion adaptation for energy-constrained distributed
+									estimation,” in
+									Proc. Int. Conf. on Information Fusion, Salamanca, Spain, Jul. 2014</li>
+								<li>W. Xu, F. Quitin, M. Leng, W. P. Tay, and S. G. Razul, “Distributed localization of a
+									non-cooperative RF
+									target in NLOS environments,” in Proc. Int. Conf. on Information Fusion, Salamanca, Spain, Jul. 2014
+								</li>
+								<li> J. Ho, W. P. Tay, and T. Q. S. Quek, “Robust detection and social learning in tandem networks,” in
+									Proc.
+									IEEE Int. Conf. Acoustics, Speech, and Signal Processing, Florence, Italy, May 2014</li>
+							</ul>
+						</td>
+					</tr>
+
+
+					<tr id="conf_Conf2013" class="conf noshow nonum">
+						<td>
+							<h4><a href="javascript:toggleInfo('Conf2013','conf')">2013</a></h4>
+							<ul>
+								<li>W. Luo and W. P. Tay, “Estimating infection sources in a network with incomplete observations,” in
+									Proc.
+									IEEE Global Conf. on Signal and Information Processing, Austin, USA, Dec. 2013</li>
+								<li>W. Xu, M. Leng, W. P. Tay, and S. G. Razul, “Distributed localization of an unknown target in NLOS
+									environments,” in Proc. Int. Conf. Information, Communications and Signal Processing, Tainan, Taiwan,
+									Dec.
+									2013</li>
+								<li>W. Luo and W.P. Tay, "Finding an infection source under the SIS model," in Proc. IEEE Int. Conf.
+									Acoustics, Speech, and Signal Processing, Vancouver, Canada, May 2013. <a
+										href="MyPapers/Conferences/Infection_Sources_SIS_ICASSP_corrected.pdf">[corrected version]</a>,
+									fixed some
+									missing conditions in original ICASSP paper.</li>
+								<li>Y. Zhang, W.P. Tay, and K.H. Li, “Distributed boundary estimation for spectrum sensing in cognitive
+									radio
+									networks,” in Proc. IEEE Wireless Communications and Networking Conference, Shanghai, China, Apr.
+									2013.</li>
+								<li>M. Leng, W.P. Tay, C.M.S. See, and S. Gulam Razul, “Fundamental limits for location and velocity
+									estimation using asynchronous beacons,” in Proc. IEEE Wireless Communications and Networking
+									Conference,
+									Shanghai, China, Apr. 2013.</li>
+							</ul>
+						</td>
+					</tr>
+
+
+					<tr id="conf_Conf2012" class="conf noshow nonum">
+						<td>
+							<h4><a href="javascript:toggleInfo('Conf2012','conf')">2012</a></h4>
+							<ul>
+								<li>M. Leng, W.P. Tay, C.M.S. See, and S. Gulam Razul, “GPS-free localization using asynchronous
+									beacons,” in Proc. IEEE Int. Conf. on Mobile Ad-hoc and Sensor Networks, Chengdu, China, Dec. 2012, <strong>invited paper</strong>.</li>
+								<li>W. Luo and W.P. Tay, “Identifying multiple infection sources in a network,” in Proc. Asilomar Conference on Signals, Systems, and Computers, California, USA, Nov. 2012, <strong>invited paper</strong>, <strong>Best Student Paper Award</strong>.</li>
+								<li>Y. Nijsure, W.P. Tay, E. Gunawan, and J.C.Y. Lai, “A Bayesian nonparametric approach to tumor detection using UWB imaging,” in Proc. IEEE International Conference on Ultra-Wideband, New York, USA, Jul. 2012.</li>
+								<li>F. Wen and W.P. Tay, “Localization for mixed near-field and far-field sources using data supported optimization,” in Proc. Int. Conf. on Information Fusion, Singapore, Jul. 2012.</li>
+								<li>F. Wen and W.P. Tay, “Tensor decomposition based R-dimensional matrix pencil method,” in Proc. Int. Conf. on Information Fusion, Singapore, Jul. 2012.</li>
+								<li>W. Luo and W.P. Tay, “Identifying infection sources in large tree networks,” in Proc. IEEE Communications Society Conference on Sensor, Mesh and Ad Hoc Communications and Networks, Seoul, Korea, Jun. 2012.</li>
+								<li>Chi Cheng, W.P. Tay and G.-B. Huang “Intrusion detection using random features: an extreme learning machine approach,” in Proc. IEEE International Joint Conference on Neural Networks, Brisbane, Australia, Jun. 2012.</li>
+								<li>M. Leng, W.P. Tay, and T.Q.S. Quek, “Cooperative and distributed localization for wireless sensor networks in multipath environments,” in Proc. IEEE Int. Conf. Acoustics, Speech, and Signal Processing, Kyoto, Japan, Mar. 2012.</li>
+							</ul>
+						</td>
+					</tr>
+
+
+					<tr id="conf_Conf2011" class="conf noshow nonum">
+						<td>
+							<h4><a href="javascript:toggleInfo('Conf2011','conf')">2011</a></h4>
+							<ul>
+								<li>M. Leng, W.P. Tay, and T.Q.S. Quek, “Cooperative and distributed localization for wireless sensor
+									networks
+									in multipath environments,” in Proc. Int. Conf. Information, Communications and Signal Processing,
+									Singapore, Dec. 2011.</li>
+								<li>D.W. Soh, T.Q.S. Quek, and W.P. Tay, “Randomized rumor spreading in non-static networks,” in Proc.
+									IEEE
+									ICTC, Seoul, Korea, Sep. 2011, <strong>invited paper</strong>.</li>
+								<li>D.W. Soh, T.Q.S. Quek, and W.P. Tay, “Randomized broadcast in dynamic network environments,” in
+									Proc. IEEE
+									Int. Workshop on Signal
+									Processing Advances for Wireless Communications, Jun. 2011.</li>
+								<li>W.P. Tay, and J.N. Tsitsiklis, “Error exponents for decentralized detection in feedback
+									architectures,” in
+									Proc. IEEE Int. Conf. Acoustics, Speech, and Signal Processing, Prague, Czech Republic, May 2011.</li>
+								<li>W.P. Tay, and J.N. Tsitsiklis, “The value of feedback for decentralized detection in large sensor
+									networks,” in Proc. Int. Sym. on Wireless and Pervasive Computing, Hong Kong, Feb. 2011.</li>
+							</ul>
+						</td>
+					</tr>
+
+
+					<tr id="conf_Conf2010" class="conf noshow nonum">
+						<td>
+							<h4><a href="javascript:toggleInfo('Conf2010','conf')">Before 2010</a></h4>
+							<ul>
+								<li>W.P. Tay, J.N. Tsitsiklis, and M.Z. Win, “On the sub-exponential decay of detection probabilities in
+									long
+									tandems,” in Proc. IEEE Int. Conf. Acoustics, Speech, and Signal Processing, Honolulu, HI, Apr. 2007,
+									pp.
+									837–840.</li>
+								<li>W.P. Tay, J.N. Tsitsiklis, and M.Z. Win, “Bayesian detection in bounded height tree networks,” in
+									Proc.
+									Data Compression Conf., Snowbird, UT, Mar. 2007, pp. 243–252.</li>
+								<li>W.P. Tay, J.N. Tsitsiklis, and M.Z. Win, “Detection in dense wireless sensor networks,” in Proc.
+									IEEE
+									Wireless Commun. and Networking Conf., Hong Kong, Mar. 2007, pp. 3483–3488.</li>
+								<li>W.P. Tay, J.N. Tsitsiklis, and M.Z. Win, “Data fusion trees for detection: does architecture
+									matter?” in
+									Proc. Allerton Conf. on Communication, Control, and Computing, Monticello, IL, Sept. 2006.</li>
+								<li>W.P. Tay, J.N. Tsitsiklis, and M.Z. Win, “Asymptotically optimal distributed censoring,” in Proc.
+									IEEE
+									Int. Symp. on Inform. Theory, Seattle, WA, July 2006, pp. 625–629.</li>
+								<li>W.P. Tay, J.N. Tsitsiklis, and M.Z. Win, “Censoring sensors: asymptotics and the value of
+									cooperation,” in
+									Proc. Conf. on Inform. Sci. and Sys., Princeton, NJ, Mar. 2006, pp. 62–67.</li>
+							</ul>
+						</td>
+					</tr>
+
+				</tbody>
+			</table>
+
+			<table id="conferences_table" border="1">
+				<tbody>
+					<tr id="Conf_old1" class="entry show nonum" style="font-size:18px">
+						<td id="Conf2024"><a href="javascript:toggleInfo('Conf2024','conf')">2024</a></td>
+						<td id="Conf2023"><a href="javascript:toggleInfo('Conf2023','conf')">2023</a></td>
+						<td id="Conf2022"><a href="javascript:toggleInfo('Conf2022','conf')">2022</a></td>
+						<td id="Conf2021"><a href="javascript:toggleInfo('Conf2021','conf')">2021</a></td>
+						<td id="Conf2020"><a href="javascript:toggleInfo('Conf2020','conf')">2020</a></td>
+					</tr>
+					<tr id="Conf_old2" class="entry show nonum" style="font-size:18px">
+						<td id="Conf2019"><a href="javascript:toggleInfo('Conf2019','conf')">2019</a></td>
+						<td id="Conf2018"><a href="javascript:toggleInfo('Conf2018','conf')">2018</a></td>
+						<td id="Conf2017"><a href="javascript:toggleInfo('Conf2017','conf')">2017</a></td>
+						<td id="Conf2016"><a href="javascript:toggleInfo('Conf2016','conf')">2016</a></td>
+						<td id="Conf2015"><a href="javascript:toggleInfo('Conf2015','conf')">2015</a></td>
+					</tr>
+					<tr id="Conf_old3" class="entry show nonum" style="font-size:18px">
+						<td id="Conf2014"><a href="javascript:toggleInfo('Conf2014','conf')">2014</a></td>
+						<td id="Conf2013"><a href="javascript:toggleInfo('Conf2013','conf')">2013</a></td>
+						<td id="Conf2012"><a href="javascript:toggleInfo('Conf2012','conf')">2012</a></td>
+						<td id="Conf2011"><a href="javascript:toggleInfo('Conf2011','conf')">2011</a></td>
+						<td id="Conf2010"><a href="javascript:toggleInfo('Conf2010','conf')">Before 2010</a></td>
+					</tr>
+				</tbody>
+			</table>
+
+
+			<h2>Technical Reports</h2>
+			<ol>
+				<!--<li>X. He, M. Sun, and W. P. Tay, "Multilayer nonlinear processing for information privacy in sensor networks," Apr. 2018. <a href="https://arxiv.org/abs/1711.04459" target="_blank">[repo]</a>
+		</li>-->
+				<li>F. Quitin, Z. Madadi, and W.P. Tay, "Tracking of a periodic RF transmitter with a mobile receiver: from
+					theory to implementation," Jul. 2015. <a
+						href="MyPapers/Others/QuiMadTay - Tracking of a periodic RF transmitter with a mobile receiver from theory to implementation.pdf"
+						target="_blank">[pdf]</a>
+				</li>
+				<li>F. Quitin, C. Cheng, M. Leng, and W.P. Tay, "A wireless TDOA estimation architecture using software-defined
+					radios," Jul. 2014. <a
+						href="MyPapers/Others/QuiCheLen - A wireless TDOA estimation architecture using SDRs.pdf"
+						target="_blank">[pdf]</a>
+				</li>
+			</ol>
+
+			<h2>Thesis</h2>
+			<ol>
+				<li>W.P. Tay, "Decentralized Detection in Resource-limited Sensor Network Architectures," Ph.D. dissertation,
+					Massachusetts Institute of Technology, Feb 2008. <a href="MyPapers/Others/Tay-phd-eecs-2007.pdf"
+						target="_blank">[pdf]</a>
+				</li>
+			</ol>
+
+
+
+
+
+		</div>
+
+
+
+		<div id="footer" class="shadow">
+			<p>IEEE disclaimer: This material is presented to ensure timely dissemination of scholarly and technical work.
+				Copyright and all rights therein are retained by authors or by other copyright holders. All persons copying this
+				information are expected to adhere to the terms and constraints invoked by each author's copyright. In most
+				cases, these works may not be reposted without the explicit permission of the copyright holder.</p>
+		</div>
+
+
+
+		<div id="footer" class="shadow">
+			<p></p>
+		</div>
+	</div>
+
+
+
+	<!-- Default Statcounter code for NTU
+http://www.ntu.edu.sg/home/wptay -->
+	<script type="text/javascript">
+		var sc_project = 8112787;
+		var sc_invisible = 1;
+		var sc_security = "3790af70"; 
+	</script>
+	<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+	<noscript>
+		<div class="statcounter"><a title="Web Analytics" href="http://statcounter.com/" target="_blank"><img
+					class="statcounter" src="//c.statcounter.com/8112787/0/3790af70/1/" alt="Web
+Analytics"></a></div>
+	</noscript>
+	<!-- End of Statcounter Code -->
+
+</body>
+
+</html>

@@ -1,0 +1,597 @@
+﻿<!DOCTYPE html>
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="Tay Wee Peng" />
+	<meta name="keywords" content="Tay Wee Peng" />
+	<meta name="author" content="Tay Wee Peng" />
+	<link href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz|Droid+Sans' rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" type="text/css" media="all" href="inland.css" />
+	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.nivo.slider.js"></script>
+	<title>Research</title>
+</head>
+
+<body>
+
+
+
+<div class="body_modal" id="body_modal1">
+    <div class="body_modal_wrap">
+        <div class="paper_wrap">
+            <div class="topic"></div>
+            <ul>
+                <li>
+                    <div class="paper">
+                        <a href="publications.html#LuoTayLen:J13"> W. Luo, W. P. Tay, and M. Leng, “Identifying infection sources and regions in large networks,” <em>IEEE Trans. Signal Process.</em>, vol. 61, no. 11, pp. 2850–2865, Jun. 2013.
+                        </a>
+                        <div class="paper_abstract">
+                            Identifying the infection sources in a network, including the index cases that introduce a contagious disease into a population network,  the servers that inject a computer virus into a computer network, or the individuals who started a rumor in a social network, plays a critical role in limiting the damage caused by the infection through timely quarantine of the sources. We consider the problem of estimating the infection sources and the infection regions (subsets of nodes infected by each source) in a network, based only on knowledge of which nodes are infected and their connections, and when the number of sources is unknown a priori. We derive estimators for the infection sources and their infection regions based on approximations of the infection sequences count. We prove that if there are at most two infection sources in a geometric tree, our estimator identifies the true source or sources with probability going to one as the number of infected nodes increases. When there are more than two infection sources, and when the maximum possible number of infection sources is known, we propose an algorithm with quadratic complexity to estimate the actual number and identities of the infection sources. Simulations on various kinds of networks, including tree networks, small-world networks and real world power grid networks, and tests on two real data sets are provided to verify the performance of our estimators.
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="paper">
+                        <a href="publications.html#LuoTayLen:J14"> W. Luo, W. P. Tay, and M. Leng, “How to identify an infection source with limited observations,” <em>IEEE J. Sel. Topics Signal Process.</em>, vol. 8, no. 4, pp. 586–597, Aug. 2014.
+                        </a>
+                        <div class="paper_abstract">
+                            A rumor spreading in a social network or a disease propagating in a community can be modeled as an infection spreading in a network. Finding the infection source is a challenging problem, which is made more difficult in many applications where we have access only to a limited set of observations. We consider the problem of estimating an infection source for a Susceptible-Infected model, in which not all infected nodes can be observed. When the network is a tree, we show that an estimator for the source node associated with the most likely infection path that yields the limited observations is given by a Jordan center, i.e., a node with minimum distance to the set of observed infected nodes. We also propose approximate source estimators for general networks. Simulation results on various synthetic networks and real world networks suggest that our estimators perform better than distance, closeness, and betweenness centrality based heuristics. 
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="paper">
+                        <p><a href="publications.html#LuoTayLen:J17">W. Luo, W. P. Tay, and M. Leng, "On the universality of Jordan centers for estimating infection sources in tree networks," <em>IEEE Trans. Inf. Theory</em>, vol. 63, no. 7, pp.  4634 – 4657, Jul. 2017.</a></p>
+                        
+                        <div class="paper_abstract">
+                           Finding the infection sources in a network when we only know the network topology and infected nodes, but not the rates of infection, is a challenging combinatorial problem, and it is even more difficult in practice where the underlying infection spreading model is usually unknown a priori. In this paper, we are interested in finding a source estimator that is applicable to various spreading models, including the Susceptible-Infected (SI), Susceptible-Infected-Recovered (SIR), Susceptible-Infected-Recovered-Infected (SIRI), and Susceptible-Infected-Susceptible (SIS) models. We show that under the SI, SIR and SIRI spreading models and with mild technical assumptions, the Jordan center is the infection source associated with the most likely infection path in a tree network with a single infection source. This conclusion applies for a wide range of spreading parameters, while it holds for regular trees under the SIS model with homogeneous infection and recovery rates. Since the Jordan center does not depend on the infection, recovery and reinfection rates, it can be regarded as a universal source estimator. We also consider the case where there are $k>1$ infection sources, generalize the Jordan center definition to a $k$-Jordan center set, and show that this is an optimal infection source set estimator in a tree network for the SI model. Simulation results on various general synthetic networks and real world networks suggest that Jordan center-based estimators consistently outperform the distance, closeness, and betweenness centrality based heuristics, even if the network is not a tree.
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="paper">
+                        <a href="publications.html#LuoTayLen:J16">W. Luo, W. P. Tay, and M. Leng, "Infection spreading and source identification: A hide and seek game," <em>IEEE Trans. Signal Process.</em>, vol. 64, no. 16, pp. 4338-4243, Aug. 2016.
+                        </a>
+                        <div class="paper_abstract">
+                            The goal of an infection source node (e.g., a rumor or computer virus source) in a network is to spread its infection to as many nodes as possible, while remaining hidden from the network administrator. On the other hand, the network administrator aims to identify the source node based on knowledge of which nodes have been infected. We model the infection spreading and source identification problem as a strategic game, where the infection source and the network administrator are the two players. As the Jordan center estimator is a minimax source estimator that has been shown to be robust in recent works, we assume that the network administrator utilizes a source estimation strategy that can probe any nodes within a given radius of the Jordan center. Given any estimation strategy, we design a best-response infection strategy for the source. Given any infection strategy, we design a best-response estimation strategy for the network administrator. We derive conditions under which a Nash equilibrium of the strategic game exists. Simulations in both synthetic and real-world networks demonstrate that our proposed infection strategy infects more nodes while maintaining the same safety margin between the true source node and the Jordan center source estimator.
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="paper">
+                        <a href="publications.html#JiTayVar:J17">F. Ji, W. P. Tay, and L. Varshney, "An algorithmic framework for estimating rumor sources with different start times," <em>IEEE Trans. Signal Process.</em>, vol. 65, no. 10, pp. 2517 - 2530, May 2017.
+                        </a>
+                        <div class="paper_abstract">
+						We study the problem of identifying multiple rumor or infection sources in a network under the susceptible-infected model, and where these sources may start infection spreading at different times. We introduce the notion of an abstract estimator, which given the infection graph, assigns a higher value to each vertex in the graph it considers more likely to be a rumor source. This includes several of the single-source estimators developed in the literature. We introduce the concepts of a quasi-regular tree and a heavy center, which allows us to develop an algorithmic framework that transforms an abstract estimator into a two-source joint estimator, in which the infection graph can be thought of as covered by overlapping infection regions. We show that our algorithm converges to a local optimum of the estimation function if the underlying network is a quasi-regular tree. We further extend our algorithm to more than two sources, and heuristically to general graphs. Simulation results on both synthetic and real-world networks suggest that our algorithmic framework outperforms several existing multiple-source estimators, which typically assume that all sources start infection spreading at the same time. 
+                        </div>
+                    </div>
+                </li>
+				
+				
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="body_modal" id="body_modal2">
+    <div class="body_modal_wrap">
+        <div class="paper_wrap">
+            <div class="topic"></div>
+            <ul>
+                <li>
+                    <div class="paper">
+                        <a href="publications.html#SunTayHe:J18"> M. Sun, W. P. Tay, and X. He, "Towards information privacy for the Internet of Things," <em>IEEE Trans. Signal Process.</em>,  vol. 66, no. 7, pp. 1734 - 1747, Apr. 2018.
+                        </a>
+                        <div class="paper_abstract">
+                            In an Internet of Things network, multiple sensors send information to a fusion center for it to infer a public hypothesis of interest. However, the same sensor information may be used by the fusion center to make inferences of a private nature that the sensors wish to protect. To model this, we adopt a decentralized hypothesis testing framework with binary public and private hypotheses. Each sensor makes a private observation and utilizes a local sensor decision rule or privacy mapping to summarize that observation before sending it to the fusion center. Without assuming knowledge of the joint distribution of the sensor observations and hypotheses, we adopt a nonparametric learning approach to design local privacy mappings. We introduce the concept of an empirical normalized risk, which provides a theoretical guarantee for the network to achieve information privacy for the private hypothesis with high probability when the number of training samples is large. We develop iterative optimization algorithms to determine an appropriate privacy threshold and the best sensor privacy mappings, and show that they converge. Numerical results on both synthetic and real data sets suggest that our proposed approach yields low error rates for inferring the public hypothesis, but high error rates for detecting the private hypothesis.
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="paper">
+                        <a href="publications.html#Conf2017">M. Sun and W. P. Tay, “Inference and data privacy in IoT networks,” in Proc. IEEE Workshop on Signal Processing Advances in Wireless Commun., Hokkaido, Japan, Jul. 2017, <strong>invited paper</strong>
+                        </a>
+                        <div class="paper_abstract">
+                            We consider an Internet of Things network consisting of multiple sensors, each making a private observation and sending information to a fusion center. The fusion center uses the received information to infer a public hypothesis of interest. However, privacy of the network needs to be preserved. We categorize privacy into inference privacy and data privacy. Inference privacy is preventing the fusion center from using its received information to accurately infer another private hypothesis, while data privacy refers to preventing the fusion center from knowing the private observation of each individual sensor. We discuss the relationship between various privacy metrics proposed in the literature, and show that inference and data privacy are in general not equivalent. We then propose a nonparametric optimization framework, which incorporates both inference and data privacy metrics, to design privacy mappings for the sensors without prior knowledge of the sensor observations' distribution. Simulation results demonstrate that our proposed approach allows the fusion center to accurately infer the public hypothesis while making it difficult to infer the private hypothesis and keeping the mutual information between the information sent by each sensor and its private observation low.
+                        </div>
+                    </div>
+                </li>				
+                <li>
+                    <div class="paper">
+                        <a href="publications.html#Conf2017">X. He and W. P. Tay, “Multilayer sensor network for information privacy,” in Proc. IEEE Int. Conf. Acoustics, Speech, and Signal Processing, New Orleans, USA, Mar. 2017.
+                        </a>
+                        <div class="paper_abstract">
+                            A sensor network wishes to transmit information to a fusion center to allow it to detect a public hypothesis, but at the same time prevent it from inferring a private hypothesis. We propose a multilayer sensor network structure, where each sensor first applies a nonlinear fusion function on the information it receives from sensors in a previous layer, and then a linear weighting matrix to distort the information it sends to sensors in the next layer. We adopt a nonparametric approach and develop an algorithm to optimize the weighting matrices so as to ensure that the regularized empirical risk of detecting the private hypothesis is above a given privacy threshold, while minimizing the regularized empirical risk of detecting the public hypothesis. Simulations on a synthetic dataset and an empirical experiment demonstrate that our approach is able to achieve a better trade-off between the error rates of the public and private hypothesis than using only linear precoding to achieve information privacy.
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="paper">
+                        <a href="publications.html#Conf2016">X. He, W. P. Tay, and M. Sun, “Privacy-aware decentralized detection using linear precoding,” in Proc. IEEE Sensor Array and Multichannel Signal Processing Workshop, Rio de Janeiro, Brazil, Jul. 2016.
+                        </a>
+                        <div class="paper_abstract">
+                            We study a nonparametric decentralized detection problem in which sensors send information to a fusion center that uses a support vector machine to make decisions about a public hypothesis. However, the same sensor information may also be used by the fusion center to infer about a private hypothesis, which the sensors wish to protect. To ensure \emph{information privacy} (as opposed to data privacy), sensors perform linear precoding on their data. We develop an algorithm to optimize the precoder matrices in order to ensure that the empirical risk of detecting the private hypothesis is above a given threshold, while minimizing the empirical regularized risk of detecting the public hypothesis. Simulation results with both synthetic and real data sets demonstrate that our approach is able to ensure information privacy.
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="body_modal" id="body_modal3">
+    <div class="body_modal_wrap">
+        <div class="paper_wrap">
+            <div class="topic"></div>
+            <ul>
+				<li>
+                    <div class="paper">
+                        <a href="publications.html#HoTayQue:J15">J. Ho, W. P. Tay, T. Q. S. Quek, and E. K. P. Chong, "Robust decentralized detection and social learning in tandem networks," <em>IEEE Trans. Signal Process.</em>,  vol. 63, no. 19, pp. 5019 – 5032, Oct. 2015.
+                        </a>
+                        <div class="paper_abstract">
+                            We study a tandem of agents who make decisions about an underlying binary hypothesis, where the distribution of the agent observations under each hypothesis comes from an uncertainty class. We investigate both decentralized detection rules, where agents collaborate to minimize the error probability of the final agent, and social learning rules, where each agent minimizes its own local minimax error probability. We then extend our results to the infinite tandem network, and derive necessary and sufficient conditions on the uncertainty classes for the minimax error probability to converge to zero when agents know their positions in the tandem. On the other hand, when agents do not know their positions in the network, we study the cases where agents collaborate to minimize the asymptotic minimax error probability, and where agents seek to minimize their worst-case minimax error probability (over all possible positions in the tandem). We show that asymptotic learning of the true hypothesis is no longer possible in these cases, and derive characterizations for the minimax error performance.
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="paper">
+                        <a href="publications.html#Tay:J15">W. P. Tay, "Whose opinion to follow in multihypothesis social learning? A large deviations perspective," <em>IEEE J. Sel. Topics Signal Process.</em>, vol. 9, no. 2, pp. 344–359, Mar. 2015.
+                        </a>
+                        <div class="paper_abstract">
+                            We consider a multihypothesis social learning problem in which an agent has access to a set of private observations and chooses an opinion from a set of experts to incorporate into its final decision. To model individual biases, we allow the agent and experts to have general loss functions and possibly different decision spaces. We characterize the loss exponents of both the agent and experts, and provide an asymptotically optimal method for the agent to choose the best expert to follow. We show that up to asymptotic equivalence, the worst loss exponent for the agent is achieved when it adopts the 0-1 loss function, which assigns a loss of 0 if the true hypothesis is declared and a loss of 1 otherwise. We introduce the concept of hypothesis-loss neutrality, and show that if the agent adopts a particular policy that is hypothesis-loss neutral, then it ignores all experts whose decision spaces are smaller than its own. On the other hand, if experts have the same decision space as the agent, then choosing an expert with the same loss function as itself is not necessarily optimal for the agent, which is somewhat counter-intuitive. We derive sufficient conditions for when it is optimal for the agent with 0-1 loss function to choose an expert with the same loss function.
+                        </div>
+                    </div>
+                </li>
+				<li>
+                    <div class="paper">
+                        <a href="publications.html#LenTayQue:J15"> M. Leng, W. P. Tay, T. Q. S. Quek, and H. Shin, "Distributed local linear parameter estimation using Gaussian SPAWN," <em>IEEE Trans. Signal Process.</em>, vol. 63, no. 1, pp. 244–257, Jan 2015.
+                        </a>
+                        <div class="paper_abstract">
+                            We consider the problem of estimating local sensor parameters, where the local parameters and sensor observations are related through linear stochastic models. We study the Gaussian Sum-Product Algorithm over a Wireless Network (gSPAWN) procedure. Compared with the popular diffusion strategies for performing network parameter estimation, whose communication cost at each sensor increases with increasing network density, gSPAWN allows sensors to broadcast a message whose size does not depend on the network size or density, making it more suitable for applications in wireless sensor networks. We show that gSPAWN converges in mean and has mean-square stability under some technical sufficient conditions, and we describe an application of gSPAWN to a network localization problem in non-line-of-sight environments. Numerical results suggest that gSPAWN converges much faster in general than the diffusion method, and has lower communication costs per sensor, with comparable root mean square errors.
+                        </div>
+                    </div>
+                </li>
+				<li>
+                    <div class="paper">
+                        <a href="publications.html#Tay:J12"> W. P. Tay, “The value of feedback in decentralized detection,” 
+		                <em>IEEE Trans. Inf. Theory</em>,  vol. 58 , no. 12, pp. 7226–7239, Dec. 2012.
+                        </a>
+                        <div class="paper_abstract">
+                            We consider the decentralized binary hypothesis testing problem in networks with feedback, where some or all of the sensors have access to compressed summaries of other sensors' observations. We study certain two-message feedback architectures, in which every sensor sends two messages to a fusion center, with the second message based on full or partial knowledge of the first messages of the other sensors. We also study one-message feedback architectures, in which each sensor sends one message to a fusion center, with a group of sensors having full or partial knowledge of the messages from the sensors not in that group. Under either a Neyman-Pearson or a Bayesian formulation, we show that the asymptotically  optimal (in the limit of a large number of sensors) detection performance (as quantified by error exponents) does not benefit from the feedback messages, if the fusion center remembers all sensor messages. However, feedback can improve the Bayesian detection performance in the one-message feedback architecture if the fusion center has limited memory; for that case, we determine the corresponding optimal error exponents. 
+                        </div>
+                    </div>
+                </li>
+				<li>
+                    <div class="paper">
+                        <a href="publications.html#TayTsiWin:J08b"> W. P. Tay, J. N. Tsitsiklis, and M. Z. Win, “Data fusion trees for detection: does architecture matter?” <em>IEEE Trans. Inf. Theory</em>, vol. 54, no. 9, pp. 4155–4168, Sep. 2008.
+                        </a>
+                        <div class="paper_abstract">
+                            We consider the problem of decentralized detection in a network consisting of a large number of nodes arranged as a tree of bounded height, under the assumption of conditionally independent, identically distributed observations. We characterize the optimal error exponent under a Neyman-Pearson formulation. We show that the Type II error probability decays exponentially fast with the number of nodes, and the optimal error exponent is often the same as that corresponding to a parallel configuration. We provide sufficient, as well as necessary, conditions for this to happen. For those networks satisfying the sufficient conditions, we propose a simple strategy that nearly achieves the optimal error exponent, and in which all non-leaf nodes need only send 1-bit messages.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="body_modal" id="body_modal4">
+    <div class="body_modal_wrap">
+        <div class="paper_wrap">
+            <div class="topic"></div>
+            <ul>
+                <li>
+                    <div class="paper">
+                        <a href="publications.html#WanTayHu:J17"> Y. Wang, W. P. Tay, and W. Hu, "A multitask diffusion strategy with optimized inter-cluster cooperation,"<em> IEEE J. Sel. Topics Signal Process.</em>, vol. 11, no. 3, pp. 504 – 517, Mar. 2017.
+                        </a>
+                        <div class="paper_abstract">
+                            We consider a multitask estimation problem where nodes in a network are divided into several connected clusters, with each cluster performing a least-mean-squares estimation of a different random parameter vector. Inspired by the adapt-then-combine diffusion strategy, we propose a multitask diffusion strategy whose mean stability can be ensured whenever individual nodes are stable in the mean, regardless of the inter-cluster cooperation weights. In addition, the proposed strategy is able to achieve an asymptotically unbiased estimation, when the parameters have same mean. We also develop an inter-cluster cooperation weights selection scheme that allows each node in the network to locally optimize its inter-cluster cooperation weights. Numerical results demonstrate that our approach leads to a lower average steady-state network mean-square deviation, compared with using weights selected by various other commonly adopted methods in the literature.
+                        </div>
+                    </div>
+                </li>
+				<li>
+                    <div class="paper">
+                        <a href="publications.html#HuTay:J15"> W. Hu and W. P. Tay, "Multi-hop diffusion LMS for energy-constrained distributed estimation," <em>IEEE Trans. Signal Process.</em>, vol. 63, no. 15, pp. 4022 – 4036, Aug. 2015.
+                        </a>
+                        <div class="paper_abstract">
+                            We propose a multi-hop diffusion strategy for a sensor network to perform distributed least mean-squares (LMS) estimation under local and network-wide energy constraints. At each iteration of the strategy, each node can combine intermediate parameter estimates from nodes other than its physical neighbors via a multi-hop relay path. We propose a rule to select combination weights for the multi-hop neighbors, which can balance between the transient and the steady-state network mean-square deviations (MSDs). We study two classes of networks: simple networks with a unique transmission path from one node to another, and arbitrary networks utilizing diffusion consultations over at most two hops. We propose a method to optimize each node's information neighborhood subject to local energy budgets and a network-wide energy budget for each diffusion iteration. This optimization requires the network topology, and the noise and data variance profiles of each node, and is performed offline before the diffusion process. In addition, we develop a fully distributed and adaptive algorithm that approximately optimizes the information neighborhood of each node with only local energy budget constraints in the case where diffusion consultations are performed over at most a predefined number of hops. Numerical results suggest that our proposed multi-hop diffusion strategy achieves the same steady-state MSD as the existing one-hop adapt-then-combine diffusion algorithm but with a lower energy budget.
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="paper">
+                         <a href="publications.html#TanTayQue:J15"> J. Tang, W. P. Tay, and T. Q. S. Quek, "Cross-layer resource allocation with elastic service scaling in cloud radio access network," <em>IEEE Trans. Wireless Commun.</em>, vol. 14, no. 9, pp. 5068 – 5081, Sep. 2015.</a>
+                        
+                        <div class="paper_abstract">
+                           Cloud radio access network (C-RAN) aims to improve spectrum and energy efficiency of wireless networks by migrating conventional distributed base station functionalities into a centralized cloud baseband unit (BBU) pool. We propose and investigate a cross-layer resource allocation model for C-RAN to minimize the overall system power consumption in the BBU pool, fiber links and the remote radio heads (RRHs). We characterize the cross-layer resource allocation problem as a  mixed-integer nonlinear programming (MINLP), which jointly considers elastic service scaling, RRH selection, and joint beamforming. The MINLP is however a combinatorial optimization problem and NP-hard. We relax the original MINLP problem into an extended sum-utility maximization (ESUM) problem, and propose two different solution approaches. We also propose a low-complexity Shaping-and-Pruning (SP) algorithm to obtain a sparse solution for the active RRH set. Simulation results suggest that the average sparsity of the solution given by our SP algorithm is close to that obtained by a recently proposed greedy selection algorithm, which has higher computational complexity. Furthermore, our proposed cross-layer resource allocation is more energy efficient than the greedy selection and successive selection algorithms.
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="paper">
+                        <a href="publications.html#ZhaTayLi:J14">Y. Zhang, W. P. Tay, K. H. Li, and D. Gaiti, “Distributed boundary estimation for spectrum sensing in cognitive radio networks,” <em>IEEE J. Sel. Areas Commun.</em>,  vol. 32, no. 11, pp. 1961–1973, Nov. 2014.</a>
+                        
+                        <div class="paper_abstract">
+                           In a cognitive radio network, a primary user (PU) shares its spectrum with secondary users (SUs) temporally and spatially, while allowing for some interference. We consider the problem of estimating the no-talk region of the PU, i.e., the region outside which SUs may utilize the PU's spectrum regardless of whether the PU is transmitting or not. We propose a distributed boundary estimation algorithm that allows SUs to estimate the boundary of the no-talk region collaboratively through message passing between SUs, and analyze the trade-offs between estimation error, communication cost, setup complexity, throughput and robustness. Simulations suggest that our proposed scheme has better estimation performance and communication cost trade-off compared to several other alternative benchmark methods, and is more robust to SU sensing errors, except when compared to the least squares support vector machine approach, which however incurs a much higher communication cost.
+                        </div>
+                    </div>
+                </li>				
+                <li>
+                    <div class="paper">
+                        <a href="publications.html#SohTayQue:J13">D. W. Soh, W. P. Tay, and T. Q. S. Quek, “Randomized information dissemination in dynamic environments,” <em>IEEE/ACM Trans. Netw.</em>, vol. 21, no. 3, pp. 681–691, Jun. 2013.
+                        </a>
+                        <div class="paper_abstract">
+                            We consider randomized broadcast or information dissemination in wireless networks with switching network topologies. We show that an upper bound for the $\epsilon$-dissemination time consists of the conductance bound for a network without switching, and an adjustment that accounts for the number of informed nodes in each period between topology changes. Through numerical simulations, we show that our bound is asymptotically tight. We apply our results to the case of mobile wireless networks with unreliable communication links, and establish an upper bound for the dissemination time when the network undergoes topology changes and periods of communication link erasures. 
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="body_modal" id="body_modal5">
+    <div class="body_modal_wrap">
+        <div class="paper_wrap">
+            <div class="topic"></div>
+            <ul>
+			    <li>
+                    <div class="paper">
+                        <a href="publications.html#LenTayQui:J16"> M. Leng, W. P. Tay, F. Quitin, C. Cheng, S. G. Razul, and C. M. S. See, "Anchor-aided Joint localization and synchronization using SOOP: Theory and experiments," <em>IEEE Trans. Wireless Commun.</em>,  vol. 15, no. 11, pp. 7670 – 7685, Nov. 2016.
+                        </a>
+                        <div class="paper_abstract">
+                            We consider the problem of tracking a receiver using signals-of-opportunity (SOOPs) from beacons and a reference anchor with known positions and velocities, and where all devices have asynchronous local clocks or oscillators. We model the clock drift at individual devices by a two-state model with unknown clock offset and clock skew, and analyze the biases introduced by clock asynchronism in the received signals. Based on an extended Kalman filter, we propose a sequential estimator to jointly track the receiver location, velocity, and its clock parameters using altitude information together with time-difference-of-arrival and frequency-difference-of-arrival measurements obtained from the SOOP samples collected by the receiver and a reference anchor. The receiver was implemented on a software defined radio testbed, and field experiments are carried out using Iridium satellites as the SOOP beacons. Experiment and simulation results demonstrate that our measurement model has a good fit, and our proposed estimator can successfully track both the receiver location, velocity, and the relative clock offset and skew with respect to the reference anchor with good accuracy. 
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="paper">
+                        <a href="publications.html#XuQuiLen:J15"> W. Xu, F. Quitin, M. Leng, W. P. Tay, and S. G. Razul, "Distributed localization of a RF target in NLOS environments," <em>IEEE J. Sel. Areas Commun.</em>,  vol. 33, no. 7, pp. 1 – 14, Jul. 2015.
+                        </a>
+                        <div class="paper_abstract">
+                            We propose a novel distributed expectation maximization (EM) method for non-cooperative RF target localization using a wireless sensor network. We consider the scenario where few or no sensors receive line-of-sight signals from the target. In the case of non-line-of-sight signals, the signal path consists of a single reflection between the transmitter and receiver. Each sensor is able to measure the time difference of arrival of the target's signal with respect to a reference sensor, as well as the angle of arrival of the target's signal. We derive a distributed EM algorithm where each node makes use of its local information to compute summary statistics, and then shares these statistics with its neighbors to improve its estimate of the target localization. We show that our distributed algorithm converges, and simulation results suggest that our method achieves an accuracy close to the centralized EM algorithm. We apply the distributed EM algorithm to a set of experimental measurements with a network of four nodes, which confirm that the algorithm is able to localize a RF target in a realistic non-line-of-sight scenario. 
+                        </div>
+                    </div>
+                </li>
+				<li>
+                    <div class="paper">
+                        <a href="publications.html#Conf2015">Z. Madadi, F. Quitin, and W. P. Tay, “Periodic RF transmitter geolocation using a mobile receiver,” in Proc. IEEE Int. Conf. Acoustics, Speech, and Signal Processing, Brisbane, Australia, Apr. 2015.
+                        </a>
+                        
+                        <div class="paper_abstract">
+                           In this paper we propose a method to localize a periodic RF transmitter using a single mobile receiver. The receiver measures the time-of-arrival (TOA) of the periodic messages at different locations along its trajectory. By comparing the TOA of successive messages at different points along its trajectory, the receiver can eventually estimate the transmitter location. The challenge lies in separating the time offset due to receiver movement from that caused by local oscillator~(LO) drift. We propose an extended Kalman filter framework that estimates the LO drift and the transmitter location simultaneously, using the TOA measurements and the receiver location as inputs. The proposed algorithm is implemented and tested on a software-defined radio testbed, and experimental results demonstrate that the proposed method is able to simultaneously locate the transmitter and estimate the LO drift with good accuracy. 
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="paper">
+                        <a href="publications.html#LenTaySee:J14"> M. Leng, W. P. Tay, C. M. S. See, S. G. Razul, and M. Z. Win, “Modified CRLB for cooperative geolocation of two devices using signals of opportunity,” <em>IEEE Trans. Wireless Commun.</em>, vol. 13, no. 7, pp. 3636 – 3649, Jul. 2014.
+                        </a>
+                        <div class="paper_abstract">
+                            We consider the problem of localizing two devices using signals of opportunity from beacons with known positions. Beacons and devices have asynchronous local clocks or oscillators with unknown clock skews and offsets. We model clock skews as random, and analyze the biases introduced by clock asynchronism in the received signals. By deriving the equivalent Fisher information matrix for the modified Bayesian Cram\'er-Rao lower bound (CRLB) of device position and velocity estimation, we quantify the errors caused by clock asynchronism. We propose an algorithm based on differential time-difference-of-arrival and frequency-difference-of-arrival that mitigates the effects of clock asynchronism to estimate the device positions and velocities. Simulation results suggest that our proposed algorithm is robust and approaches the CRLB when clock skews have small standard deviations.
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="wrapper960" class="clearfix">
+	<div id="toplinks">
+		<ul class="toplinks_links">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="members.html">Members</a></li>
+			<li><a href="research.html">Research</a></li>
+			<li><a href="publications.html">Publications</a></li>
+		</ul>
+	</div>
+
+	<div id="header" class="content clearfix shadow">
+		<h1>Research Areas</h1>
+		<br>
+		<br>
+		<br>
+
+
+            <p><img src="images/research/wordcloud.png" width="640" style="display: block; margin-left: auto; margin-right: auto; text-align: center;"></p>
+			<p>
+			The main focus of our research is in network information and signal processing. Our work lies at the intersection of information theory with signal processing. We develop inference, estimation and learning algorithms for sensor and social networks through the use of mathematical, statistical, and information-theoretic techniques. Of particular interest are tractable stochastic models that provide us with useful insights into the management, operation and performance of sensor networks. Where applicable, we develop simple, scalable and easy to implement distributed algorithms to facilitate inference, estimation or other objectives.
+			</p>
+
+        <p>We thank our following sponsors.</p>
+            <p style="text-align:center; margin-left: auto; margin-right: auto;">
+                <img src="images/sponsors/FSTD.jpg" width="150" height="100">&nbsp;
+                <img src="images/sponsors/DSO.jpg" width="150" height="100">&nbsp;
+                <img src="images/sponsors/MOE.jpg"width="150" height="100">&nbsp;
+                <img src="images/sponsors/EDB.jpg"width="150" height="100">&nbsp;
+            </p> 
+
+            <p style="text-align:center; margin-left: auto; margin-right: auto;">
+                <img src="images/sponsors/NRF.jpg"width="260" height="100">&nbsp;
+                <img src="images/sponsors/NTU.jpg" width="230" height="100">
+            </p> 
+
+
+	</div>
+
+	<div class="content clearfix shadow">
+        <div class="display_element" id="topic1">
+		    <h3 class="emph" id="topictitle1">Network Infection Source Estimation</h3>
+        </div>
+		<div class="main left">
+		<p> 
+         We develop statistical inference methods to identify infection sources in a network. Many practical scenarios can be modeled as an infection spreading from one node to another in a network of interconnected nodes. Examples include the spreading of a contagious disease in a community, the propagation of a virus in a computer network, and the spreading of a rumor among participants in a social network. Identifying the sources of an infection plays an important role in many applications, including finding the index cases that introduce a contagious disease into a population network to facilitate epidemiological studies, identifying the servers that inject a computer virus into a computer network so as to determine the latent points of weaknesses in the network, or to apprehend the individuals who started a malicious rumor in a social network. In this work, we develop methods to identify infection sources and jointly detect the infection spreading. Examples of our research achievements include:
+            <ul>
+                <li>a method for estimating the number of infection sources and their identities under the SI infection model, which is provably asymptotically correct for the class of geometric trees</li>
+                <li>theoretical understanding and proof that the Jordan center estimator is optimal in a universal sense for SI, SIR, SIRI and SIS infection models under certain technical conditions</li>
+                <li>optimal strategies for infection spreading and source identification</li>
+				<li>an algorithmic framework to estimate number of sources and source identities when each source may start infection spreading at a different time or at a different rate</li>
+            </ul>
+        </p>
+			<div class="inner">
+				<img src="images/research/infection.jpg" style="float: left; width: 40%; margin-right: 2%; margin-bottom: 0.5em;">
+				<img src="images/research/cascading_power_outage.png" style="float: left; width: 58%; margin-right: 0%; margin-bottom: 0.5em;">
+			</div>
+		</div>
+
+        <div class="sidebar right">
+			<div class="inner">
+				<img src="images/research/SARS.png" width="280" height="400" class="aligncenter">
+			</div>
+		</div>
+
+        <div class="selectedpub display_element" id="SelectedPub1">
+		    Selected publications
+        </div>		
+
+	</div>
+
+	<div class="content clearfix shadow">
+        <div class="display_element" id="topic2">
+		    <h3 class="emph" id="topictitle2">Privacy for IoT Networks</h3>
+        </div>
+		<p> 
+		With the ubiquitous adoption of Internet of Things (IoT) devices like on-body sensors, smart home appliances, and smart phones, massive amounts of data about users’ habits, routines and preferences are being collected by service providers. While such data are utilized by service providers to improve the quality of life, e.g., by making building heating and ventilation systems more intelligent and adaptive, the same data can also be exploited to learn users’ private behaviors, habits and lifestyle choices. For consumers to widely adopt IoT systems, privacy protection mechanisms are a necessary feature of future IoT products. An example is the deployment of home-monitoring video cameras in old folks' homes for fall detection. If the cameras transmit the raw video feed to a fusion center, the fusion center can not only use these video feeds for fall detection, but also has the potential to intrude on the privacy of the home inhabitants. The camera sensors therefore need to perform intelligent observation summary with a suitable privacy mapping in order to limit the amount and quality of information they send to the fusion center.
+		
+		In this project, we investigate the concept of information privacy for IoT systems, as opposed to data privacy, and develop information privacy-aware inference algorithms for IoT systems.  Examples of our research achievements include:
+            <ul>
+                <li>We have developed a nonparametric approach to design privacy mappings at sensors without prior knowledge of the sensor observation distributions</li>
+                <li>We have derived a privacy criterion that guarantees information privacy. In particular, we show that the traditional empirical risk minimization approach does not achieve information privacy.</li>
+                <li>We have developed simple linear precoders with low complexity and multilayered networks to achieve information privacy for IoT networks.</li>
+            </ul>
+        </p>
+			<div class="inner">
+				<img src="images/research/information_privacy.png" style="float: left; width: 60%; margin-right: 2%; margin-bottom: 0.5em;">
+			</div>
+
+        <div class="selectedpub display_element" id="SelectedPub2">
+		    Selected publications
+        </div>		
+
+	</div>
+	
+	
+	
+	<div class="content clearfix shadow">
+        <div class="display_element" id="topic3">
+		    <h3 class="emph" id="topictitle3">Inference and Learning over Networks</h3>
+        </div>
+		<div class="main left">
+		<p> 
+         In distributed inference over a network, each agent makes an observation and sends a summary of its observation to a fusion center or another agent. The goal of the network is to cooperatively make a decision from a given set of hypotheses, based on the agent messages. Various important applications in environment monitoring, intrusion detection, cognitive radio systems, and big data analytics can be formulated as distributed inference problems or have subroutines that involve distributed decision making. Finding optimal strategies for distributed inference in various network architectures, and quantifying their performance is a challenging problem, because the difficulty increases exponentially with the number of agents. We investigate strategies for distributed inference under various constraints, analyze the fundamental performance achievable, and propose simple and scalable strategies that are often asymptotically optimal. Examples of our research achievements include:
+            <ul>
+                <li>a fundamental understanding of the performance of decentralized detection in different types of networks like the tree and tandem networks</li>
+                <li>a fundamental understanding of the use of feedback for decentralized decision making and data fusion</li>
+                <li>asymptotically optimal strategies to achieve the best detection performance</li>
+                <li>a fundamental understanding of detection performance when perfect knowledge of the underlying distributions is not available</li>
+				<li>distributed local linear parameter estimation method with fast convergence and steady-state MSD comparable with current state-of-the-art</li>
+            </ul>
+        </p>
+        <p>
+         Social learning is the use of social networks (including online networks like Facebook and Twitter, and physical networks formed using an ad hoc mesh of smart phones) to perform event detection and inference. We develop a mathematical framework for robust learning in social networks, study the fundamental learning accuracy achievable in such networks, and propose methods for efficient robust social learning in the presence of misinformation and malicious agents. We aim to bridge the gaps in our current understanding of how learning or inference is impacted by misinformation or malicious agents in a social network. New algorithms and methods to enable robust social learning in a practical implementation will also be developed, and their performance verified through an agent based simulation platform. Examples of our research achievements include:
+            <ul>
+                <li>a fundamental understanding of which other agents' opinions to use when making a decision</li>
+                <li>a fundamental understanding of learning accuracy achievable under uncertainty distribution classes, and the robust learning strategies to use</li>
+            </ul>
+        </p>
+		</div>
+
+        <div class="sidebar right">
+			<div class="inner">
+				<img src="images/research/detection_networks.png" width="280" height="450" class="aligncenter">
+			</div>
+		</div>
+
+        <div class="selectedpub display_element" id="SelectedPub3">
+		    Selected publications
+        </div>
+
+	</div>
+
+
+	<div class="content clearfix shadow">
+        <div class="display_element" id="topic4">
+		    <h3 class="emph" id="topictitle4">Network Optimization</h3>
+        </div>
+
+        <div class="column2 left">
+			<div class="inner">
+				<img src="images/research/mATC.png" width="400" height="400" class="aligncenter">
+			</div>
+		</div>
+
+       <div class="column2 right">
+		<p> 
+            Devices that can react to their environments and perform various functions like monitoring, detection, security and automation are expected to reach 50 billion by 2020. In cloud computing, computing resources are shared amongst many virtual machines (VMs), which can collaborate with each other. We can think of the VMs forming a large network of compute nodes. One of our main research interests is to develop optimization methods that can be practically applied in large-scale networks to enhance their operations and make them more energy efficient. Examples of our research achievements include:
+            <ul>            
+                <li>We have developed a multi-hop diffusion strategy that optimizes a sensor network configuration to perform distributed least mean-squares estimation under local and network-wide energy constraints.</li>
+                <li>We have designed a distributed boundary learning methods with applications in cognitive radio spectrum usage for IoT devices</li>
+				<li>
+				Cloud radio access network (C-RAN) aims to improve spectrum and energy efficiency of wireless networks by migrating conventional distributed base station functionalities into a centralized cloud baseband unit (BBU) pool. We have designed algorithms to optimally redirect user requests to multiple VMs in the BBU pool, which  elastically scale their service capacities in order to minimize a cost function that includes service response times, computing costs, and routing costs.
+				</li>
+  
+            </ul>
+        </p>
+
+        <div class="selectedpub display_element" id="SelectedPub4">
+		    Selected publications
+        </div>
+	    </div>
+
+    </div>
+
+	<div class="content clearfix shadow">
+        <div class="display_element" id="topic5">
+		    <h3 class="emph" id="topictitle5">Distributed and Cooperative Localization and Tracking</h3>
+        </div>
+
+		<p>
+		Efficiently localizing a network of devices has increasing importance for practical deployment of sensor networks in urban environments. We consider the problem of localization and tracking of all sensors and targets in a wireless sensor network using distributed and cooperative algorithms that allow the network of sensors to perform self-localization and target tracking robustly. We investigate various issues including the lack of synchronization amongst sensors and beacons, availability of only NLOS signals, and multipath effects. 
+		</p>
+
+        <div>
+            <div class="column2 left">
+		    <p> 
+             We investigate vehicle-to-vehicle (V2V) and vehicle-to-infrastructure (V2I) vehicular localization techniques. While GNSS devices can provide accurate location estimates in an open environment, an accurate GNSS fix occurs only if the device has line of sight to at least four GNSS satellites. In an urban environment with high rise buildings, ground vehicles typically do not have direct lines of sight to so many GNSS satellites; therefore GNSS localization becomes intermittent or even corrupted in some cases. We aim to investigate the use of cooperative localization methods that make use of V2X message passing techniques based on DSRC in order to perform vehicular localization under GNSS denied scenarios.
+            </p>
+ 		    </div>
+
+            <div class="column2 right">
+			    <div class="inner">
+				    <img src="images/research/V2X_localization.png" width="400" height="350" class="aligncenter">
+			    </div>
+		    </div>
+
+	    </div>
+
+        <div>
+		    <p> 
+             We develop robust methods for self-localization of sensors in urban environments without the use of GNSS. We investigate the use of multiple beacons with known nominal locations, velocities and frequencies without assuming that clocks on beacons and sensors are synchronized. We investigate methods to mitigate errors and uncertainties in the beacons' locations, velocities and frequencies of transmission. We also develop a test-bed based on signals of opportunity from commercial satellite systems. 
+            </p>
+			<div class="inner">
+				<img src="images/research/Iridium.png" width="600" class="aligncenter">
+			</div>
+        </div>
+
+        <div>
+            <div class="column2 left">
+		    <p> 
+             In an urban environment, there is often no line of sight from a sensor to a target. There is often a need to locate and track a target in an unfamiliar urban environment where precise information about the positions of buildings and other scatterers are not readily available. This project develops distributed estimation methods for localization and target tracking in urban environments using NLOS measurements, and local cooperation amongst sensors in a wireless sensor network. We have implemented our algorithms in a USRP test platform to determine the performance of our algorithms in real operating environments.
+            </p>
+ 		    </div>
+
+            <div class="column2 right">
+			    <div class="inner">
+				    <img src="images/research/USRP_MIMO.jpg" width="300" height="400" class="aligncenter">
+			    </div>
+		    </div>
+
+	    </div>
+
+        <div class="selectedpub display_element" id="SelectedPub5">
+		    Selected publications
+        </div>
+		
+	</div>
+
+
+
+	<div class="content clearfix shadow">
+		<h3 class="emph">Advanced Signal Processing, Inference and Optimization Applications</h3>
+		<p>
+		In these investigations, advanced signal processing, inference and optimization methods are applied to various applications. By making use of the fundamental results that we have developed in the other projects, we develop practical methods that are tested empirically in hardware platforms or verified through extensive simulations. 
+		</p>
+		
+		<ol>
+        <li>
+            <p>
+            We have developed algorithms for inferring who the starters of a rumor are in a social network, or which computers or servers introduced a virus into an intranet, or the index cases of a contagious disease spreading in a population. These are generically called infection sources, the identification of which plays a critical role in limiting the damage caused by the infection through timely quarantine of the sources. We have applied our algorithm to contact tracing data collected during the Severe Acute Respiratory Syndrome (SARS) epidemic in Singapore in 2003. The goal is to estimate the number of patient zeros and the identities of these index cases in a cluster of 193 patients. The algorithm correctly identifies the single patient zero that is present in this cluster. Similar good results are obtained when we apply our algorithms to identifying the initial sources of failure in the Arizona-Southern California cascading power outages in 2011.
+            </p>
+            <p>
+            We have also applied our algorithms to identifying influential nodes in a social network for a particular topic of interest. This also allows us to simulate the impact of a misinformation and counter-influence propagated from particular nodes in the network. (Joint work with Guevara Maria Katrina Derez and Tan Yap Peng.)
+            <p><img src="images/research/iMata_screen.png" width="800" height="600" class="aligncenter"></p>
+
+        </li>
+
+        <li>
+            <p>
+			To detect malicious insiders’ threats, we need to monitor not only the activities of each individual, but also the correlated behaviors and activities of other related individuals. For example, an employee with malicious intent may ask his/her co-workers to obtain sensitive information for him/her without subjecting himself/herself to any suspicions.</p> 
+			<p>
+            We have developed algorithms to learn the social and work relationships between individuals of an organization, their correlations to various servers and databases in the organization, and a neighborhood of each individual’s online social network. We call this a correlation graph, which is a multipartite weighted graph whose edges have weights representing the degree of correlation between the different vertices. 
+            </p>
+            <p><img src="images/research/correlation_graph.png" style="float: left; width: 50%; margin-right: 2%; margin-bottom: 0.5em;"></p>			
+        </li>
+
+<!--		
+		<li>
+		<p>We have developed a novel hidden Markov model (HMM) based technique using UWB signals to monitor the respiratory movements of a patient, and to help medical professionals in detecting sleep disordered breathing. In this work, a multiple-input and multiple-output (MIMO) based IR UWB sleep monitoring system is developed. Multiple sensors are placed at different locations to ensure that the backscatter signal could be detected by at least one sensor. HMM is used to model the movement of the chest during respiration, while we adopt the perfect simulation approach in identifying disordered breathing episodes. This research is conducted in collaboration with the National University Hospital, Singapore.
+		</p>
+		<ul>
+			<li>
+            <a href="publications.html#NijTayGun:J13"> Y. Nijsure, W.P. Tay, E. Gunawan, F. Wen, Z. Yang, Y. L. Guan, and A.P. Chua, "An impulse radio ultra wideband system for contactless non-invasive respiratory monitoring, <em>IEEE Trans. Biomed. Eng.</em>, vol. 60, no. 6, pp. 1509-1517, Jun. 2013.</a>
+			</li>
+		</ul>        
+        <p><img src="images/research/respiratory.png" width="300" height="250" class="aligncenter"></p>    		
+		</li>
+		
+		<li>
+		<p>
+		Bayesian nonparametric methods allow us to perform inference when there is uncertainty about the underlying models that should be applied to the observed data. We investigate and develop Bayesian nonparametric methods for breast tumor detection using UWB radars. The most commonly used mammography procedure may be uncomfortable for many women, and exposes them to radiation risks as it employs ionizing radiation in very small quantities. On the other hand, UWB has very low power and is non-ionizing. It therefore complements existing imaging modalities in improving the rate of early detection of breast cancer. We develop a tumor detection and discrimination algorithm to process the backscattered signals from a UWB radar, and show that it achieves a better detection rate at the same SNR compared to current techniques.
+		</p>		
+		<ul>
+			<li>
+            <a href="publications.html#Conf2012">Y. Nijsure, W.P. Tay, E. Gunawan, and J.C.Y. Lai, “A Bayesian nonparametric approach to tumor detection using UWB imaging,” IEEE Int. Conf. on Ultra-Wideband, Jul. 2012.</a>
+			</li>
+		</ul>	
+        <p><img src="images/research/tumor.png" width="450" height="150" class="aligncenter"></p>    	
+		</li>	
+-->
+
+		</ol>
+
+	</div>
+
+
+</div>
+
+
+
+<script type="text/javascript" src="js/display_node.js"></script>
+
+<script type="text/javascript">
+	$(window).load(function() {
+		$('#slider').nivoSlider();
+	});
+</script>
+
+<!-- Default Statcounter code for NTU
+http://www.ntu.edu.sg/home/wptay -->
+<script type="text/javascript">
+var sc_project=8112787; 
+var sc_invisible=1; 
+var sc_security="3790af70"; 
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js"
+async></script>
+<noscript><div class="statcounter"><a title="Web Analytics"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="//c.statcounter.com/8112787/0/3790af70/1/" alt="Web
+Analytics"></a></div></noscript>
+<!-- End of Statcounter Code -->
+
+
+
+</body>
+</html>
