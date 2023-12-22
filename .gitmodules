@@ -1,0 +1,3 @@
+[submodule "SIGNAL"]
+	path = SIGNAL
+	url = https://github.com/wptay/SIGNAL.git
