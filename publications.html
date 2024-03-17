@@ -17,6 +17,12 @@
 	</script>
 
 	<script type="text/javascript">
+		function clickshow(articleid) {
+			var entry = document.getElementById(articleid);
+			if (entry) {
+				entry.className = 'entry show';
+			}
+		}
 
 		function toggleInfo(articleid, info) {
 
@@ -201,7 +207,16 @@
 
 		<pre id="publications" class="content clearfix shadow">
 			<!-- <a href="publications.html" class="fontgreen">Chronological</a> or <a href="research.html">By topics</a> -->
-
+			<div id="sublinks">
+				<ul class="sublinks_links">
+					<li><a href="#selected" onclick="javascript:clickshow('pubs_selected')">Selected</a></li>
+					<li><a href="https://github.com/wptay/SIGNAL">Code</a></li>
+					<li><a href="#book_chapters" onclick="javascript:clickshow('pubs_book')">Books</a></li>
+					<li><a href="#journals_full" onclick="javascript:clickshow('pubs_journals')">Journals</a></li>
+					<li><a href="#conferences" onclick="javascript:clickshow('pubs_conferences')">Conferences</a></li>
+					<li><a href="#technical">Others</a></li>
+				</ul>
+			</div>
 
 			<h2 id="selected"><a href="javascript:toggleInfo('selected','pubs')" style="color:#5c5a5a">Selected Publications</a></h2>
 			<table id="pubs_selected" class="pubs show" border="1">
@@ -961,7 +976,7 @@ address = {Vancouver, Canada},
 			</td>
 			</tr>
 
-			<tr id="LuoTayLen:J16s" class="entry bull">
+			<!-- <tr id="LuoTayLen:J16s" class="entry bull">
 			<td> W. Luo, W. P. Tay, and M. Leng,
 			"Infection spreading and source identification: A hide and seek game,"
 			<em>IEEE Transactions on Signal Processing</em>, vol. 64, no. 16, pp. 4338-4243, Aug. 2016.
@@ -985,7 +1000,7 @@ address = {Vancouver, Canada},
 			}
 			</pre>
 			</td>
-			</tr>
+			</tr> -->
 
 			<tr id="HoTayQue:J15s" class="entry bull">
 			<td> J. Ho, W. P. Tay, T. Q. S. Quek, and E. K. P. Chong,
@@ -3630,7 +3645,7 @@ doi = {10.1109/TGRS.2024.3351286},
 			</table>
 
 
-			<h2>Technical Reports</h2>
+			<h2 id="technical">Technical Reports</h2>
 			<ol>
 				<!--<li>X. He, M. Sun, and W. P. Tay, "Multilayer nonlinear processing for information privacy in sensor networks," Apr. 2018. <a href="https://arxiv.org/abs/1711.04459" target="_blank">[repo]</a>
 		</li>-->
@@ -3658,7 +3673,7 @@ doi = {10.1109/TGRS.2024.3351286},
 
 
 
-		</div>
+	</div>
 
 
 
