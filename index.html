@@ -10,11 +10,20 @@
 	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="js/jquery.nivo.slider.js"></script>
 	<title>SIGNAL - Wee Peng Tay</title>
+	<script type="text/javascript">
+		function redirectpublications(articleid)
+		{
+      window.location="publications.html#"+articleid; 
+      window.localStorage.setItem('click',true);
+			window.localStorage.setItem('id',articleid);
+		}
+	</script>
+
 	<style type="text/css">
         .auto-style1 {
             color: #FF3300;
         }
-    </style>
+  </style>
 	</head>
 
 <body>
@@ -79,8 +88,8 @@
 		<div id="trio3">
 			<div class="inner">
 				<h3><a href="publications.html">Publications</a></h3>
-				<p><a href="publications.html#selected">Selected publications</a>, <a href="publications.html#journals_full">full journal list</a>, 
-				<a href="publications.html#conferences">conferences</a>, <a href="publications.html#code_repo">code repository</a>.
+				<p><a href="publications.html#selected" onclick="redirectpublications('pubs_selected')">Selected publications</a>, <a href="publications.html#journals_full" onclick="redirectpublications('pubs_journals')">full journal list</a>, 
+				<a href="publications.html#conferences" onclick="redirectpublications('pubs_conferences')">conferences</a>, <a href="publications.html#code_repo">code repository</a>.
 				</p>
 			</div>
 		</div>
