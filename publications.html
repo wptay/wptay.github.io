@@ -41,7 +41,7 @@
 			var conf = document.getElementById('conf_' + articleid);
 
 			if (pubs && info == 'pubs') {
-				pubs.className.indexOf('noshow') == -1 ? pubs.className = 'pubs noshow' : pubs.className = 'journals show';
+				pubs.className.indexOf('noshow') == -1 ? pubs.className = 'pubs noshow' : pubs.className = 'pubs show';
 			} else if (abs && info == 'abstract') {
 				abs.className.indexOf('noshow') == -1 ? abs.className = 'abstract noshow nonum' : abs.className = 'abstract show nonum';
 			} else if (rev && info == 'review') {
@@ -220,6 +220,7 @@
 					<li><a href="https://github.com/wptay/SIGNAL">Code</a></li>
 					<li><a href="#book_chapters" onclick="javascript:clickshow('pubs_book')">Books</a></li>
 					<li><a href="#journals_full" onclick="javascript:clickshow('pubs_journals')">Journals</a></li>
+					<li><a href="#ml_full" onclick="javascript:clickshow('pubs_ml')">ML</a></li>
 					<li><a href="#conferences" onclick="javascript:clickshow('pubs_conferences')">Conferences</a></li>
 					<li><a href="#technical">Others</a></li>
 				</ul>
@@ -229,16 +230,43 @@
 			<table id="pubs_selected" class="pubs show" border="1">
 			<tbody>
 
-			<tr id="ZhaKanJi:C24" class="entry bull">
+			<tr id="FenJiaTay:J24s" class="entry bull">
+			<td>F. Ji, X. Jian, and W. P. Tay, 
+			“Modeling sparse graph sequences and signals using generalized graphons,” 
+			in <em>IEEE Transactions on Signal Processing</em>, 2024, in press.
+			<a href="https://ieeexplore.ieee.org/document/10726916" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2312.08124" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('FenJiaTay:J24s','bibbull')">bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_FenJiaTay:J24s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{FenJiaTay:J24,
+				author={Ji, Feng and Jian, Xingchao and Tay, Wee Peng},
+				journal=IEEE_J_SP, 
+				title={Modeling Sparse Graph Sequences and Signals Using Generalized Graphons}, 
+				year={2024},
+				volume={},
+				number={},
+				pages={},
+				doi={10.1109/TSP.2024.3482350},
+				note={in press},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="ZhaKanJi:C24s" class="entry bull">
 			<td>K. Zhao, Q. Kang, F. Ji, X. Li, Q. Ding, Y. Zhao, W. Liang, and W. P. Tay, 
 			“Distributed-order fractional graph operating network,” 
 			in <em>Advances in Neural Information Processing Systems (NeurIPS)</em>, Vancouver, Canada, Dec. 2024, <strong>spotlight</strong>.
 			<a href="https://openreview.net/pdf?id=kEQFjKqiqM" target="_blank">[pdf]</a>
 			<a href="https://openreview.net/forum?id=kEQFjKqiqM" target="_blank">[repo]</a>
-			[<a href="javascript:toggleInfo('ZhaKanJi:C24','bibbull')">bib</a>]
+			[<a href="javascript:toggleInfo('ZhaKanJi:C24s','bibbull')">bib</a>]
 			</td>
 			</tr>
-			<tr id="bib_ZhaKanJi:C24" class="bibtex noshow nonum">
+			<tr id="bib_ZhaKanJi:C24s" class="bibtex noshow nonum">
 			<td>
 			<pre>
 @INPROCEEDINGS{ZhaKanJi:C24,
@@ -635,7 +663,7 @@ address = {Vancouver, Canada},
 			</td>
 			</tr>
 
-			<tr id="LeeJiTay:C22s" class="entry bull">
+			<!-- <tr id="LeeJiTay:C22s" class="entry bull">
 			<td>S. H. Lee, F. Ji, and W. P. Tay, “SGAT: Simplicial graph attention network,”
 			<em>Proc. International Joint Conference on Artificial Intelligence (IJCAI)</em>, Vienna, Austria, Jul. 2022.
 			<a href="https://www.ijcai.org/proceedings/2022/443" target="_blank">[pdf]</a>
@@ -656,9 +684,9 @@ address = {Vancouver, Canada},
 			}
 			</pre>
 			</td>
-			</tr>
+			</tr> -->
 
-			<tr id="JiPraTay:J22s" class="entry bull">
+			<!-- <tr id="JiPraTay:J22s" class="entry bull">
 			<td>F. Ji, Pratibha, and W. P. Tay,
 			“Unlimited dynamic range signal recovery for folded graph signals,”
 			<em>Signal Processing</em>, vol. 198, p. 108574, 2022.
@@ -681,7 +709,7 @@ address = {Vancouver, Canada},
 			}
 			</pre>
 			</td>
-			</tr>
+			</tr> -->
 
 			<tr id="KanSonDinTay:C21s" class="entry bull">
 			<td>Q. Kang, Y. Song, Q. Ding, and W. P. Tay, “Stable neural ODE with Lyapunov-stable equilibrium points for defending against adversarial attacks,”
@@ -1434,16 +1462,45 @@ address = {Vancouver, Canada},
 			</tbody>
 			</table>
 
-
+			<table border="1"></table>
+			
 			<h2 id="journals_full"><a href="javascript:toggleInfo('journals','pubs')" style="color:#5c5a5a">Journals (Full List)</a></h2>
 			<table id="pubs_journals" class="pubs noshow" border="1">
 			<tbody>
+
+			<tr id="FenJiaTay:J24" class="entry num">
+			<td>F. Ji, X. Jian, and W. P. Tay, 
+			“Modeling sparse graph sequences and signals using generalized graphons,” 
+			in <em>IEEE Transactions on Signal Processing</em>, 2024, in press.
+			<a href="https://ieeexplore.ieee.org/document/10726916" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2312.08124" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('FenJiaTay:J24','bibtex')">bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_FenJiaTay:J24" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{FenJiaTay:J24,
+				author={Ji, Feng and Jian, Xingchao and Tay, Wee Peng},
+				journal=IEEE_J_SP, 
+				title={Modeling Sparse Graph Sequences and Signals Using Generalized Graphons}, 
+				year={2024},
+				volume={},
+				number={},
+				pages={},
+				doi={10.1109/TSP.2024.3482350},
+				note={in press},
+			}
+			</pre>
+			</td>
+			</tr>
 
 			<tr id="WanKanShe:J24" class="entry num">
 			<td>S. Wang, Q. Kang, R. She, K. Zhao, Y. Song, and W. P. Tay, 
 			“PRFusion: Toward effective and robust multi-modal place recognition with image and point cloud fusion,” 
 			<em>IEEE Transactions on Intelligent Transportation Systems</em>, in press.
 			<a href="https://ieeexplore.ieee.org/document/10704955" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2410.04939" target="_blank">[repo]</a>
 			[<a href="javascript:toggleInfo('WanKanShe:J24','bibtex')">bib</a>]
 			</td>
 			</tr>
@@ -3465,7 +3522,422 @@ doi = {10.1109/TGRS.2024.3351286},
 
 			<table border="1"></table>
 
-			<h2 id="conferences"><a href="javascript:toggleInfo('conferences','pubs')" style="color:#5c5a5a">Conferences</a></h2>
+			<h2 id="ml_full"><a href="javascript:toggleInfo('ml','pubs')" style="color:#5c5a5a">ML Conferences</a></h2>
+			<table id="pubs_ml" class="pubs noshow" border="1">
+			<tbody>
+
+			<tr id="ZhaKanJi:C24" class="entry num">
+			<td>K. Zhao, Q. Kang, F. Ji, X. Li, Q. Ding, Y. Zhao, W. Liang, and W. P. Tay, 
+			“Distributed-order fractional graph operating network,” 
+			in <em>Advances in Neural Information Processing Systems (NeurIPS)</em>, Vancouver, Canada, Dec. 2024, <strong>spotlight</strong>.
+			<a href="https://openreview.net/pdf?id=kEQFjKqiqM" target="_blank">[pdf]</a>
+			<a href="https://openreview.net/forum?id=kEQFjKqiqM" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('ZhaKanJi:C24','bibtex')">bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_ZhaKanJi:C24" class="bibtex noshow nonum">
+			<td>
+			<pre>
+@INPROCEEDINGS{ZhaKanJi:C24,
+author = {Kai Zhao and Qiyu Kang and Feng Ji and Xuhao Li and Qinxu Ding and Yanan Zhao and Wenfei Liang and Wee Peng Tay},
+title = {Distributed-Order Fractional Graph Operating Network},
+booktitle = {Advances in Neural Information Processing Systems},
+volume = {},
+pages = {},
+month = {Dec.},
+year = {2024},
+address = {Vancouver, Canada},
+}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="LeeJiXia:C24" class="entry num">
+			<td>S. H. Lee, F. Ji, K. Xia, and W. P. Tay, 
+			“Graph neural networks with a distribution of parametrized graphs,” 
+			in <em>Proc. International Conference on Machine Learning (ICML)</em>, Vienna, Austria, Jul. 2024.
+			<a href="https://openreview.net/pdf?id=VyfEv6EjKR" target="_blank">[pdf]</a>
+			<a href="https://openreview.net/forum?id=VyfEv6EjKR" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('LeeJiXia:C24','bibtex')">bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_LeeJiXia:C24" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@INPROCEEDINGS{LeeJiXia:C24,
+					author = {See Hian Lee and Feng Ji and Kelin Xia and Wee Peng Tay},
+					title = {Graph Neural Networks with a Distribution of Parametrized Graphs},
+					booktitle = {Proc. International Conference on Machine Learning},
+					volume = {},
+					pages = {},
+					month = {Jul.},
+					year = {2024},
+					series =  {Proc. Machine Learning Research},
+					publisher = {PMLR},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="KanZhaDin:C24" class="entry num">
+			<td>Q. Kang, K. Zhao, Q. Ding, F. Ji, X. Li, W. Liang, Y. Song, and W. P. Tay, 
+				“Unleashing the potential of fractional calculus in graph neural networks with FROND,” 
+				in <em>Proc. International Conference on Learning Representations (ICLR)</em>, Vienna, Austria, May 2024, <strong>spotlight</strong>.
+			<a href="https://openreview.net/forum?id=wcka3bd7P4" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2404.17099" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('KanZhaDin:C24','bibtex')">bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_KanZhaDin:C24" class="bibtex noshow nonum">
+			<td>
+			<pre>
+@INPROCEEDINGS{KanZhaDin:C24,
+    author = {Qiyu Kang and Kai Zhao and Qinxu Ding and Feng Ji and Xuhao Li and Wenfei Liang and Yang Song and Wee Peng Tay},
+    title={Unleashing the Potential of Fractional Calculus in Graph Neural Networks with {FROND}},
+    booktitle={Proc. International Conference on Learning Representations},
+    year={2024},
+    address = {Vienna, Austria},
+}
+			</pre>
+			</td>
+			</tr>
+
+
+			<tr id="ZhaKanSon:C24" class="entry num">
+			<td>Q. Kang, K. Zhao, Y. Song, Y. Xie, Y. Zhao, S. Wang, R. She, and W. P. Tay, 
+			“Coupling graph neural networks with fractional order continuous dynamics: A robustness study,” 
+			in <em>Proc. AAAI Conference on Artificial Intelligence (AAAI)</em>, Vancouver, Canada, Feb. 2024.
+			<a href="https://ojs.aaai.org/index.php/AAAI/article/view/29203" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2401.04331" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('ZhaKanSon:C24','bibtex')">bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_ZhaKanSon:C24" class="bibtex noshow nonum">
+			<td>
+			<pre>
+@INPROCEEDINGS{ZhaKanSon:C24,
+author = {Qiyu Kang and Kai Zhao and Yang Song and Yihang Xie and Yanan Zhao and Sijie Wang and Rui She and Wee Peng Tay},
+title = {Coupling Graph Neural Networks with Fractional Order Continuous Dynamics: {A} Robustness Study},
+booktitle = {Proc. AAAI Conference on Artificial Intelligence},
+volume = {},
+pages = {},
+month = {Feb.},
+year = {2024},
+address = {Vancouver, Canada},
+}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="SheWanKan:C24" class="entry num">
+			<td>R. She, S. Wang, Q. Kang, K. Zhao, Y. Song, W. P. Tay, T. Geng, and X. Jian, 
+			“PosDiffNet: Positional neural diffusion for point cloud registration in a large field of view with perturbations,” 
+			in <em>Proc. AAAI Conference on Artificial Intelligence (AAAI)</em>, Vancouver, Canada, Feb. 2024.
+			<a href="https://ojs.aaai.org/index.php/AAAI/article/view/27775" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2401.03167" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('SheWanKan:C24','bibtex')">bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_SheWanKan:C24" class="bibtex noshow nonum">
+			<td>
+			<pre>
+@INPROCEEDINGS{SheWanKan:C24,
+author = {Rui She and Sijie Wang and Qiyu Kang and Kai Zhao and Yang Song and Wee Peng Tay and Tianyu Geng and Xingchao Jian},
+title = {{PosDiffNet: Positional} Neural Diffusion for Point Cloud Registration in a Large Field of View with Perturbations},
+booktitle = {Proc. AAAI Conference on Artificial Intelligence},
+volume = {},
+pages = {},
+month = {Feb.},
+year = {2024},
+address = {Vancouver, Canada},
+}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="WanSheKan:C24" class="entry num">
+			<td>S. Wang, R. She, Q. Kang, X. Jian, K. Zhao, Y. Song, and W. P. Tay, 
+			“DistilVPR: Cross-Modal knowledge distillation for visual place recognition,” 
+			in <em>Proc. AAAI Conference on Artificial Intelligence (AAAI)</em>, Vancouver, Canada, Feb. 2024.
+			<a href="https://ojs.aaai.org/index.php/AAAI/article/view/28905/" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2312.10616" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('WanSheKan:C24','bibtex')">bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_WanSheKan:C24" class="bibtex noshow nonum">
+			<td>
+			<pre>
+@INPROCEEDINGS{WanSheKan:C24,
+author = {Sijie Wang and Rui She and Qiyu Kang and Xingchao Jian and Kai Zhao and Yang Song and Wee Peng Tay},
+title = {{DistilVPR}: {Cross-Modal} Knowledge Distillation for Visual Place Recognition},
+booktitle = {Proc. AAAI Conference on Artificial Intelligence},
+volume = {},
+pages = {},
+month = {Feb.},
+year = {2024},
+address = {Vancouver, Canada},
+}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="ZhaKanSon:C23b" class="entry num">
+			<td>K. Zhao, Q. Kang, Y. Song, R. She, S. Wang, and W. P. Tay, 
+			“Adversarial robustness in graph neural networks: A Hamiltonian energy conservation approach,” 
+			in <em>Advances in Neural Information Processing Systems (NeurIPS)</em>, New Orleans, USA, Dec. 2023, <strong>spotlight</strong>.
+			<a href="https://openreview.net/forum?id=xtADRDRsM2" target="_blank">[pdf]</a>
+			<a href="https://openreview.net/forum?id=xtADRDRsM2" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('ZhaKanSon:C23b','bibtex')">bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_ZhaKanSon:C23b" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@INPROCEEDINGS{ZhaKanSon:C23b,
+			author = {Kai Zhao and Qiyu Kang and Yang Song and Rui She and Sijie Wang and Wee Peng Tay},
+			title = {Adversarial Robustness in Graph Neural Networks: A {Hamiltonian} Energy Conservation Approach},
+			booktitle = {Advances in Neural Information Processing Systems},
+			volume = {},
+			pages = {},
+			month = {Dec.},
+			year = {2023},
+			address = {New Orleans, USA},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="ZhaKanSon:C23" class="entry num">
+			<td>K. Zhao, Q. Kang, Y. Song, R. She, S. Wang, and W. P. Tay, 
+			“Graph neural convection-diffusion with heterophily,” 
+			in <em>Proc. International Joint Conference on Artificial Intelligence (IJCAI)</em>, Macao, China, Aug. 2023.
+			<a href="https://www.ijcai.org/proceedings/2023/0518.pdf" target="_blank">[pdf]</a>
+			<a href="https://www.ijcai.org/proceedings/2023/518" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('ZhaKanSon:C23','bibtex')">bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_ZhaKanSon:C23" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@INPROCEEDINGS{ZhaKanSon:C23,
+			author = {Kai Zhao and Qiyu Kang and Yang Song and Rui She and Sijie Wang and Wee Peng Tay},
+			title = {Graph Neural Convection-Diffusion with Heterophily},
+			booktitle = {Proc. International Joint Conference on Artificial Intelligence},
+			volume = {},
+			pages = {},
+			month = {Aug.},
+			year = {2023},
+			address = {Macao, China},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="KanZhaSon:C23" class="entry num">
+			<td>Q. Kang, K. Zhao, Y. Song, S. Wang, and W. P. Tay, 
+			“Node embedding from neural Hamiltonian orbits in graph neural networks,”
+			in <em>Proc. International Conference on Machine Learning (ICML)</em>, Haiwaii, USA, Jul. 2023.
+			<a href="https://proceedings.mlr.press/v202/kang23d/kang23d.pdf" target="_blank">[pdf]</a>
+			<a href="https://proceedings.mlr.press/v202/kang23d.html" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('KanZhaSon:C23','bibtex')">bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_KanZhaSon:C23" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@INPROCEEDINGS{KanZhaSon:C23,
+					author = {Qiyu Kang and Kai Zhao and Yang Song and Sijie Wang and Wee Peng Tay},
+					title = {Node Embedding from Neural {Hamiltonian} Orbits in Graph Neural Networks},
+					booktitle = {Proc. International Conference on Machine Learning},
+					volume = {202},
+					pages = {15786--15808},
+					month = {Jul.},
+					year = {2023},
+					series = 	 {Proceedings of Machine Learning Research},
+					publisher = {PMLR},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="JiLeeMen:C23" class="entry num">
+			<td>F. Ji, S. H. Lee, H. Meng, K. Zhao, J. Yang, and W. P. Tay, 
+			“Leveraging label non-uniformity for node classification in graph neural networks,” 
+			in <em>Proc. International Conference on Machine Learning (ICML)</em>, Haiwaii, USA, Jul. 2023.
+			<a href="https://proceedings.mlr.press/v202/ji23a/ji23a.pdf" target="_blank">[pdf]</a>
+			<a href="https://proceedings.mlr.press/v202/ji23a.html" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('JiLeeMen:C23','bibtex')">bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_JiLeeMen:C23" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@InProceedings{JiLeeMen:C23,
+				title = {Leveraging Label Non-Uniformity for Node Classification in Graph Neural Networks},
+				author = {Feng Ji and See Hian Lee and Hanyang Meng and Kai Zhao and Jielong Yang and Wee Peng Tay},
+				booktitle = {Proc. International Conference on Machine Learning},
+				pages = {14869--14885},
+				year = {2023},
+				volume = {202},
+				series = {Proceedings of Machine Learning Research},
+				month = {Jul.},
+				publisher = {PMLR},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="WanKanSheWan:C23" class="entry num">
+			<td>S. Wang, Q. Kang, R. She, W. Wang, K. Zhao, Y. Song, and W. P. Tay, “HypLiLoc: Towards effective LiDAR pose regression with hyperbolic fusion,”
+			<em>Proc. IEEE/CVF Computer Vision and Pattern Recognition Conference (CVPR)</em>, Vancouver, Canada, Jun. 2023.
+			<a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Wang_HypLiLoc_Towards_Effective_LiDAR_Pose_Regression_With_Hyperbolic_Fusion_CVPR_2023_paper.pdf" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2304.00932" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('WanKanSheWan:C23','bibtex')">bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_WanKanSheWan:C23" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@INPROCEEDINGS{WanKanSheWan:C23,
+			author = {Sijie Wang and Qiyu Kang and Rui She and Wei Wang and Kai Zhao and Yang Song and Wee Peng Tay},
+			title = {{HypLiLoc}: Towards Effective {LiDAR} Pose Regression with Hyperbolic Fusion},
+			booktitle = {Proc. IEEE/CVF Computer Vision and Pattern Recognition Conference},
+			volume = {},
+			pages = {},
+			month = {Jun.},
+			year = {2023},
+			address = {Vancouver, Canada},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="WanKanShe:C23" class="entry num">
+			<td>S. Wang, Q. Kang, R. She, W. P. Tay, A. Hartmannsgruber, and D. N. Navarro, “RobustLoc: Robust camera pose regression in challenging driving environments,”
+			<em>Proc. AAAI Conference on Artificial Intelligence (AAAI)</em>, Washington, DC, Feb. 2023.
+			<a href="https://ojs.aaai.org/index.php/AAAI/article/view/25765" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2211.11238" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('WanKanShe:C23','bibtex')">bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_WanKanShe:C23" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@INPROCEEDINGS{WanKanShe:C23,
+			author = {Sijie Wang and Qiyu Kang and Rui She and Wee Peng Tay and Andreas Hartmannsgruber and Diego Navarro Navarro},
+			title = {{RobustLoc}: {Robust} Camera Pose Regression in Challenging Driving Environments},
+			booktitle = {Proc. AAAI Conference on Artificial Intelligence},
+			volume = {},
+			pages = {},
+			month = {Feb.},
+			year = {2023},
+			address = {Washington, DC},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="SonKanWan:C22" class="entry num">
+			<td>Y. Song, Q. Kang, S. Wang, K. Zhao, and W. P. Tay, “On the robustness of graph neural diffusion to topology perturbations,”
+			<em>Advances in Neural Information Processing Systems (NeurIPS)</em>, New Orleans, USA, Nov. 2022.
+			<a href="https://proceedings.neurips.cc/paper_files/paper/2022/hash/29a0ea49a103a233b17c0705cdeccb66-Abstract-Conference.html" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2209.07754" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('SonKanWan:C22','bibtex')">bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_SonKanWan:C22" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@INPROCEEDINGS{SonKanWan:C22,
+			author = {Yang Song and Qiyu Kang and Sijie Wang and Kai Zhao and Wee Peng Tay},
+			title = {On the Robustness of Graph Neural Diffusion to Topology Perturbations},
+			booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+			month = {Nov.},
+			year = {2022},
+			address = {New Orleans, USA},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="LeeJiTay:C22" class="entry num">
+			<td>S. H. Lee, F. Ji, and W. P. Tay, “SGAT: Simplicial graph attention network,”
+			<em>Proc. International Joint Conference on Artificial Intelligence (IJCAI)</em>, Vienna, Austria, Jul. 2022.
+			<a href="https://www.ijcai.org/proceedings/2022/443" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2207.11761" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('LeeJiTay:C22','bibtex')">bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_LeeJiTay:C22" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@INPROCEEDINGS{LeeJiTay:C22,
+			author = {See Hian Lee and Feng Ji and Wee Peng Tay},
+			title = {{SGAT}: Simplicial Graph Attention Network},
+			booktitle = {Proc. International Joint Conference on Artificial Intelligence (IJCAI)},
+			month = {Jul.},
+			year = {2022},
+			address = {Vienna, Austria},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="KanSonDinTay:C21" class="entry num">
+			<td>Q. Kang, Y. Song, Q. Ding, and W. P. Tay, “Stable neural ODE with Lyapunov-stable equilibrium points for defending against adversarial attacks,”
+			<em>Advances in Neural Information Processing Systems (NeurIPS)</em>, virtual, Dec. 2021.
+			<a href="https://papers.nips.cc/paper/2021/hash/7d5430cf85f78c4b7aa09813b14bce0d-Abstract.html" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2110.12976" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('KanSonDinTay:C21','bibtex')">bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_KanSonDinTay:C21" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@INPROCEEDINGS{KanSonDinTay:C21,
+			author = {Qiyu Kang and Yang Song and Qinxu Ding and Wee Peng Tay},
+			title = {Stable Neural {ODE} with {Lyapunov}-Stable Equilibrium Points for Defending Against Adversarial Attacks},
+			booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+			month = {Dec.},
+			year = {2021},
+			address = {virtual},
+			}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="SonKanTay:C21" class="entry num">
+			<td>Y. Song, Q. Kang, and W. P. Tay, “Error-correcting output codes with ensemble diversity for robust
+			learning in neural networks,”
+			<em>Proc. AAAI Conference on Artificial Intelligence</em>, virtual, Feb. 2021.
+			<a href="https://ojs.aaai.org/index.php/AAAI/article/view/17169" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/1912.00181" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('SonKanTay:C21','bibtex')">bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_SonKanTay:C21" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@INPROCEEDINGS{SonKanTay:C21,
+			author = {Yang Song and Qiyu Kang and Wee Peng Tay},
+			title = {Error-Correcting Output Codes with Ensemble Diversity for Robust Learning in Neural Networks},
+			booktitle = {Proc. AAAI Conference on Artificial Intelligence},
+			month = {Feb.},
+			year = {2021},
+			address = {virtual},
+			}
+			</pre>
+			</td>
+			</tr>
+
+
+			</tbody>
+			</table>
+
+
+			<table border="1"></table>
+
+			<h2 id="conferences"><a href="javascript:toggleInfo('conferences','pubs')" style="color:#5c5a5a">Conferences (Full List)</a></h2>
 			<table id="pubs_conferences" class="pubs show" border="1">
 				<tbody>
 					<tr id="conf_Conf2024" class="conf show nonum">
