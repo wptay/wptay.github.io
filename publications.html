@@ -39,6 +39,8 @@
 			var rev = document.getElementById('rev_' + articleid);
 			var bib = document.getElementById('bib_' + articleid);
 			var conf = document.getElementById('conf_' + articleid);
+			var exp = document.getElementById('exp_' + articleid);
+
 
 			if (pubs && info == 'pubs') {
 				pubs.className.indexOf('noshow') == -1 ? pubs.className = 'pubs noshow' : pubs.className = 'pubs show';
@@ -52,7 +54,17 @@
 				bib.className.indexOf('noshow') == -1 ? bib.className = 'bibtex noshow nonum' : bib.className = 'bibtex show nonum';
 			} else if (conf && info == 'conf') {
 				conf.className.indexOf('noshow') == -1 ? conf.className = 'conf noshow nonum' : conf.className = 'conf show nonum';
-			} else {
+			} else if (exp && info == 'more') {
+				var button = document.getElementById(articleid);
+				if(exp.className.indexOf('noshow') == -1)
+				{ 
+					exp.className = 'exp noshow';
+					button.innerHTML = 'more';
+				} else { 
+					exp.className = 'exp show';
+					button.innerHTML = 'less';
+				}
+			}	else {
 				return;
 			}
 
@@ -89,9 +101,25 @@
 
 		}
 
+
+		function toggleMulti(ids, infos) {
+			for (var i = 0; i < ids.length; i++) {
+				toggleInfo(ids[i], infos[i]);
+			}
+		}
+
+
 	</script>
 
 	<style type="text/css">
+		div {
+			display: block;
+		}
+
+		div.noshow {
+			display: none;
+		}
+		
 		ul {
 			list-style-position: inside;
 		}
@@ -220,7 +248,7 @@
 					<li><a href="https://github.com/wptay/SIGNAL">Code</a></li>
 					<li><a href="#book_chapters" onclick="javascript:clickshow('pubs_book')">Books</a></li>
 					<li><a href="#journals_full" onclick="javascript:clickshow('pubs_journals')">Journals</a></li>
-					<li><a href="#ml_full" onclick="javascript:clickshow('pubs_ml')">ML</a></li>
+					<li><a href="#ml_full" onclick="javascript:clickshow('pubs_ml_all')">ML</a></li>
 					<li><a href="#conferences" onclick="javascript:clickshow('pubs_conferences')">Conferences</a></li>
 					<li><a href="#technical">Others</a></li>
 				</ul>
@@ -3522,10 +3550,11 @@ doi = {10.1109/TGRS.2024.3351286},
 
 			<table border="1"></table>
 
-			<h2 id="ml_full"><a href="javascript:toggleInfo('ml','pubs')" style="color:#5c5a5a">ML Conferences</a></h2>
-			<table id="pubs_ml" class="pubs show" border="1">
+			<h2 id="ml_full"><a href="javascript:toggleInfo('ml_all','pubs')" style="color:#5c5a5a">ML Conferences</a></h2>
+			<h6>NeurIPS, AAAI, ICML, ICLR, IJCAI, CVPR</h6>
+			<div id="pubs_ml_all" class="pubs show">
+			<table id="pubs_ml_recent" class="pubs show" border="1">
 			<tbody>
-
 			<tr id="ZhaKanJi:C24" class="entry num">
 			<td>K. Zhao, Q. Kang, F. Ji, X. Li, Q. Ding, Y. Zhao, W. Liang, and W. P. Tay, 
 			“Distributed-order fractional graph operating network,” 
@@ -3837,6 +3866,12 @@ address = {Vancouver, Canada},
 			</td>
 			</tr>
 
+			</tbody>
+			</table>
+			
+			<table id="exp_mlmore" class="exp noshow" border="1" style="counter-reset: rowNumber 12">
+			<tbody>
+
 			<tr id="SonKanWan:C22" class="entry num">
 			<td>Y. Song, Q. Kang, S. Wang, K. Zhao, and W. P. Tay, “On the robustness of graph neural diffusion to topology perturbations,”
 			<em>Advances in Neural Information Processing Systems (NeurIPS)</em>, New Orleans, USA, Nov. 2022.
@@ -3930,11 +3965,11 @@ address = {Vancouver, Canada},
 			</td>
 			</tr>
 
-
-			</tbody>
+			</tbody>		
 			</table>
-
-
+			<h4 id="exp" style="text-align:center;"><a id="mlmore" href="javascript:toggleInfo('mlmore','more')" style="color:#5c5a5a">more</a></h4>
+			</div>
+			
 			<table border="1"></table>
 
 			<h2 id="conferences"><a href="javascript:toggleInfo('conferences','pubs')" style="color:#5c5a5a">Other Conferences</a></h2>
