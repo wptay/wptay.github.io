@@ -59,10 +59,10 @@
 				if(exp.className.indexOf('noshow') == -1)
 				{ 
 					exp.className = 'exp noshow';
-					button.innerHTML = 'more';
+					button.innerHTML = '<img src="images/expand_more.svg"> more <img src="images/expand_more.svg">';
 				} else { 
 					exp.className = 'exp show';
-					button.innerHTML = 'less';
+					button.innerHTML = '<img src="images/expand_less.svg"> less <img src="images/expand_less.svg">';
 				}
 			}	else {
 				return;
@@ -257,6 +257,54 @@
 			<h2 id="selected"><a href="javascript:toggleInfo('selected','pubs')" style="color:#5c5a5a">Selected Publications</a></h2>
 			<table id="pubs_selected" class="pubs show" border="1">
 			<tbody>
+
+			<tr id="KanLiZha:C25s" class="entry num">
+			<td>Q. Kang, X. Li, K. Zhao, W. Cui, Y. Zhao, W. Deng, and W. P. Tay, 
+			“Efficient training of neural fractional-order differential equation via adjoint backpropagation,” 
+			in <em>Proc. AAAI Conference on Artificial Intelligence (AAAI)</em>, Philadelphia, USA, Feb. 2025.
+			<a href="https://openreview.net/forum?id=XIo6mOd89y" target="_blank">[pdf]</a>
+			<a href="https://openreview.net/forum?id=XIo6mOd89y" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('KanLiZha:C25s','bibtex')">bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_KanLiZha:C25s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+@INPROCEEDINGS{KanLiZha:C25,
+	author = {Qiyu Kang and Xuhao Li and Kai Zhao and Wenjun Cui and Yanan Zhao and Weihua Deng and Wee Peng Tay},
+	title = {Efficient Training of Neural Fractional-Order Differential Equation via Adjoint Backpropagation},
+	booktitle = {Proc. AAAI Conference on Artificial Intelligence},
+	month = {Feb.},
+	year = {2025},
+	address = {Philadelphia, USA},
+}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="CuiKanLi:C25s" class="entry num">
+			<td>W. Cui, Q. Kang, X. Li, K. Zhao, W. P. Tay, W. Deng, and Y. Li, 
+			“Neural variable-order fractional differential equation networks,” 
+			in <em>Proc. AAAI Conference on Artificial Intelligence (AAAI)</em>, Philadelphia, USA, Feb. 2025.
+			<a href="https://openreview.net/forum?id=fKGfbw8CRm" target="_blank">[pdf]</a>
+			<a href="https://openreview.net/forum?id=fKGfbw8CRm" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('CuiKanLi:C25s','bibtex')">bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_CuiKanLi:C25s" class="bibtex noshow nonum">
+			<td>
+			<pre>
+@INPROCEEDINGS{CuiKanLi:C25,
+    author = {Wenjun Cui and Qiyu Kang and Xuhao Li and Kai Zhao and Wee Peng Tay and Weihua Deng and Yidong Li},
+    title={Neural Variable-Order Fractional Differential Equation Networks},
+    booktitle = {Proc. AAAI Conference on Artificial Intelligence},
+    month = {Feb.},
+    year = {2025},
+    address = {Philadelphia, USA},
+}
+			</pre>
+			</td>
+			</tr>
 
 			<tr id="FenJiaTay:J24s" class="entry bull">
 			<td>F. Ji, X. Jian, and W. P. Tay, 
@@ -1495,10 +1543,62 @@ address = {Vancouver, Canada},
 			<table id="pubs_journals" class="pubs noshow" border="1">
 			<tbody>
 
+			<tr id="YueLiLia:J24" class="entry num">
+			<td>Y. Yuan, W. Li, Y. Liang, W. P. Tay, W. Gao, and F. Shen, 
+			“Lane-aware dynamic spatio-temporal transformer for unimodal trajectory prediction,” 
+			<em>IEEE Transactions on Intelligent Vehicles</em>, in press
+			<a href="https://ieeexplore.ieee.org/document/10587083" target="_blank">[pdf]</a>
+			[<a href="javascript:toggleInfo('YueLiLia:J24','bibtex')">bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_YueLiLia:J24" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{YueLiLia:J24,
+				author={Yuan, Yue and Li, Wenqiang and Liang, Yi and Tay, Wee Peng and Gao, Wei and Shen, Feng},
+				journal={{IEEE} Transactions on Intelligent Vehicles}, 
+				title={Lane-Aware Dynamic Spatio-Temporal Transformer for Unimodal Trajectory Prediction}, 
+				year={2024},
+				volume={},
+				number={},
+				pages={},
+				note={in press},
+				doi={10.1109/TIV.2024.3424257},
+			}
+			</pre>
+			</td>
+			</tr>
+			
+			<tr id="WanKanShe:J24" class="entry num">
+			<td>S. Wang, Q. Kang, R. She, K. Zhao, Y. Song, and W. P. Tay, 
+			“PRFusion: Toward effective and robust multi-modal place recognition with image and point cloud fusion,” 
+			<em>IEEE Transactions on Intelligent Transportation Systems</em>, vol. 25, no. 12, pp. 20 523 – 20 534, 2024
+			<a href="https://ieeexplore.ieee.org/document/10704955" target="_blank">[pdf]</a>
+			<a href="https://arxiv.org/abs/2410.04939" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('WanKanShe:J24','bibtex')">bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_WanKanShe:J24" class="bibtex noshow nonum">
+			<td>
+			<pre>
+			@ARTICLE{WanKanShe:J24,
+				author={Wang, Sijie and Kang, Qiyu and She, Rui and Zhao, Kai and Song, Yang and Tay, Wee Peng},
+				journal={{IEEE} Transactions on Intelligent Transportation Systems}, 
+				title={{PRFusion}: {T}oward Effective and Robust Multi-Modal Place Recognition With Image and Point Cloud Fusion}, 
+				year={2024},
+				volume={25},
+				number={12},
+				pages={20523 -- 20534},
+				doi={10.1109/TITS.2024.3465830},
+			}
+			</pre>
+			</td>
+			</tr>
+
 			<tr id="FenJiaTay:J24" class="entry num">
 			<td>F. Ji, X. Jian, and W. P. Tay, 
 			“Modeling sparse graph sequences and signals using generalized graphons,” 
-			in <em>IEEE Transactions on Signal Processing</em>, 2024, in press.
+			in <em>IEEE Transactions on Signal Processing</em>, vol. 72, pp. 5048 – 5064, 2024
 			<a href="https://ieeexplore.ieee.org/document/10726916" target="_blank">[pdf]</a>
 			<a href="https://arxiv.org/abs/2312.08124" target="_blank">[repo]</a>
 			[<a href="javascript:toggleInfo('FenJiaTay:J24','bibtex')">bib</a>]
@@ -1521,54 +1621,25 @@ address = {Vancouver, Canada},
 			</td>
 			</tr>
 
-			<tr id="WanKanShe:J24" class="entry num">
-			<td>S. Wang, Q. Kang, R. She, K. Zhao, Y. Song, and W. P. Tay, 
-			“PRFusion: Toward effective and robust multi-modal place recognition with image and point cloud fusion,” 
-			<em>IEEE Transactions on Intelligent Transportation Systems</em>, in press.
-			<a href="https://ieeexplore.ieee.org/document/10704955" target="_blank">[pdf]</a>
-			<a href="https://arxiv.org/abs/2410.04939" target="_blank">[repo]</a>
-			[<a href="javascript:toggleInfo('WanKanShe:J24','bibtex')">bib</a>]
+			<tr id="LuJiTay:J24" class="entry num">
+			<td>L. Yiqi, F. Ji, and W. P. Tay, 
+			“Heterogeneous graph adaptive flow network,” 
+			in <em>Transactions on Machine Learning Research</em>, 2024
+			<a href="https://openreview.net/forum?id=usvg3yhjAx" target="_blank">[pdf]</a>
+			<a href="https://openreview.net/forum?id=usvg3yhjAx" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('LuJiTay:J24','bibtex')">bib</a>]
 			</td>
 			</tr>
-			<tr id="bib_WanKanShe:J24" class="bibtex noshow nonum">
+			<tr id="bib_LuJiTay:J24" class="bibtex noshow nonum">
 			<td>
 			<pre>
-			@ARTICLE{WanKanShe:J24,
-				author={Wang, Sijie and Kang, Qiyu and She, Rui and Zhao, Kai and Song, Yang and Tay, Wee Peng},
-				journal={{IEEE} Transactions on Intelligent Transportation Systems}, 
-				title={{PRFusion}: {T}oward Effective and Robust Multi-Modal Place Recognition With Image and Point Cloud Fusion}, 
+			@ARTICLE{LuJiTay:J24,
+				title={Heterogeneous graph adaptive flow network},
+				author={Lu Yiqi and Feng Ji and Wee Peng Tay},
+				journal={Transactions on Machine Learning Research},
+				issn={2835-8856},
 				year={2024},
-				volume={},
-				number={},
-				pages={},
-				doi={10.1109/TITS.2024.3465830},
-				note={in press},
-			}
-			</pre>
-			</td>
-			</tr>
-
-			<tr id="YueLiLia:J24" class="entry num">
-			<td>Y. Yuan, W. Li, Y. Liang, W. P. Tay, W. Gao, and F. Shen, 
-			“Lane-aware dynamic spatio-temporal transformer for unimodal trajectory prediction,” 
-			<em>IEEE Transactions on Intelligent Vehicles</em>, in press.
-			<a href="https://ieeexplore.ieee.org/document/10587083" target="_blank">[pdf]</a>
-			[<a href="javascript:toggleInfo('YueLiLia:J24','bibtex')">bib</a>]
-			</td>
-			</tr>
-			<tr id="bib_YueLiLia:J24" class="bibtex noshow nonum">
-			<td>
-			<pre>
-			@ARTICLE{YueLiLia:J24,
-				author={Yuan, Yue and Li, Wenqiang and Liang, Yi and Tay, Wee Peng and Gao, Wei and Shen, Feng},
-				journal={{IEEE} Transactions on Intelligent Vehicles}, 
-				title={Lane-Aware Dynamic Spatio-Temporal Transformer for Unimodal Trajectory Prediction}, 
-				year={2024},
-				volume={},
-				number={},
-				pages={},
-				note={in press},
-				doi={10.1109/TIV.2024.3424257},
+				url={https://openreview.net/forum?id=usvg3yhjAx},
 			}
 			</pre>
 			</td>
@@ -1577,7 +1648,7 @@ address = {Vancouver, Canada},
 			<tr id="RanTayLee:J24" class="entry num">
 			<td>X. Ran, W. P. Tay, and C. H. T. Lee,
 			“Robust data-driven adversarial false data injection attack detection method with deep Q-network in power systems,”
-			<em>IEEE Transactions on Industrial Informatics</em>, in press.
+			<em>IEEE Transactions on Industrial Informatics</em>, vol. 20, no. 8, pp. 10 405 – 10 418, 2024.
 			<a href="https://ieeexplore.ieee.org/document/10528868" target="_blank">[pdf]</a>
 			<a href="https://hdl.handle.net/10356/176345" target="_blank">[repo]</a>
 			[<a href="javascript:toggleInfo('RanTayLee:J24','bibtex')">bib</a>]
@@ -1590,12 +1661,11 @@ address = {Vancouver, Canada},
 author = {Xiaohong Ran and Wee Peng Tay and Christopher H. T. Lee},
 title = {Robust Data-Driven Adversarial False Data Injection Attack Detection Method with Deep {Q}-Network in Power Systems},
 journal = {{IEEE} Transactions on Industrial Informatics},
-volume = {}, 
-pages = {},
-month = {},
-year = {2024},
+year={2024},
+volume={20},
+number={8},
+pages={10405 -- 10418},
 doi = {10.1109/TII.2024.3396527},
-note = {in press},
 }
 			</pre>
 			</td>
@@ -3549,10 +3619,59 @@ doi = {10.1109/TGRS.2024.3351286},
 			<table border="1"></table>
 
 			<h2 id="ml_full"><a href="javascript:toggleInfo('ml_all','pubs')" style="color:#5c5a5a">ML Conferences</a></h2>
-			<h6>NeurIPS, AAAI, ICML, ICLR, IJCAI, CVPR</h6>
+			<h6>NeurIPS, ICML, ICLR, AAAI, IJCAI, CVPR</h6>
 			<div id="pubs_ml_all" class="pubs show">
 			<table id="pubs_ml_recent" class="pubs show" border="1">
 			<tbody>
+
+			<tr id="KanLiZha:C25" class="entry num">
+			<td>Q. Kang, X. Li, K. Zhao, W. Cui, Y. Zhao, W. Deng, and W. P. Tay, 
+			“Efficient training of neural fractional-order differential equation via adjoint backpropagation,” 
+			in <em>Proc. AAAI Conference on Artificial Intelligence (AAAI)</em>, Philadelphia, USA, Feb. 2025.
+			<a href="https://openreview.net/forum?id=XIo6mOd89y" target="_blank">[pdf]</a>
+			<a href="https://openreview.net/forum?id=XIo6mOd89y" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('KanLiZha:C25','bibtex')">bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_KanLiZha:C25" class="bibtex noshow nonum">
+			<td>
+			<pre>
+@INPROCEEDINGS{KanLiZha:C25,
+	author = {Qiyu Kang and Xuhao Li and Kai Zhao and Wenjun Cui and Yanan Zhao and Weihua Deng and Wee Peng Tay},
+	title = {Efficient Training of Neural Fractional-Order Differential Equation via Adjoint Backpropagation},
+	booktitle = {Proc. AAAI Conference on Artificial Intelligence},
+	month = {Feb.},
+	year = {2025},
+	address = {Philadelphia, USA},
+}
+			</pre>
+			</td>
+			</tr>
+
+			<tr id="CuiKanLi:C25" class="entry num">
+			<td>W. Cui, Q. Kang, X. Li, K. Zhao, W. P. Tay, W. Deng, and Y. Li, 
+			“Neural variable-order fractional differential equation networks,” 
+			in <em>Proc. AAAI Conference on Artificial Intelligence (AAAI)</em>, Philadelphia, USA, Feb. 2025.
+			<a href="https://openreview.net/forum?id=fKGfbw8CRm" target="_blank">[pdf]</a>
+			<a href="https://openreview.net/forum?id=fKGfbw8CRm" target="_blank">[repo]</a>
+			[<a href="javascript:toggleInfo('CuiKanLi:C25','bibtex')">bib</a>]
+			</td>
+			</tr>
+			<tr id="bib_CuiKanLi:C25" class="bibtex noshow nonum">
+			<td>
+			<pre>
+@INPROCEEDINGS{CuiKanLi:C25,
+    author = {Wenjun Cui and Qiyu Kang and Xuhao Li and Kai Zhao and Wee Peng Tay and Weihua Deng and Yidong Li},
+    title={Neural Variable-Order Fractional Differential Equation Networks},
+    booktitle = {Proc. AAAI Conference on Artificial Intelligence},
+    month = {Feb.},
+    year = {2025},
+    address = {Philadelphia, USA},
+}
+			</pre>
+			</td>
+			</tr>
+
 			<tr id="ZhaKanJi:C24" class="entry num">
 			<td>K. Zhao, Q. Kang, F. Ji, X. Li, Q. Ding, Y. Zhao, W. Liang, and W. P. Tay, 
 			“Distributed-order fractional graph operating network,” 
@@ -3760,6 +3879,11 @@ address = {Vancouver, Canada},
 			</td>
 			</tr>
 
+			</tbody>
+			</table>		
+			<table id="exp_mlmore" class="exp noshow" border="1" style="counter-reset: rowNumber 10">
+			<tbody>
+
 			<tr id="KanZhaSon:C23" class="entry num">
 			<td>Q. Kang, K. Zhao, Y. Song, S. Wang, and W. P. Tay, 
 			“Node embedding from neural Hamiltonian orbits in graph neural networks,”
@@ -3864,12 +3988,6 @@ address = {Vancouver, Canada},
 			</td>
 			</tr>
 
-			</tbody>
-			</table>
-			
-			<table id="exp_mlmore" class="exp noshow" border="1" style="counter-reset: rowNumber 12">
-			<tbody>
-
 			<tr id="SonKanWan:C22" class="entry num">
 			<td>Y. Song, Q. Kang, S. Wang, K. Zhao, and W. P. Tay, “On the robustness of graph neural diffusion to topology perturbations,”
 			<em>Advances in Neural Information Processing Systems (NeurIPS)</em>, New Orleans, USA, Nov. 2022.
@@ -3965,7 +4083,7 @@ address = {Vancouver, Canada},
 
 			</tbody>		
 			</table>
-			<h4 id="exp" style="text-align:center;"><a id="mlmore" href="javascript:toggleInfo('mlmore','more')" style="color:#5c5a5a">more</a></h4>
+			<h4 id="exp" style="text-align:center;"><a id="mlmore" href="javascript:toggleInfo('mlmore','more')" style="color:#5c5a5a"><img src="images/expand_more.svg"> more <img src="images/expand_more.svg"></a></h4>
 			</div>
 			
 			<table border="1"></table>
