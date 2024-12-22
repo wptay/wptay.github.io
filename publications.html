@@ -245,7 +245,7 @@
 			<div id="sublinks">
 				<ul class="sublinks_links">
 					<li><a href="#selected" onclick="javascript:clickshow('pubs_selected')">Selected</a></li>
-					<li><a href="https://github.com/wptay/SIGNAL">Code</a></li>
+					<li><a href="https://github.com/wptay/SIGNAL" target="_blank">Code</a></li>
 					<li><a href="#book_chapters" onclick="javascript:clickshow('pubs_book')">Books</a></li>
 					<li><a href="#journals_full" onclick="javascript:clickshow('pubs_journals')">Journals</a></li>
 					<li><a href="#ml_full" onclick="javascript:clickshow('pubs_ml_all')">ML</a></li>
@@ -3618,6 +3618,7 @@ doi = {10.1109/TGRS.2024.3351286},
 
 			<table border="1"></table>
 
+
 			<h2 id="ml_full"><a href="javascript:toggleInfo('ml_all','pubs')" style="color:#5c5a5a">ML Conferences</a></h2>
 			<h6>NeurIPS, ICML, ICLR, AAAI, IJCAI, CVPR</h6>
 			<div id="pubs_ml_all" class="pubs show">
@@ -3881,6 +3882,15 @@ address = {Vancouver, Canada},
 
 			</tbody>
 			</table>		
+			
+			<style>		
+				#exp_mlmore {
+					margin-top: -12px;
+					/* Adjust the value as needed to match the spacing */
+				}
+			</style>
+
+
 			<table id="exp_mlmore" class="exp noshow" border="1" style="counter-reset: rowNumber 10">
 			<tbody>
 
@@ -4091,6 +4101,17 @@ address = {Vancouver, Canada},
 			<h2 id="conferences"><a href="javascript:toggleInfo('conferences','pubs')" style="color:#5c5a5a">Other Conferences</a></h2>
 			<table id="pubs_conferences" class="pubs show" border="1">
 				<tbody>
+
+					<tr id="conf_Conf2025" class="conf show nonum">
+						<td>
+							<h4><a href="javascript:toggleInfo('Conf2025','conf')">2025</a></h4>
+							<ul>
+								<li>X. Jian, M. Golz, F. Ji, W. P. Tay, and A. Zoubir, “A generalized graph signal processing framework for multiple hypothesis testing over networks,” in Proc. IEEE International Conference Acoustics, Speech, and Signal Processing, Hyderabad, India, Apr. 2025</li>
+								<li>Y. Zhao, X. Jian, F. Ji, W. P. Tay, and A. Ortega, “Generalized graph signal reconstruction via the uncertainty principle,” in Proc. IEEE International Conference Acoustics, Speech, and Signal Processing, Hyderabad, India, Apr. 2025</li>
+							</ul>
+						</td>
+					</tr>
+
 					<tr id="conf_Conf2024" class="conf show nonum">
 						<td>
 							<h4><a href="javascript:toggleInfo('Conf2024','conf')">2024</a></h4>
@@ -4323,29 +4344,43 @@ address = {Vancouver, Canada},
 				</tbody>
 			</table>
 
+			<style>
+					#conferences_table {
+							table-layout: fixed;
+							width: 100%;
+					}
+					#conferences_table td {
+							width: 20%;
+					}
+			</style>
+
 			<table id="conferences_table" border="1">
 				<tbody>
 					<tr id="Conf_old1" class="entry show nonum" style="font-size:18px">
+						<td id="Conf2025"><a href="javascript:toggleInfo('Conf2025','conf')">2025</a></td>
 						<td id="Conf2024"><a href="javascript:toggleInfo('Conf2024','conf')">2024</a></td>
 						<td id="Conf2023"><a href="javascript:toggleInfo('Conf2023','conf')">2023</a></td>
 						<td id="Conf2022"><a href="javascript:toggleInfo('Conf2022','conf')">2022</a></td>
 						<td id="Conf2021"><a href="javascript:toggleInfo('Conf2021','conf')">2021</a></td>
-						<td id="Conf2020"><a href="javascript:toggleInfo('Conf2020','conf')">2020</a></td>
 					</tr>
 					<tr id="Conf_old2" class="entry show nonum" style="font-size:18px">
+						<td id="Conf2020"><a href="javascript:toggleInfo('Conf2020','conf')">2020</a></td>
 						<td id="Conf2019"><a href="javascript:toggleInfo('Conf2019','conf')">2019</a></td>
 						<td id="Conf2018"><a href="javascript:toggleInfo('Conf2018','conf')">2018</a></td>
 						<td id="Conf2017"><a href="javascript:toggleInfo('Conf2017','conf')">2017</a></td>
 						<td id="Conf2016"><a href="javascript:toggleInfo('Conf2016','conf')">2016</a></td>
-						<td id="Conf2015"><a href="javascript:toggleInfo('Conf2015','conf')">2015</a></td>
 					</tr>
 					<tr id="Conf_old3" class="entry show nonum" style="font-size:18px">
+						<td id="Conf2015"><a href="javascript:toggleInfo('Conf2015','conf')">2015</a></td>
 						<td id="Conf2014"><a href="javascript:toggleInfo('Conf2014','conf')">2014</a></td>
 						<td id="Conf2013"><a href="javascript:toggleInfo('Conf2013','conf')">2013</a></td>
 						<td id="Conf2012"><a href="javascript:toggleInfo('Conf2012','conf')">2012</a></td>
 						<td id="Conf2011"><a href="javascript:toggleInfo('Conf2011','conf')">2011</a></td>
+					</tr>
+					<tr id="Conf_old4" class="entry show nonum" style="font-size:18px">
 						<td id="Conf2010"><a href="javascript:toggleInfo('Conf2010','conf')">Before 2010</a></td>
 					</tr>
+
 				</tbody>
 			</table>
 
